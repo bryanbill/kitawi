@@ -1,14 +1,13 @@
 name: kitawi
-description: A starting point for Dart libraries or applications.
+description: Kitawi is a web UI library based on Flutter's widgets.
 version: 0.0.1
 repository: https://github.com/bryanbill/kitawi
 
 executables:
-  kitawi: kitawi.dart
-
+  kitawi: kitawi
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
+  sdk: ">=2.14.0 <4.0.0"
 
 # Add regular dependencies here.
 dependencies:
