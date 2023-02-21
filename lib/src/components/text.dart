@@ -22,7 +22,7 @@ class Text extends Widget {
       ..style.fontWeight = '${style?.fontWeight?.index}'
       ..style.fontStyle = style?.fontStyle?.value
       ..on[action?.type ?? ''].listen((event) {
-        action?.onClick.call(event);
+        action?.onClick?.call(event);
       });
   }
 }
