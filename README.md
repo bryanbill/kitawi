@@ -10,7 +10,7 @@ With Kitawi, you can say goodbye to the tedious process of writing complex CSS a
 
 ### Prerequisites
 
-Kitawi is written in Dart and compiled to JavaScript. To use Kitawi, you need to install the Dart SDK and the Dartium browser. You can find the installation instructions [here](https://www.dartlang.org/tools/sdk#install).
+Kitawi is written in Dart and compiled to JavaScript. To use Kitawi, you need to install the Dart SDK. You can find the installation instructions [here](https://www.dartlang.org/tools/sdk#install).
 
 Once you have Dart installed, you can start using Kitawi by adding the following line to your `pubspec.yaml` file:
 
