@@ -45,11 +45,14 @@ void render(Widget widget, Element? element) {
 /// The [VoidCallback] is called when the window is loaded and when the window
 /// is resized.
 void start(VoidCallback callback) {
+  
+  /// The [VoidCallback] is called when the window is loaded.
   window.onLoad.listen((event) {
     Size().updateSize();
     callback();
   });
 
+  /// The [VoidCallback] is called when the window is resized.
   window.onResize.listen((event) {
     Size().updateSize();
     callback();
