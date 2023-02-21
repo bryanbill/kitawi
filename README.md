@@ -38,13 +38,14 @@ void main() {
 }
 ```
 
+
 ## Documentation
 
 You can find the documentation for Kitawi [here](https://kitawi.github.io/kitawi/).
 
 ## Contributing
 
-We welcome contributions to Kitawi! If you would like to contribute, please read our [contribution guidelines](CONTRIBUT.md).
+We welcome contributions to Kitawi! If you would like to contribute, please read our [contribution guidelines](CONTRIBUTE.md).
 
 ## License
 
