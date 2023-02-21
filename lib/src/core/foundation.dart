@@ -1,5 +1,8 @@
 import 'package:kitawi/src/core/color.dart';
 
+/// The Decoration class is used to decorate a widget
+/// with a color, border, and box shadow e.t.c
+
 class Decoration {
   final Color? color;
   final Border? border;
@@ -12,8 +15,12 @@ class Decoration {
   });
 }
 
+/// The border type can be solid, dashed, dotted, double, groove, ridge, inset, or outset
+/// The border radius is the radius of the border
 enum BorderType { solid, dashed, dotted, double, groove, ridge, inset, outset }
 
+/// The Border class is used to add a border to a widget
+/// It has a width, color [Color], type [BorderType], and border radius
 class Border {
   final double? width;
   final Color? color;
@@ -33,6 +40,12 @@ class Border {
   }
 }
 
+/// The BoxShadow class is used to add a box shadow to a widget
+/// It has a color [Color], offset x, offset y, blur radius, and spread radius
+/// The offset x and offset y are the distance of the shadow from the widget
+/// The blur radius is the blur of the shadow
+/// The spread radius is the spread of the shadow
+/// The color is the color of the shadow
 class BoxShadow {
   final Color color;
   final double offsetX;
@@ -54,6 +67,19 @@ class BoxShadow {
   }
 }
 
+/// Alignment is used to align a widget in a container
+/// It has an x and y alignment
+/// The x alignment can be:
+///
+/// - topLeft
+/// - topCenter
+/// - topRight
+/// - centerLeft
+/// - center
+/// - centerRight
+/// - bottomLeft
+/// - bottomCenter
+/// - bottomRight
 class Alignment {
   final String x;
   final String y;
@@ -72,6 +98,17 @@ class Alignment {
   static const Alignment bottomLeft = Alignment('flex-start', 'flex-end');
 }
 
+/// The [MainAxisAlignment] class is used to align the children of a [Row] or [Column] widget
+/// It has the following values:
+/// - start
+/// - end
+/// - center
+/// - spaceBetween
+/// - spaceAround
+/// - spaceEvenly
+///
+/// In a [Row] widget, the start value aligns the children to the left
+/// In a [Column] widget, the start value aligns the children to the top
 class MainAxisAlignment {
   final String _value;
 
@@ -91,6 +128,17 @@ class MainAxisAlignment {
   String toString() => _value;
 }
 
+/// The [CrossAxisAlignment] class is used to align the children of a [Row] or [Column] widget
+/// It has the following values:
+/// - start
+/// - end
+/// - center
+/// - stretch
+/// - baseline
+///
+/// In a [Row] widget, the start value aligns the children to the top
+/// In a [Column] widget, the start value aligns the children to the left
+
 class CrossAxisAlignment {
   final String _value;
 
@@ -105,6 +153,16 @@ class CrossAxisAlignment {
   @override
   String toString() => _value;
 }
+
+/// The [BoxFit] class is used to fit a widget in a container
+/// It has the following values:
+/// - fill : The fill value stretches the widget to fill the container
+/// - contain : The contain value fits the widget in the container without stretching
+/// - cover : The cover value stretches the widget to fill the container
+/// - fitWidth : The fitWidth value fits the widget in the container without stretching
+/// - fitHeight : The fitHeight value fits the widget in the container without stretching
+/// - none : The none value does not fit the widget in the container
+/// - scaleDown : The scaleDown value fits the widget in the container without stretching
 
 class BoxFit {
   final String _value;
@@ -122,6 +180,9 @@ class BoxFit {
   @override
   String toString() => _value;
 }
+
+/// The [BoxConstraints] class is used to set the constraints of a widget
+/// It has a minimum width, maximum width, minimum height, and maximum height
 
 class BoxConstraints {
   final double? minWidth;

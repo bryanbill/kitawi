@@ -4,6 +4,7 @@ import 'package:kitawi/src/core/action.dart';
 import 'package:kitawi/src/core/text_style.dart';
 import 'package:kitawi/src/core/widget.dart';
 
+/// The [Text] class is a widget that displays a single line of text.
 class Text extends Widget {
   final String text;
   final TextStyle? style;

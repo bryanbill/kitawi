@@ -4,6 +4,7 @@ import 'package:kitawi/src/core/foundation.dart';
 import 'package:kitawi/src/core/key.dart';
 import 'package:kitawi/src/core/widget.dart';
 
+/// The [Container] class is a widget that creates a div element with the defined props.
 class Container extends Widget {
   final Widget? child;
   final double? width;

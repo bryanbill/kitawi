@@ -2,6 +2,8 @@ import 'dart:html';
 
 import 'package:kitawi/src/core/size.dart';
 
+/// The [MediaQuery] class provides access to the screen size and other
+/// information about the current device.
 class MediaQuery {
   static MediaQueryData get data => MediaQueryData.fromWindow(window);
 

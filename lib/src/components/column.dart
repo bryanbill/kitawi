@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
 
+/// The [Column] class is a widget that displays its children in a vertical
 class Column extends Widget {
   final List<Widget> children;
   final MainAxisAlignment mainAxisAlignment;

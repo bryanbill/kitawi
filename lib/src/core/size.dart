@@ -1,5 +1,7 @@
 import 'dart:html';
 
+/// The [Size] class is used to get the size of the window.
+
 class Size {
   late int _x;
   late int _y;

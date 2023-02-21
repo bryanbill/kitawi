@@ -2,6 +2,8 @@ import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
 
+/// The [Image] class is a widget that displays an image.
+
 class Image extends Widget {
   final String src;
   final double? width;

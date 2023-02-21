@@ -2,7 +2,11 @@ import 'dart:html';
 
 import 'package:kitawi/src/core/widget.dart';
 
-class Frame extends Widget {
+/// The [Scaffold] class provides a basic layout structure for a page.
+/// It consists of a [navbar], [body], [sidebar], [footer], [drawer] and
+/// [floatingActionButton].
+/// The [Scaffold] class is a [Widget] class.
+class Scaffold extends Widget {
   final Widget? body;
   final Widget? navbar;
   final Widget? sidebar;
@@ -10,7 +14,7 @@ class Frame extends Widget {
   final Widget? drawer;
   final Widget? floatingActionButton;
 
-  Frame(
+  Scaffold(
       {this.body,
       this.navbar,
       this.sidebar,
@@ -27,7 +31,7 @@ class Frame extends Widget {
   }
 
   void build() {
-    Frame(
+    Scaffold(
       body: body,
       navbar: navbar,
       sidebar: sidebar,

@@ -1,5 +1,9 @@
 import 'package:kitawi/src/core/color.dart';
 
+/// The [Colors] class contains all the colors used in the Kitawi library.
+///
+/// The colors are divided into two categories:
+
 class Colors {
   //white colors
   static const Color white = Color(0xFFFFFFFF);

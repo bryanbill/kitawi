@@ -2,6 +2,8 @@ import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
 
+/// The [Row] class is a widget that displays its children in a horizontal
+/// array.
 class Row extends Widget {
   final List<Widget> children;
   final MainAxisAlignment mainAxisAlignment;
@@ -20,7 +22,7 @@ class Row extends Widget {
     row.style.flexDirection = 'row';
     row.style.justifyContent = mainAxisAlignment.toString();
     row.style.alignItems = crossAxisAlignment.toString();
-    
+
     row.style.height = '100%';
     row.style.width = '100%';
     for (final child in children) {
