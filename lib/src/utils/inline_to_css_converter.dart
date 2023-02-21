@@ -1,6 +1,22 @@
 import 'dart:html';
 import 'dart:io' as io;
 
+/// The [InlineToCSSConverter] class converts all inline styles to CSS rules.
+///
+/// This class is used to convert inline styles to CSS rules. It is used to
+/// convert the inline styles in the Kitawi library to CSS rules.
+///
+/// ```dart
+/// import 'package:kitawi/src/utils/inline_to_css_converter.dart';
+///
+/// void main() {
+///  InlineToCSSConverter.convert();
+/// }
+///
+/// ```
+///
+/// The [convert] method is used to convert the inline styles to CSS rules.
+
 class InlineToCSSConverter {
   static void convert() {
     // Get all elements with inline styles
