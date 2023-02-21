@@ -4,7 +4,7 @@ version: 0.0.1
 repository: https://github.com/bryanbill/kitawi
 
 executables:
-  kitawi: bin/main.dart
+  kitawi: kitawi.dart
 
 
 environment:
