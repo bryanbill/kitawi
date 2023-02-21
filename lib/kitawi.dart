@@ -56,4 +56,10 @@ void start(VoidCallback callback) {
     Size().updateSize();
     callback();
   });
+
+  /// The [VoidCallback] is called when the color scheme is changed.
+  window.matchMedia('(prefers-color-scheme: dark)').addListener((event) {
+    Theme().updateMode();
+    callback();
+  });
 }
