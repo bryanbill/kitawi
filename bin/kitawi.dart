@@ -162,36 +162,21 @@ Future<void> buildAndServe(int port) async {
   print(build.stdout);
   print(build.stderr);
 
-  // listens for input from the user in the terminal
-  final input = stdin.transform(utf8.decoder).transform(const LineSplitter());
-
-  // listen for the user to type 'q' to quit
-  input.listen((String line) {
-    if (line == 'q') {
-      exit(0);
-    }
-  });
-
-  // if input is 'r' then rebuild and serve
-  input.listen((String line) async {
-    if (line == 'r') {
-      await buildAndServe(port);
-    }
-  });
-
-  // serve the build directory
-  final server = await HttpServer.bind(InternetAddress.loopbackIPv4, port);
+  // serve index.html in the build directory
+  final server = await HttpServer.bind('localhost', port);
   print('Serving at http://${server.address.host}:${server.port}');
   await for (final request in server) {
-    final file = File('build/${request.uri.path}');
-    if (await file.exists()) {
-      request.response.headers.contentType =
-          ContentType.parse(lookupMimeType(file.path));
-      await file.openRead().pipe(request.response);
+    final path = request.uri.path;
+    if (path == '/') {
+      request.response
+        ..headers.contentType = ContentType.html
+        ..write(await File('build/index.html').readAsString());
     } else {
-      request.response.statusCode = HttpStatus.notFound;
-      await request.response.close();
+      request.response
+        ..headers.contentType = ContentType.parse(lookupMimeType(path))
+        ..write(await File('build/$path').readAsString());
     }
+    await request.response.close();
   }
 }
 
