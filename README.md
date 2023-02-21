@@ -1,39 +1,51 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Kitawi
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+Introducing Kitawi - the UI-first framework that will take your web development game to the next level!
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+Kitawi is the perfect choice for developers who value beautiful and intuitive user interfaces. With its powerful set of tools and easy-to-use components, Kitawi lets you create stunning web applications with ease.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+With Kitawi, you can say goodbye to the tedious process of writing complex CSS and HTML code from scratch. Instead, you can focus on what really matters - creating engaging and interactive user experiences. Plus, our framework is designed with responsiveness in mind, so your web app will look great on any device.
 
-## Features
+## Getting Started
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+### Prerequisites
 
-## Getting started
+Kitawi is written in Dart and compiled to JavaScript. To use Kitawi, you need to install the Dart SDK and the Dartium browser. You can find the installation instructions [here](https://www.dartlang.org/tools/sdk#install).
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Once you have Dart installed, you can start using Kitawi by adding the following line to your `pubspec.yaml` file:
 
-## Usage
+    dependencies:
+      kitawi: any
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+Then, run `pub get` to install the package.
+
+### Usage
 
 ```dart
-const like = 'sample';
+import 'package:kitawi/kitawi.dart';
+
+void main() {
+  start((){
+    // Your code goes here
+    ...
+    run(Container(
+        child: Text('Hello, world!'),
+        decoration: Decoration(
+            color: Colors.green,
+            border: Border(color: Colors.black, width: 2.0),
+    ));
+  });
+}
 ```
 
-## Additional information
+## Documentation
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+You can find the documentation for Kitawi [here](https://kitawi.github.io/kitawi/).
+
+## Contributing
+
+We welcome contributions to Kitawi! If you would like to contribute, please read our [contribution guidelines](CONTRIBUT.md).
+
+## License
+
+Kitawi is licensed under the [MIT License](LICENSE).
