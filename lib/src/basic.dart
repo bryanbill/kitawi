@@ -16,3 +16,6 @@ export 'package:kitawi/src/components/row.dart';
 
 // Basic
 export 'package:kitawi/src/components/container.dart';
+
+// Themes
+export 'package:kitawi/src/themes/theme.dart';

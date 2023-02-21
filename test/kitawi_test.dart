@@ -3,10 +3,10 @@ import 'package:test/test.dart';
 
 void main() {
   group('A group of tests', () {
-    final awesome = Container();
+    late Container awesome;
 
     setUp(() {
-      // Additional setup goes here.
+      awesome = Container();
     });
 
     test('Container Dimensions', () {

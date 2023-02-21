@@ -5,3 +5,21 @@
 # Avoid committing pubspec.lock for library packages; see
 # https://dart.dev/guides/libraries/private-files#pubspeclock.
 pubspec.lock
+
+# Avoid committing build/ for library packages; see
+# https://dart.dev/guides/libraries/private-files#build
+build/
+
+# Avoid committing .packages for library packages; see
+# https://dart.dev/guides/libraries/private-files#packages
+.packages
+
+# Avoid committing .idea/ for library packages; see
+# https://dart.dev/guides/libraries/private-files#idea
+.idea/
+
+# Avoid committing .vscode/ for library packages; see
+# https://dart.dev/guides/libraries/private-files#vscode
+.vscode/
+
+simple/
