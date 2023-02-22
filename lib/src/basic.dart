@@ -13,6 +13,8 @@ export 'package:kitawi/src/core/media_query.dart';
 // Components
 export 'package:kitawi/src/components/column.dart';
 export 'package:kitawi/src/components/row.dart';
+export 'package:kitawi/src/components/builder.dart';
+export 'package:kitawi/src/components/expanded.dart';
 
 // Basic
 export 'package:kitawi/src/components/container.dart';
