@@ -1,8 +1,6 @@
 #!/usr/bin/env dart
 
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:args/args.dart';
 
 void main(List<String> args) async {
@@ -32,7 +30,7 @@ void main(List<String> args) async {
 
       if (results.command?.name == 'run') {
         final port = int.parse(results['port']);
-        await buildAndServe(port);
+        await run(port);
       }
     }
   } catch (e) {
@@ -42,154 +40,90 @@ void main(List<String> args) async {
   }
 }
 
-Future<void> create(String? name) async {
-  // create the directory [name] in the current directory
-  final dir = Directory(name!);
-  if (await dir.exists()) {
-    print('Directory $name already exists');
-    exit(1);
-  }
+Future<void> create(String name) async {
+  // Enable webdev
+  final webdev =
+      await Process.start('dart', ['pub', 'global', 'activate', 'webdev']);
 
-  await dir.create();
-
-  // create the pubspec.yaml file
-  final pubspec = File('${dir.path}/pubspec.yaml');
-  await pubspec.create();
-
-  // write the pubspec.yaml file
-  await pubspec.writeAsString('''
-name: $name
-description: A new Kitawi app.
-version: 1.0.0
-environment:
-  sdk: '>=2.12.0 <3.0.0'
-dependencies:
-  kitawi: any
-dev_dependencies:
-  test: any
-''');
-
-  // create the lib directory
-  final lib = Directory('${dir.path}/lib');
-  await lib.create();
-
-  // create the main.dart file
-  final main = File('${lib.path}/main.dart');
-  await main.create();
-
-  // write the main.dart file
-  await main.writeAsString('''
-import 'package:kitawi/kitawi.dart';
-
-void main() {
-  start((){
-    run(Container(
-      height: Size().height,
-      width: Size().width,
-      alignment: Alignment.center,
-      child: Text('Welcome to Kitawi!'),
-    ));
-  });
-}
-
-''');
-
-  // create the test directory
-  final test = Directory('${dir.path}/test');
-  await test.create();
-
-  // create the main_test.dart file
-  final mainTest = File('${test.path}/main_test.dart');
-  await mainTest.create();
-
-  // write the main_test.dart file
-  await mainTest.writeAsString('''
-import 'package:test/test.dart';
-
-void main() {
-  test('test', () {
-    expect(true, true);
+  // Pipe the output of the webdev command to stdout
+  webdev.stdout.listen((event) {
+    stdout.add(event);
   });
 
+  // Pipe the error output of the webdev command to stderr
+  webdev.stderr.listen((event) {
+    stderr.add(event);
+  });
+
+  // Wait for the webdev command to finish
+  await webdev.exitCode;
+
+  // dart create web app
+  final create = await Process.start('dart', ['create', '-t' 'web', name]);
+
+  // Pipe the output of the create command to stdout
+  create.stdout.listen((event) {
+    stdout.add(event);
+  });
+
+  // Pipe the error output of the create command to stderr
+  create.stderr.listen((event) {
+    stderr.add(event);
+  });
+
+  // Wait for the create command to finish
+  await create.exitCode;
+
+  // Change directory to the newly created app
+  Directory.current = name;
+
+  // Add kitawi: any as a dependency in pubspec.yaml
+  final pubspec = File('pubspec.yaml');
+
+  // Read the contents of the pubspec.yaml file
+  final contents = await pubspec.readAsString();
+
+  // get the version of kitawi from contents
+  // final version = contents.split('version: ')[1].split('\n')[0];
+
+  // Add kitawi: any as a dependency
+  final updatedContents =
+      contents.replaceFirst('dependencies:', 'dependencies:\n  kitawi: ^0.0.1');
+
+  // Write the updated contents to the pubspec.yaml file
+  await pubspec.writeAsString(updatedContents);
+
+  // Run pub get to install the kitawi dependency
+  final pubGet = await Process.start('dart', ['pub', 'get']);
+
+  // Pipe the output of the pub get command to stdout
+  pubGet.stdout.listen((event) {
+    stdout.add(event);
+  });
+
+  // Pipe the error output of the pub get command to stderr
+  pubGet.stderr.listen((event) {
+    stderr.add(event);
+  });
+
+  // Wait for the pub get command to finish
+  await pubGet.exitCode;
 }
 
-''');
+Future<void> run(int port) async {
+  // Run webdev serve
+  final webdev = await Process.start('webdev', ['serve', 'web:$port']);
 
-// create the build directory
-  final build = Directory('${dir.path}/build');
-  await build.create();
+  // Pipe the output of the webdev command to stdout
+  webdev.stdout.listen((event) {
+    stdout.add(event);
+  });
 
-  // create the index.html file
-  final index = File('${build.path}/index.html');
-  await index.create();
+  // Pipe the error output of the webdev command to stderr
+  webdev.stderr.listen((event) {
+    stderr.add(event);
+  });
 
-  // write the index.html file
-  await index.writeAsString('''
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="title">$name</title>
-    <style>
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="js/kitawi.js"></script>
-  </body>
-</html>
-''');
-
-  print('''
-Created $name
-To run your app:
-  cd $name
-  kitawi get
-  kitawi run
-''');
-}
-
-Future<void> buildAndServe(int port) async {
-  // run the build command
-  final build = await Process.run(
-      'dart', ['compile', 'js', 'lib/main.dart', '-o', 'build/js/kitawi.js']);
-  print(build.stdout);
-  print(build.stderr);
-
-  // serve index.html in the build directory
-  final server = await HttpServer.bind('localhost', port);
-  print('Serving at http://${server.address.host}:${server.port}');
-  await for (final request in server) {
-    final path = request.uri.path;
-    if (path == '/') {
-      request.response
-        ..headers.contentType = ContentType.html
-        ..write(await File('build/index.html').readAsString());
-    } else {
-      request.response
-        ..headers.contentType = ContentType.parse(lookupMimeType(path))
-        ..write(await File('build/$path').readAsString());
-    }
-    await request.response.close();
-  }
-}
-
-String lookupMimeType(String path) {
-  final extension = path.split('.').last;
-  switch (extension) {
-    case 'html':
-      return 'text/html';
-    case 'js':
-      return 'application/javascript';
-    case 'css':
-      return 'text/css';
-    default:
-      return 'text/plain';
-  }
+  // Wait for the webdev command to finish
+  await webdev.exitCode;
 }
