@@ -32,11 +32,6 @@ abstract class Widget with Resize {
   /// It is an abstract method and must be implemented by the subclasses.
   html.Element createElement();
 
-  // rebuild
-  void rebuild() {
-    createElement();
-  }
-
   @override
   void dispose() {
     super.dispose();
