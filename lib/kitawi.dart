@@ -46,9 +46,15 @@ void render(Widget widget, Element? element) {
 /// is resized.
 void start(VoidCallback callback) {
   /// The [VoidCallback] is called when the window is loaded.
-  window.onLoad.listen((event) {
-    Size().updateSize();
-    callback();
+  Size().updateSize();
+  Theme().updateMode();
+  callback();
+
+  print("Starting Kitawi...");
+
+  window.addEventListener('load', (event) {
+    // Your code here will execute after all resources are loaded
+    window.alert('All resources finished loading!');
   });
 
   /// The [VoidCallback] is called when the window is resized.
