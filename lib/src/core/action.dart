@@ -7,7 +7,7 @@ import 'dart:html';
 ///
 class Action {
   final String type;
-  final void Function(Event)? onClick;
+  final void Function(Event) callback;
 
-  Action({required this.type, this.onClick});
+  Action({required this.type,required this.callback});
 }
