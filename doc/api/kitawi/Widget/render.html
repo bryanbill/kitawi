@@ -66,13 +66,16 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>The <a href="../../kitawi/Widget/render.html">render</a> method creates the element for the widget.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">html.Element render() {
-  &#47;&#47;  generate key if not provided
+  &#47;&#47;&#47;  generate key if not provided
   key ??= Key(Random().nextInt(1000000000).toString());
   _element ??= createElement()..id = key?.value ?? &#39;this is not right&#39;;
   return _element!;
@@ -113,10 +116,10 @@
           <li class="inherited"><a href="../../kitawi/Widget/size.html">size</a></li>
 
         <li class="section-title"><a href="../../kitawi/Widget-class.html#instance-methods">Methods</a></li>
+          <li><a href="../../kitawi/Widget/build.html">build</a></li>
           <li><a href="../../kitawi/Widget/createElement.html">createElement</a></li>
           <li><a href="../../kitawi/Widget/dispose.html">dispose</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li><a href="../../kitawi/Widget/rebuild.html">rebuild</a></li>
           <li><a href="../../kitawi/Widget/render.html">render</a></li>
           <li class="inherited"><a href="../../kitawi/Widget/resizeListener.html">resizeListener</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -139,7 +142,7 @@
 <footer>
   <span class="no-break">
     kitawi
-      0.0.1
+      0.0.2
   </span>
 
   

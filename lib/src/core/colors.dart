@@ -5,7 +5,7 @@ import 'package:kitawi/src/core/color.dart';
 /// The colors are divided into two categories:
 
 class Colors {
-  //white colors
+  /// white colors
   static const Color white = Color(0xFFFFFFFF);
   static const Color white10 = Color(0x1AFFFFFF);
   static const Color white12 = Color(0x1FFFFFFF);
@@ -18,7 +18,7 @@ class Colors {
   static const Color white87 = Color(0xDEFFFFFF);
   static const Color white100 = Color(0xFFFFFFFF);
 
-  //black colors
+  /// black colors
   static const Color black = Color(0xFF000000);
   static const Color black12 = Color(0x1F000000);
   static const Color black26 = Color(0x42000000);
@@ -28,7 +28,7 @@ class Colors {
   static const Color black87 = Color(0xDE000000);
   static const Color black100 = Color(0xFF000000);
 
-  // grey colors
+  /// grey colors
   static const Color grey = Color(0xFF9E9E9E);
   static const Color grey10 = Color(0x1A9E9E9E);
   static const Color grey12 = Color(0x1F9E9E9E);
@@ -41,7 +41,7 @@ class Colors {
   static const Color grey87 = Color(0xDE9E9E9E);
   static const Color grey100 = Color(0xFF9E9E9E);
 
-  //red colors
+  /// red colors
   static const Color red = Color(0xFFD32F2F);
   static const Color red10 = Color(0x1AD32F2F);
   static const Color red12 = Color(0x1FD32F2F);
@@ -54,7 +54,7 @@ class Colors {
   static const Color red87 = Color(0xDED32F2F);
   static const Color red100 = Color(0xFFD32F2F);
 
-  //pink colors
+  /// pink colors
   static const Color pink = Color(0xFFC2185B);
   static const Color pink10 = Color(0x1AC2185B);
   static const Color pink12 = Color(0x1FC2185B);
@@ -67,7 +67,7 @@ class Colors {
   static const Color pink87 = Color(0xDEC2185B);
   static const Color pink100 = Color(0xFFC2185B);
 
-  //purple colors
+  /// purple colors
   static const Color purple = Color(0xFF7B1FA2);
   static const Color purple10 = Color(0x1A7B1FA2);
   static const Color purple12 = Color(0x1F7B1FA2);
@@ -80,7 +80,7 @@ class Colors {
   static const Color purple87 = Color(0xDE7B1FA2);
   static const Color purple100 = Color(0xFF7B1FA2);
 
-  //deep purple colors
+  /// deep purple colors
   static const Color deepPurple = Color(0xFF512DA8);
   static const Color deepPurple10 = Color(0x1A512DA8);
   static const Color deepPurple12 = Color(0x1F512DA8);
@@ -93,7 +93,7 @@ class Colors {
   static const Color deepPurple87 = Color(0xDE512DA8);
   static const Color deepPurple100 = Color(0xFF512DA8);
 
-  //indigo colors
+  /// indigo colors
   static const Color indigo = Color(0xFF303F9F);
   static const Color indigo10 = Color(0x1A303F9F);
   static const Color indigo12 = Color(0x1F303F9F);
@@ -184,7 +184,7 @@ class Colors {
   static const Color lightGreen87 = Color(0xDE689F38);
   static const Color lightGreen100 = Color(0xFF689F38);
 
-  //lime colors
+  /// lime colors
   static const Color lime = Color(0xFFAFB42B);
   static const Color lime10 = Color(0x1AAFB42B);
   static const Color lime12 = Color(0x1FAFB42B);
@@ -197,7 +197,7 @@ class Colors {
   static const Color lime87 = Color(0xDEAFB42B);
   static const Color lime100 = Color(0xFFAFB42B);
 
-  //yellow colors
+  /// yellow colors
   static const Color yellow = Color(0xFFFBC02D);
   static const Color yellow10 = Color(0x1AFBC02D);
   static const Color yellow12 = Color(0x1FFBC02D);

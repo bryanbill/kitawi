@@ -1,12 +1,15 @@
 import 'dart:html';
 
-import 'package:kitawi/src/core/widget.dart';
+import 'package:kitawi/src/basic.dart';
 
+/// NOTE: This is a work in progress.
+///
+///
 /// The [Scaffold] class provides a basic layout structure for a page.
 /// It consists of a [navbar], [body], [sidebar], [footer], [drawer] and
 /// [floatingActionButton].
 /// The [Scaffold] class is a [Widget] class.
-class Scaffold extends Widget {
+class Scaffold extends StatelessWidget {
   final Widget? body;
   final Widget? navbar;
   final Widget? sidebar;
@@ -22,22 +25,31 @@ class Scaffold extends Widget {
       this.drawer,
       this.floatingActionButton});
 
+  /// The [createElement] method creates the [DivElement] for the widget.
   @override
   Element createElement() {
-    return DivElement()
-      ..children.add(navbar?.render() ?? DivElement())
-      ..children.add(body?.render() ?? DivElement())
-      ..children.add(sidebar?.render() ?? DivElement());
+    // TODO?: lookup this pattern
+    var wrapper = DivElement()
+      ..style.width = '100%'
+      ..style.height = '100%'
+      ..style.display = 'flex'
+      ..style.flexDirection = 'column'
+      ..style.justifyContent = 'space-between'
+      ..style.alignItems = 'stretch'
+      ..style.overflow = 'hidden';
+
+    return wrapper;
   }
 
-  void build() {
-    Scaffold(
-      body: body,
-      navbar: navbar,
-      sidebar: sidebar,
-      footer: footer,
-      drawer: drawer,
-      floatingActionButton: floatingActionButton,
-    ).createElement();
+  @override
+  Widget build() {
+    return Container(
+        width: Size().width,
+        constraints: BoxConstraints(
+          minHeight: Size().height,
+        ),
+        decoration: Decoration(
+          color: Theme().mode == ThemeMode.light ? Colors.white : Colors.grey24,
+        ));
   }
 }

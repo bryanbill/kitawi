@@ -15,6 +15,7 @@ class Theme {
     _mode = ThemeMode.system;
   }
 
+  /// Returns the current theme mode.
   ThemeMode get mode {
     if (_mode == ThemeMode.system) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches

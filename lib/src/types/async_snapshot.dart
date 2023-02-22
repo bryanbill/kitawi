@@ -1,3 +1,4 @@
+/// A snapshot of asynchronous interaction with a [Stream] or a [Future].
 class AsynSnapshot<T> {
   final T? data;
   final Object? error;

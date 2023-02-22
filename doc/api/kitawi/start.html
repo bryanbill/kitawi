@@ -60,7 +60,7 @@
         
 
 <span class="returntype">void</span>
-<span class="name ">start</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="start-param-callback"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-html/VoidCallback.html">VoidCallback</a></span> <span class="parameter-name">callback</span></span></li>
+<span class="name ">start</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="start-param-callback"><span class="type-annotation"><a href="../kitawi/VoidCallback.html">VoidCallback</a></span> <span class="parameter-name">callback</span></span></li>
 </ol>)
 
         
@@ -69,7 +69,7 @@
     
 <section class="desc markdown">
   <p>The start function is the entry point for the Kitawi library. It takes a
-<a href="https://api.flutter.dev/flutter/dart-html/VoidCallback.html">VoidCallback</a> as an argument and renders it to the DOM.</p>
+<a href="../kitawi/VoidCallback.html">VoidCallback</a> as an argument and renders it to the DOM.</p>
 <pre class="language-dart"><code class="language-dart">import 'package:kitawi/kitawi.dart';
 
 void main() {
@@ -78,7 +78,7 @@ void main() {
 });
 }
 </code></pre>
-<p>The <a href="https://api.flutter.dev/flutter/dart-html/VoidCallback.html">VoidCallback</a> is called when the window is loaded and when the window
+<p>The <a href="../kitawi/VoidCallback.html">VoidCallback</a> is called when the window is loaded and when the window
 is resized.</p>
 </section>
 
@@ -87,16 +87,27 @@ is resized.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void start(VoidCallback callback) {
+  &#47;&#47; The [VoidCallback] is called when the window is loaded.
+  Size().updateSize();
+  Theme().updateMode();
+  callback();
 
-  &#47;&#47;&#47; The [VoidCallback] is called when the window is loaded.
-  window.onLoad.listen((event) {
-    Size().updateSize();
-    callback();
+  print(&quot;Starting Kitawi...&quot;);
+
+  window.addEventListener(&#39;load&#39;, (event) {
+    &#47;&#47; Your code here will execute after all resources are loaded
+    window.alert(&#39;All resources finished loading!&#39;);
   });
 
   &#47;&#47;&#47; The [VoidCallback] is called when the window is resized.
   window.onResize.listen((event) {
     Size().updateSize();
+    callback();
+  });
+
+  &#47;&#47;&#47; The [VoidCallback] is called when the color scheme is changed.
+  window.matchMedia(&#39;(prefers-color-scheme: dark)&#39;).addListener((event) {
+    Theme().updateMode();
     callback();
   });
 }</code></pre>
@@ -128,21 +139,31 @@ is resized.</p>
         <li><a href="../kitawi/BoxConstraints-class.html">BoxConstraints</a></li>
         <li><a href="../kitawi/BoxFit-class.html">BoxFit</a></li>
         <li><a href="../kitawi/BoxShadow-class.html">BoxShadow</a></li>
+        <li><a href="../kitawi/Button-class.html">Button</a></li>
         <li><a href="../kitawi/Color-class.html">Color</a></li>
         <li><a href="../kitawi/Colors-class.html">Colors</a></li>
         <li><a href="../kitawi/Column-class.html">Column</a></li>
         <li><a href="../kitawi/Container-class.html">Container</a></li>
         <li><a href="../kitawi/CrossAxisAlignment-class.html">CrossAxisAlignment</a></li>
         <li><a href="../kitawi/Decoration-class.html">Decoration</a></li>
+        <li><a href="../kitawi/EdgeInsets-class.html">EdgeInsets</a></li>
+        <li><a href="../kitawi/Expanded-class.html">Expanded</a></li>
         <li><a href="../kitawi/FontStyle-class.html">FontStyle</a></li>
         <li><a href="../kitawi/FontWeight-class.html">FontWeight</a></li>
+        <li><a href="../kitawi/FutureBuilder-class.html">FutureBuilder</a></li>
         <li><a href="../kitawi/MainAxisAlignment-class.html">MainAxisAlignment</a></li>
         <li><a href="../kitawi/MediaQuery-class.html">MediaQuery</a></li>
         <li><a href="../kitawi/MediaQueryData-class.html">MediaQueryData</a></li>
         <li><a href="../kitawi/Row-class.html">Row</a></li>
         <li><a href="../kitawi/Size-class.html">Size</a></li>
+        <li><a href="../kitawi/State-class.html">State</a></li>
+        <li><a href="../kitawi/StatefulWidget-class.html">StatefulWidget</a></li>
+        <li><a href="../kitawi/StatelessWidget-class.html">StatelessWidget</a></li>
+        <li><a href="../kitawi/StreamBuilder-class.html">StreamBuilder</a></li>
         <li><a href="../kitawi/Text-class.html">Text</a></li>
         <li><a href="../kitawi/TextStyle-class.html">TextStyle</a></li>
+        <li><a href="../kitawi/Theme-class.html">Theme</a></li>
+        <li><a href="../kitawi/ValueStream-class.html">ValueStream</a></li>
         <li><a href="../kitawi/Widget-class.html">Widget</a></li>
 
 
@@ -156,7 +177,11 @@ is resized.</p>
 
       <li class="section-title"><a href="../kitawi/kitawi-library.html#enums">Enums</a></li>
         <li><a href="../kitawi/BorderType.html">BorderType</a></li>
+        <li><a href="../kitawi/ThemeMode.html">ThemeMode</a></li>
 
+      <li class="section-title"><a href="../kitawi/kitawi-library.html#typedefs">Typedefs</a></li>
+        <li><a href="../kitawi/StateSetter.html">StateSetter</a></li>
+        <li><a href="../kitawi/VoidCallback.html">VoidCallback</a></li>
 
 </ol>
 
@@ -170,7 +195,7 @@ is resized.</p>
 <footer>
   <span class="no-break">
     kitawi
-      0.0.1
+      0.0.2
   </span>
 
   

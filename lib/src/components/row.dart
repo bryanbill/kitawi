@@ -6,7 +6,15 @@ import 'package:kitawi/src/basic.dart';
 /// array.
 class Row extends Widget {
   final List<Widget> children;
+
+  /// The [mainAxisAlignment] parameter is optional and specifies how the
+  /// children should be aligned horizontally.
+
   final MainAxisAlignment mainAxisAlignment;
+
+  /// The [crossAxisAlignment] parameter is optional and specifies how the
+  /// children should be aligned vertically.
+
   final CrossAxisAlignment crossAxisAlignment;
 
   Row({
@@ -14,6 +22,8 @@ class Row extends Widget {
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.crossAxisAlignment = CrossAxisAlignment.center,
   });
+
+  /// The [createElement] method creates the [DivElement] for the widget.
 
   @override
   Element createElement() {

@@ -45,6 +45,7 @@ abstract class StatefulWidget extends Widget {
 abstract class State<T extends StatefulWidget> {
   T? _widget;
 
+  /// The widget that owns this state.
   T get widget => _widget!;
 
   set widget(T value) {
@@ -52,18 +53,24 @@ abstract class State<T extends StatefulWidget> {
     _widget = value;
   }
 
-  void initState() {
-    
-  }
+  /// The [initState] method is called when the state is created.
+  void initState() {}
 
+  /// The [didChangeDependencies] method is called when the state's dependencies
+  /// change.
   void didChangeDependencies() {}
 
+  /// The [dispose] method is called when the state is removed from the tree.
+  /// It is used to dispose of any resources that the state is using.
   void dispose() {}
 
+  /// The [setState] method is called to update the state of the widget.
+  /// It calls the [build] method to rebuild the widget.
   void setState(VoidCallback fn) {
     fn();
     _widget?.build();
   }
 
+  /// The [build] method is called when the state of the widget changes.
   Widget build();
 }

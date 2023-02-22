@@ -121,6 +121,14 @@ The spread radius is the spread of the shadow
 The color is the color of the shadow
 </dd>
 
+        <dt id="Button">
+  <span class="name "><a href="../kitawi/Button-class.html">Button</a></span> 
+
+</dt>
+<dd>
+  A button widget that can be clicked to trigger an action.
+</dd>
+
         <dt id="Color">
   <span class="name "><a href="../kitawi/Color-class.html">Color</a></span> 
 
@@ -171,6 +179,23 @@ It has the following values:
 with a color, border, and box shadow e.t.c
 </dd>
 
+        <dt id="EdgeInsets">
+  <span class="name "><a href="../kitawi/EdgeInsets-class.html">EdgeInsets</a></span> 
+
+</dt>
+<dd>
+  A set of offsets in each of the cardinal directions.
+</dd>
+
+        <dt id="Expanded">
+  <span class="name "><a href="../kitawi/Expanded-class.html">Expanded</a></span> 
+
+</dt>
+<dd>
+  The <a href="../kitawi/Expanded-class.html">Expanded</a> class expands a child of a <a href="../kitawi/Row-class.html">Row</a> or <a href="../kitawi/Column-class.html">Column</a> so that the
+child fills the available space.
+</dd>
+
         <dt id="FontStyle">
   <span class="name "><a href="../kitawi/FontStyle-class.html">FontStyle</a></span> 
 
@@ -185,6 +210,14 @@ with a color, border, and box shadow e.t.c
 </dt>
 <dd>
   A font weight.
+</dd>
+
+        <dt id="FutureBuilder">
+  <span class="name "><a href="../kitawi/FutureBuilder-class.html">FutureBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A widget that asynchronously builds itself based on the result of a future.
 </dd>
 
         <dt id="MainAxisAlignment">
@@ -210,7 +243,8 @@ information about the current device.
 
 </dt>
 <dd>
-  
+  The <a href="../kitawi/MediaQueryData-class.html">MediaQueryData</a> class provides access to the screen size and other
+information about the current device.
 </dd>
 
         <dt id="Row">
@@ -230,6 +264,38 @@ array.
   The <a href="../kitawi/Size-class.html">Size</a> class is used to get the size of the window.
 </dd>
 
+        <dt id="State">
+  <span class="name "><a href="../kitawi/State-class.html">State</a><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../kitawi/StatefulWidget-class.html">StatefulWidget</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A widget state that can be updated and used to rebuild the widget.
+</dd>
+
+        <dt id="StatefulWidget">
+  <span class="name "><a href="../kitawi/StatefulWidget-class.html">StatefulWidget</a></span> 
+
+</dt>
+<dd>
+  A widget that can hold state and rebuild itself when the state changes.
+</dd>
+
+        <dt id="StatelessWidget">
+  <span class="name "><a href="../kitawi/StatelessWidget-class.html">StatelessWidget</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+        <dt id="StreamBuilder">
+  <span class="name "><a href="../kitawi/StreamBuilder-class.html">StreamBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A widget that asynchronously builds itself based on the events of a stream.
+</dd>
+
         <dt id="Text">
   <span class="name "><a href="../kitawi/Text-class.html">Text</a></span> 
 
@@ -246,16 +312,28 @@ array.
   A style that applies to a <a href="https://api.flutter.dev/flutter/dart-html/Text-class.html">Text</a>.
 </dd>
 
+        <dt id="Theme">
+  <span class="name "><a href="../kitawi/Theme-class.html">Theme</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+        <dt id="ValueStream">
+  <span class="name "><a href="../kitawi/ValueStream-class.html">ValueStream</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A <a href="../kitawi/ValueStream-class.html">ValueStream</a> is a <a href="https://api.flutter.dev/flutter/dart-async/Stream-class.html">Stream</a> that wraps a single value.
+</dd>
+
         <dt id="Widget">
   <span class="name "><a href="../kitawi/Widget-class.html">Widget</a></span> 
 
 </dt>
 <dd>
-  The <a href="../kitawi/Widget-class.html">Widget</a> class is the base class for all the widgets.
-It provides the basic functionality for all the widgets.
-It takes a <code>Key</code> as an argument.
-The <a href="../kitawi/Widget-class.html">Widget</a> class is an abstract class and cannot be instantiated.
-It has the following methods:
+  A widget that can be built and rendered to HTML.
 </dd>
 
       </dl>
@@ -298,7 +376,7 @@ renders the <a href="../kitawi/Widget-class.html">Widget</a> to the <a href="htt
 </dd>
 
         <dt id="start" class="callable">
-  <span class="name"><a href="../kitawi/start.html">start</a></span><span class="signature">(<wbr><span class="parameter" id="start-param-callback"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-html/VoidCallback.html">VoidCallback</a></span> <span class="parameter-name">callback</span></span>)
+  <span class="name"><a href="../kitawi/start.html">start</a></span><span class="signature">(<wbr><span class="parameter" id="start-param-callback"><span class="type-annotation"><a href="../kitawi/VoidCallback.html">VoidCallback</a></span> <span class="parameter-name">callback</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -306,7 +384,7 @@ renders the <a href="../kitawi/Widget-class.html">Widget</a> to the <a href="htt
 </dt>
 <dd>
   The start function is the entry point for the Kitawi library. It takes a
-<a href="https://api.flutter.dev/flutter/dart-html/VoidCallback.html">VoidCallback</a> as an argument and renders it to the DOM.
+<a href="../kitawi/VoidCallback.html">VoidCallback</a> as an argument and renders it to the DOM.
   
 
 </dd>
@@ -327,9 +405,51 @@ renders the <a href="../kitawi/Widget-class.html">Widget</a> to the <a href="htt
 The border radius is the radius of the border
 </dd>
 
+        <dt id="ThemeMode">
+  <span class="name "><a href="../kitawi/ThemeMode.html">ThemeMode</a></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
       </dl>
     </section>
 
+    <section class="summary offset-anchor" id="typedefs">
+      <h2>Typedefs</h2>
+
+      <dl>
+          
+  <dt id="StateSetter" class="callable">
+    <span class="name"><a href="../kitawi/StateSetter.html">StateSetter</a></span><span class="signature">
+      <span class="returntype parameter">= void Function<span class="signature">(<span class="parameter" id="param-fn"><span class="type-annotation"><a href="../kitawi/VoidCallback.html">VoidCallback</a></span> <span class="parameter-name">fn</span></span>)</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    A function that can be called to update the state of a widget.
+    
+
+  </dd>
+
+          
+  <dt id="VoidCallback" class="callable">
+    <span class="name"><a href="../kitawi/VoidCallback.html">VoidCallback</a></span><span class="signature">
+      <span class="returntype parameter">= void Function<span class="signature">()</span></span>
+    </span>
+    
+
+  </dt>
+  <dd>
+    A function that updates the state of a widget.
+    
+
+  </dd>
+
+      </dl>
+    </section>
 
 
   </div> <!-- /.main-content -->
@@ -365,21 +485,31 @@ The border radius is the radius of the border
         <li><a href="../kitawi/BoxConstraints-class.html">BoxConstraints</a></li>
         <li><a href="../kitawi/BoxFit-class.html">BoxFit</a></li>
         <li><a href="../kitawi/BoxShadow-class.html">BoxShadow</a></li>
+        <li><a href="../kitawi/Button-class.html">Button</a></li>
         <li><a href="../kitawi/Color-class.html">Color</a></li>
         <li><a href="../kitawi/Colors-class.html">Colors</a></li>
         <li><a href="../kitawi/Column-class.html">Column</a></li>
         <li><a href="../kitawi/Container-class.html">Container</a></li>
         <li><a href="../kitawi/CrossAxisAlignment-class.html">CrossAxisAlignment</a></li>
         <li><a href="../kitawi/Decoration-class.html">Decoration</a></li>
+        <li><a href="../kitawi/EdgeInsets-class.html">EdgeInsets</a></li>
+        <li><a href="../kitawi/Expanded-class.html">Expanded</a></li>
         <li><a href="../kitawi/FontStyle-class.html">FontStyle</a></li>
         <li><a href="../kitawi/FontWeight-class.html">FontWeight</a></li>
+        <li><a href="../kitawi/FutureBuilder-class.html">FutureBuilder</a></li>
         <li><a href="../kitawi/MainAxisAlignment-class.html">MainAxisAlignment</a></li>
         <li><a href="../kitawi/MediaQuery-class.html">MediaQuery</a></li>
         <li><a href="../kitawi/MediaQueryData-class.html">MediaQueryData</a></li>
         <li><a href="../kitawi/Row-class.html">Row</a></li>
         <li><a href="../kitawi/Size-class.html">Size</a></li>
+        <li><a href="../kitawi/State-class.html">State</a></li>
+        <li><a href="../kitawi/StatefulWidget-class.html">StatefulWidget</a></li>
+        <li><a href="../kitawi/StatelessWidget-class.html">StatelessWidget</a></li>
+        <li><a href="../kitawi/StreamBuilder-class.html">StreamBuilder</a></li>
         <li><a href="../kitawi/Text-class.html">Text</a></li>
         <li><a href="../kitawi/TextStyle-class.html">TextStyle</a></li>
+        <li><a href="../kitawi/Theme-class.html">Theme</a></li>
+        <li><a href="../kitawi/ValueStream-class.html">ValueStream</a></li>
         <li><a href="../kitawi/Widget-class.html">Widget</a></li>
 
 
@@ -393,7 +523,11 @@ The border radius is the radius of the border
 
       <li class="section-title"><a href="../kitawi/kitawi-library.html#enums">Enums</a></li>
         <li><a href="../kitawi/BorderType.html">BorderType</a></li>
+        <li><a href="../kitawi/ThemeMode.html">ThemeMode</a></li>
 
+      <li class="section-title"><a href="../kitawi/kitawi-library.html#typedefs">Typedefs</a></li>
+        <li><a href="../kitawi/StateSetter.html">StateSetter</a></li>
+        <li><a href="../kitawi/VoidCallback.html">VoidCallback</a></li>
 
 </ol>
 
@@ -404,7 +538,7 @@ The border radius is the radius of the border
 <footer>
   <span class="no-break">
     kitawi
-      0.0.1
+      0.0.2
   </span>
 
   

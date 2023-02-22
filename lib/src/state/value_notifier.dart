@@ -1,5 +1,7 @@
 import 'change_notifier.dart';
 
+/// A [ValueNotifier] is a [ChangeNotifier] that wraps a single value.
+
 class ValueNotifier<T> extends ChangeNotifier {
   ValueNotifier(this._value);
 

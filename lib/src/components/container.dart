@@ -1,5 +1,6 @@
 import 'dart:html';
 
+import 'package:kitawi/src/core/edge_insets.dart';
 import 'package:kitawi/src/core/foundation.dart';
 import 'package:kitawi/src/core/key.dart';
 import 'package:kitawi/src/core/widget.dart';
@@ -8,8 +9,8 @@ import 'package:kitawi/src/core/widget.dart';
 class Container extends Widget {
   final Widget? child;
   final double? width;
-  final double? height;
-  final double? padding;
+  final EdgeInsets? height;
+  final EdgeInsets? padding;
   final double? margin;
   final Decoration? decoration;
   final Alignment? alignment;
@@ -30,7 +31,7 @@ class Container extends Widget {
   @override
   Element createElement() {
     return DivElement()
-    ..id = key?.value ?? ''
+      ..id = key?.value ?? ''
       ..style.width = width != null ? '${width}px' : '100%'
       ..style.height = height != null ? '${height}px' : '100%'
       ..style.maxHeight = constraints?.maxHeight != null

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+/// A [ValueStream] is a [Stream] that wraps a single value.
+
 class ValueStream<T> {
   StreamController<T>? _controller;
   T _value;
@@ -7,6 +9,8 @@ class ValueStream<T> {
   ValueStream(this._value) {
     _controller = StreamController<T>.broadcast();
   }
+
+  /// The [stream] getter returns the stream of the [ValueStream].
 
   Stream<T>? get stream => _controller?.stream;
 

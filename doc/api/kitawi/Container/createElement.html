@@ -83,6 +83,7 @@ It is an abstract method and must be implemented by the subclasses.</p>
   <pre class="language-dart"><code class="language-dart">@override
 Element createElement() {
   return DivElement()
+    ..id = key?.value ?? &#39;&#39;
     ..style.width = width != null ? &#39;${width}px&#39; : &#39;100%&#39;
     ..style.height = height != null ? &#39;${height}px&#39; : &#39;100%&#39;
     ..style.maxHeight = constraints?.maxHeight != null
@@ -155,10 +156,10 @@ Element createElement() {
           <li><a href="../../kitawi/Container/width.html">width</a></li>
 
         <li class="section-title"><a href="../../kitawi/Container-class.html#instance-methods">Methods</a></li>
+          <li class="inherited"><a href="../../kitawi/Widget/build.html">build</a></li>
           <li><a href="../../kitawi/Container/createElement.html">createElement</a></li>
           <li class="inherited"><a href="../../kitawi/Widget/dispose.html">dispose</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-          <li class="inherited"><a href="../../kitawi/Widget/rebuild.html">rebuild</a></li>
           <li class="inherited"><a href="../../kitawi/Widget/render.html">render</a></li>
           <li class="inherited"><a href="../../kitawi/Widget/resizeListener.html">resizeListener</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
@@ -181,7 +182,7 @@ Element createElement() {
 <footer>
   <span class="no-break">
     kitawi
-      0.0.1
+      0.0.2
   </span>
 
   

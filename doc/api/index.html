@@ -59,12 +59,21 @@
 <h2 id="getting-started">Getting Started</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>Kitawi is written in Dart and compiled to JavaScript. To use Kitawi, you need to install the Dart SDK. You can find the installation instructions <a href="https://www.dartlang.org/tools/sdk#install">here</a>.</p>
-<p>Once you have Dart installed, you can start using Kitawi by adding the following line to your <code>pubspec.yaml</code> file:</p>
-<pre class="language-dart"><code>dependencies:
-  kitawi: any
+<p>Once you have Dart installed, you can install Kitawi by running the following command:</p>
+<pre class="language-bash"><code class="language-bash">dart pub global activate kitawi
 </code></pre>
-<p>Then, run <code>pub get</code> to install the package.</p>
 <h3 id="usage">Usage</h3>
+<p>To create a new Kitawi project, run the following command:</p>
+<pre class="language-bash"><code class="language-bash">kitawi create  --name &lt;project_name&gt;
+
+</code></pre>
+<p>This will create a new directory called <code>&lt;project_name&gt;</code> in your current directory. Inside this directory, you will find a <code>pubspec.yaml</code> file and a <code>web</code> directory. The <code>pubspec.yaml</code> file contains the dependencies for your project. The <code>web</code> directory contains the source code for your project.</p>
+<p>To run your project, run the following command:</p>
+<pre class="language-bash"><code class="language-bash">kitawi run --port &lt;port_number&gt;
+</code></pre>
+<p>This will start a local server on port <code>&lt;port_number&gt;</code>. You can now access your project by navigating to <code>http://localhost:&lt;port_number&gt;</code> in your browser.</p>
+<h3 id="example">Example</h3>
+<p>Here is a simple example of a Kitawi project:</p>
 <pre class="language-dart"><code class="language-dart">import 'package:kitawi/kitawi.dart';
 
 void main() {
@@ -80,8 +89,9 @@ void main() {
   });
 }
 </code></pre>
+<p>This will create a div with a green container that contains a black border and the text(p) "Hello, world!".</p>
 <h2 id="documentation">Documentation</h2>
-<p>You can find the documentation for Kitawi <a href="https://kitawi.github.io/kitawi/">here</a>.</p>
+<p>You can find the documentation for Kitawi <a href="https://pub.dev/documentation/kitawi/latest/">here</a>.</p>
 <h2 id="contributing">Contributing</h2>
 <p>We welcome contributions to Kitawi! If you would like to contribute, please read our <a href="CONTRIBUTE.md">contribution guidelines</a>.</p>
 <h2 id="license">License</h2>
@@ -132,7 +142,7 @@ void main() {
 <footer>
   <span class="no-break">
     kitawi
-      0.0.1
+      0.0.2
   </span>
 
   

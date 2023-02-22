@@ -169,12 +169,25 @@ class BoxFit {
 
   const BoxFit._(this._value);
 
+  /// The fill value stretches the widget to fill the container
   static const BoxFit fill = BoxFit._('fill');
+
+  /// The contain value fits the widget in the container without stretching
   static const BoxFit contain = BoxFit._('contain');
+
+  /// The cover value stretches the widget to fill the container
   static const BoxFit cover = BoxFit._('cover');
+
+  /// The fitWidth value fits the widget in the container without stretching
   static const BoxFit fitWidth = BoxFit._('fit-width');
+
+  /// The fitHeight value fits the widget in the container without stretching
   static const BoxFit fitHeight = BoxFit._('fit-height');
+
+  /// The none value does not fit the widget in the container
   static const BoxFit none = BoxFit._('none');
+
+  /// The scaleDown value fits the widget in the container without stretching
   static const BoxFit scaleDown = BoxFit._('scale-down');
 
   @override
@@ -196,6 +209,22 @@ class BoxConstraints {
     this.minHeight,
     this.maxHeight,
   });
+
+  /// The [copyWith] method is used to copy the current [BoxConstraints] object
+  ///
+  BoxConstraints copyWith({
+    double? minWidth,
+    double? maxWidth,
+    double? minHeight,
+    double? maxHeight,
+  }) {
+    return BoxConstraints(
+      minWidth: minWidth ?? this.minWidth,
+      maxWidth: maxWidth ?? this.maxWidth,
+      minHeight: minHeight ?? this.minHeight,
+      maxHeight: maxHeight ?? this.maxHeight,
+    );
+  }
 
   @override
   String toString() {

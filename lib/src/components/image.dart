@@ -5,13 +5,30 @@ import 'package:kitawi/src/basic.dart';
 /// The [Image] class is a widget that displays an image.
 
 class Image extends Widget {
+  /// Creates a new [Image] widget with the given parameters.
+  /// The [src] parameter is required and specifies the source of the image.
   final String src;
+
+  /// The [width] parameter is optional and specifies the width of the image.
   final double? width;
+
+  /// The [height] parameter is optional and specifies the height of the image.
   final double? height;
-  final double? padding;
-  final double? margin;
+
+  /// The [EdgeInsets] `padding` parameter is optional and specifies the padding of the image.
+  final EdgeInsets? padding;
+
+  /// The [EdgeInsets] `margin` parameter is optional and specifies the margin of the image.
+  final EdgeInsets? margin;
+
+  /// The [Decoration] `decoration` parameter is optional and specifies the decoration of the image.
   final Decoration? decoration;
+
+  /// The [Alignment] `alignment` parameter is optional and specifies the alignment of the image.
   final Alignment? alignment;
+
+  /// The [BoxFit] `fit` parameter is optional and specifies the fit of the image.
+
   final BoxFit? fit;
 
   Image(this.src,
@@ -22,6 +39,8 @@ class Image extends Widget {
       this.decoration,
       this.alignment,
       this.fit});
+
+  /// The [createElement] method creates the [ImageElement] for the widget.
 
   @override
   Element createElement() {

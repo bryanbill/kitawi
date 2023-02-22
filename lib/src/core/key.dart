@@ -7,7 +7,9 @@ class Key {
   final String _key;
   Key(this._key);
 
+  /// Returns the [String] value of the [Key].
   String get value => _key;
 
+  /// Returns the [Element] from the DOM.
   Element? get get => document.getElementById(value);
 }

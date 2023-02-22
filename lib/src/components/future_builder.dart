@@ -24,9 +24,22 @@ import 'package:kitawi/src/types/async_snapshot.dart';
 /// )
 /// ```
 class FutureBuilder<T> extends Widget {
+  /// The future to build the widget from.
   final Future<T> future;
+
+  /// A function that takes the result of the future and returns a widget to
+  /// display.
   final Widget Function(AsynSnapshot<T> data) builder;
+
+  /// An optional widget to display while the future is loading. If no loading
+  /// widget is provided, no widget will be displayed while waiting for the
+  /// future to resolve.
   final Widget? loadingWidget;
+
+  /// An optional function that takes the error thrown by the future as input
+  /// and returns an error widget to display if the future fails. If no error
+  /// widget builder is provided, the error message will be displayed by default
+  /// text widget.
   final Widget Function(dynamic error)? errorWidgetBuilder;
 
   FutureBuilder({

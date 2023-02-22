@@ -4,8 +4,17 @@ import 'package:kitawi/src/basic.dart';
 
 /// The [Column] class is a widget that displays its children in a vertical
 class Column extends Widget {
+  /// The [List] of [Widget]s to display.
   final List<Widget> children;
+
+  /// The [mainAxisAlignment] parameter is optional and specifies how the
+  /// children should be aligned vertically.
+  /// The default value is [MainAxisAlignment.start].
   final MainAxisAlignment mainAxisAlignment;
+
+  /// The [crossAxisAlignment] parameter is optional and specifies how the
+  /// children should be aligned horizontally.
+  /// The default value is [CrossAxisAlignment.center].
   final CrossAxisAlignment crossAxisAlignment;
 
   Column({

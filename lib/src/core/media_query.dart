@@ -26,6 +26,12 @@ class MediaQuery {
   }
 }
 
+/// The [MediaQueryData] class provides access to the screen size and other
+/// information about the current device.
+///
+/// This class is used by the [MediaQuery] class.
 class MediaQueryData {
+  /// Creates a [MediaQueryData] object.
+  ///
   static MediaQueryData fromWindow(dynamic window) => MediaQueryData();
 }

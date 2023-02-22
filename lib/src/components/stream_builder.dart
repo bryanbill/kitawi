@@ -57,14 +57,19 @@ class StreamBuilder<T> extends Widget {
     Key? key,
   }) : super(key: key);
 
+  /// Creates the HTML element for the widget.
   @override
   html.Element createElement() {
     final container = html.DivElement();
 
+    /// loading widget is displayed while waiting for the first event
+    /// from the stream
     if (loadingWidget != null) {
       container.children.add(loadingWidget!.render());
     }
 
+    /// listen to the stream and update the widget when a new event is added
+    /// to the stream
     _subscription = stream.listen(
       (data) {
         container.children.clear();
@@ -86,6 +91,8 @@ class StreamBuilder<T> extends Widget {
     return container;
   }
 
+  /// Cancels the subscription to the stream when the widget is removed from the
+  /// tree.
   @override
   void dispose() {
     super.dispose();

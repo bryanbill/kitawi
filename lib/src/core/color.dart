@@ -9,34 +9,39 @@ class Color {
     return Color((a << 24) | (r << 16) | (g << 8) | b);
   }
 
-  /// Alpha value of the color.
+  /// Alpha value<`int`> of the color.
   int get alpha => (_value >> 24) & 0xff;
 
-  /// Red value of the color.
+  /// Red value<`int`> of the color.
   int get red => (_value >> 16) & 0xff;
 
-  /// Green value of the color.
+  /// Green value<`int`> of the color.
   int get green => (_value >> 8) & 0xff;
 
-  /// Blue value of the color.
+  /// Blue value<`int`> of the color.
   int get blue => _value & 0xff;
 
+  /// Returns [Color] with the given alpha value.
   Color withAlpha(int alpha) {
     return Color.fromARGB(alpha, red, green, blue);
   }
 
+  /// Returns [Color] with the given red value.
   Color withRed(int red) {
     return Color.fromARGB(alpha, red, green, blue);
   }
 
+  /// Returns [Color] with the given green value.
   Color withGreen(int green) {
     return Color.fromARGB(alpha, red, green, blue);
   }
 
+  /// Returns [Color] with the given blue value.
   Color withBlue(int blue) {
     return Color.fromARGB(alpha, red, green, blue);
   }
 
+  /// Returns [Color] with the given opacity.
   Color withOpacity(double opacity) {
     return Color.fromARGB((opacity * 255).round(), red, green, blue);
   }

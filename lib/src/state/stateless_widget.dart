@@ -3,9 +3,11 @@ import 'dart:html';
 import 'package:kitawi/src/basic.dart';
 import 'package:kitawi/src/core/key.dart';
 
+///
 abstract class StatelessWidget extends Widget {
   StatelessWidget({Key? key}) : super(key: key);
 
+  /// The [render] method creates the element for the widget.
   @override
   Element render() {
     return build().render();
