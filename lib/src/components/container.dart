@@ -30,6 +30,7 @@ class Container extends Widget {
   @override
   Element createElement() {
     return DivElement()
+    ..id = key?.value ?? ''
       ..style.width = width != null ? '${width}px' : '100%'
       ..style.height = height != null ? '${height}px' : '100%'
       ..style.maxHeight = constraints?.maxHeight != null
