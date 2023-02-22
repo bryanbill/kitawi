@@ -4,17 +4,12 @@ import 'dart:math';
 import 'package:kitawi/src/core/key.dart';
 import 'package:kitawi/src/mixins/resize.dart';
 
-/// The [Widget] class is the base class for all the widgets.
-/// It provides the basic functionality for all the widgets.
-/// It takes a [Key] as an argument.
-/// The [Widget] class is an abstract class and cannot be instantiated.
-/// It has the following methods:
-/// * [render] - renders the widget to the DOM
-/// * [createElement] - creates the element for the widget
-/// * [rebuild] - rebuilds the widget
-/// * [dispose] - disposes the widget
-/// * [resizeListener] - listens to the resize event
-
+/// A widget that can be built and rendered to HTML.
+///
+/// This widget is the base class for all widgets in the framework. It provides
+/// a `render` method that can be used to generate the HTML element for the
+/// widget. It also provides a `build` method that is called when the state of
+/// the widget changes, so that the widget can rebuild itself.
 abstract class Widget with Resize {
   Key? key;
   html.Element? _element;
@@ -31,6 +26,11 @@ abstract class Widget with Resize {
   /// The [createElement] method creates the element for the widget.
   /// It is an abstract method and must be implemented by the subclasses.
   html.Element createElement();
+
+  void build() {
+    _element?.replaceWith(render());
+    _element = render();
+  }
 
   @override
   void dispose() {
