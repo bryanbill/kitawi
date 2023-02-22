@@ -12,14 +12,34 @@ With Kitawi, you can say goodbye to the tedious process of writing complex CSS a
 
 Kitawi is written in Dart and compiled to JavaScript. To use Kitawi, you need to install the Dart SDK. You can find the installation instructions [here](https://www.dartlang.org/tools/sdk#install).
 
-Once you have Dart installed, you can start using Kitawi by adding the following line to your `pubspec.yaml` file:
+Once you have Dart installed, you can install Kitawi by running the following command:
 
-    dependencies:
-      kitawi: any
-
-Then, run `pub get` to install the package.
+```bash
+dart pub global activate kitawi
+```
 
 ### Usage
+
+To create a new Kitawi project, run the following command:
+
+```bash
+kitawi create  --name <project_name>
+
+```
+
+This will create a new directory called `<project_name>` in your current directory. Inside this directory, you will find a `pubspec.yaml` file and a `web` directory. The `pubspec.yaml` file contains the dependencies for your project. The `web` directory contains the source code for your project.
+
+To run your project, run the following command:
+
+```bash
+kitawi run --port <port_number>
+```
+
+This will start a local server on port `<port_number>`. You can now access your project by navigating to `http://localhost:<port_number>` in your browser.
+
+### Example
+
+Here is a simple example of a Kitawi project:
 
 ```dart
 import 'package:kitawi/kitawi.dart';
@@ -38,10 +58,11 @@ void main() {
 }
 ```
 
+This will create a div with a green container that contains a black border and the text(p) "Hello, world!".
 
 ## Documentation
 
-You can find the documentation for Kitawi [here](https://kitawi.github.io/kitawi/).
+You can find the documentation for Kitawi [here](https://pub.dev/documentation/kitawi/latest/).
 
 ## Contributing
 
