@@ -7,10 +7,10 @@ import 'package:kitawi/src/core/widget.dart';
 /// child fills the available space.
 
 class Expanded extends Widget {
-  Expanded({Key? key, this.child, this.flex = 1}) : super(key: key);
+  Expanded({Key? key, required this.child, this.flex = 1}) : super(key: key);
 
   /// The [child] contained by the [Expanded] widget.
-  final Widget? child;
+  final Widget child;
 
   /// The flex factor to use for the child of the [Expanded] widget.
   final int? flex;
@@ -19,10 +19,10 @@ class Expanded extends Widget {
   @override
   Element createElement() {
     final element = Element.div();
+    element.id = key?.value ?? '';
     element.style.flex = flex.toString();
-    if (child != null) {
-      element.children.add(child!.render());
-    }
+    element.style.width = '100%';
+    element.children.add(child.render());
     return element;
   }
 }
