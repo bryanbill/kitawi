@@ -19,6 +19,7 @@ export 'package:kitawi/src/components/stream_builder.dart';
 export 'package:kitawi/src/components/expanded.dart';
 export 'package:kitawi/src/components/container.dart';
 export 'package:kitawi/src/components/button.dart';
+export 'package:kitawi/src/components/scaffold.dart';
 
 // Themes
 export 'package:kitawi/src/themes/theme.dart';

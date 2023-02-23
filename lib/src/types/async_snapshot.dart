@@ -6,6 +6,7 @@ class AsynSnapshot<T> {
   final bool hasData;
   final bool hasError;
 
+  /// Creates a new [AsynSnapshot] instance.
   AsynSnapshot({
     this.data,
     this.error,
