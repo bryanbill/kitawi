@@ -121,7 +121,8 @@ Future<void> create(String name) async {
 /// The default port is 8080.
 Future<void> run(int port) async {
   // Run webdev serve
-  final webdev = await Process.start('webdev', ['serve', 'web:$port']);
+  final webdev = await Process.start(
+      'webdev', ['serve', 'web:$port', '--auto', 'refresh']);
 
   // Pipe the output of the webdev command to stdout
   webdev.stdout.listen((event) {
