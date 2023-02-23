@@ -98,8 +98,10 @@ class Button extends Widget {
       ..style.width = width != null ? '${width}px' : 'auto'
       ..style.height = height != null ? '${height}px' : 'auto';
 
-    for (final action in actions) {
-      button.on[action.type].listen((event) => action.callback(event));
+    if (actions.isNotEmpty) {
+      for (final action in actions) {
+        button.on[action.type].listen((event) => action.callback(event));
+      }
     }
 
     if (child != null) {
