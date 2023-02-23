@@ -1,7 +1,6 @@
 import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
-import 'package:kitawi/src/core/key.dart';
 
 /// A widget that takes up space in the parent widget.
 
