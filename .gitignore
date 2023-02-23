@@ -22,4 +22,4 @@ build/
 # https://dart.dev/guides/libraries/private-files#vscode
 .vscode/
 
-simple/
+doc/
