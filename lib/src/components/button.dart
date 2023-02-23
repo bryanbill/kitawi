@@ -1,5 +1,4 @@
 import 'package:kitawi/src/basic.dart';
-import 'package:kitawi/src/core/key.dart';
 import 'dart:html' as html;
 
 /// A button widget that can be clicked to trigger an action.
@@ -32,7 +31,7 @@ class Button extends Widget {
   /// various decorations and layout properties of the button.
   Button({
     Key? key,
-    required this.action,
+    required this.actions,
     this.child,
     this.decoration,
     this.padding,
@@ -40,9 +39,7 @@ class Button extends Widget {
     this.width,
     this.height,
     this.borderRadius,
-    this.borderWidth,
     this.borderColor,
-    this.fontWeight,
     this.fontSize,
     this.textColor,
   }) : super(key: key);
@@ -51,7 +48,7 @@ class Button extends Widget {
   final Widget? child;
 
   /// The action to perform when the button is clicked.
-  final Action action;
+  final List<Action> actions;
 
   /// The decoration to apply to the button.
   final Decoration? decoration;
@@ -71,37 +68,39 @@ class Button extends Widget {
   /// The border radius of the button.
   final double? borderRadius;
 
-  /// The width of the button border.
-  final double? borderWidth;
-
   /// The color of the button border.
   final Color? borderColor;
-
-  /// The font weight of the button text.
-  final FontWeight? fontWeight;
 
   /// The font size of the button text.
   final double? fontSize;
 
   /// The color of the button text.
+  /// If the text widget specified as the child of the button has a color
+  /// specified, then this property will be ignored.
   final Color? textColor;
 
   @override
   html.Element createElement() {
     var button = html.ButtonElement()
+      ..id = key?.value ?? ''
       ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
       ..style.borderColor = borderColor?.rgba ?? 'auto'
       ..style.borderRadius = '${borderRadius ?? 0}px'
-      ..style.borderWidth = '${borderWidth ?? 0}px'
+      ..style.borderWidth = '${decoration?.border?.borderRadius ?? 0}px'
       ..style.color = 'inherit'
       ..style.cursor = 'pointer'
-      ..style.display = 'inline-block'
+      ..style.display = 'flex'
+      ..style.justifyContent = 'center'
+      ..style.alignItems = 'center'
       ..style.margin = margin?.toString() ?? 'auto'
       ..style.outline = 'none'
-      ..style.padding = padding?.toString() ?? '8px 16px'
-      ..style.width = '${width ?? 'auto'}'
-      ..style.height = '${height ?? 'auto'}'
-      ..on[action.type].listen((event) => action.callback(event));
+      ..style.padding = padding?.toString() ?? '2px 2px'
+      ..style.width = width != null ? '${width}px' : 'auto'
+      ..style.height = height != null ? '${height}px' : 'auto';
+
+    for (final action in actions) {
+      button.on[action.type].listen((event) => action.callback(event));
+    }
 
     if (child != null) {
       button.append(child!.render());
