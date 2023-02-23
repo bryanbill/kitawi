@@ -33,31 +33,28 @@ class Container extends Widget {
     return DivElement()
       ..id = key?.value ?? ''
       ..style.width = width != null ? '${width}px' : '100%'
-      ..style.height = height != null ? '${height}px' : 'auto'
+      ..style.height = height != null ? '${height}px' : '100%'
       ..style.maxHeight = constraints?.maxHeight != null
           ? '${constraints?.maxHeight}px'
-          : 'inherit'
-      ..style.maxWidth = constraints?.maxWidth != null
-          ? '${constraints?.maxWidth}px'
-          : 'inherit'
+          : 'auto'
+      ..style.maxWidth =
+          constraints?.maxWidth != null ? '${constraints?.maxWidth}px' : 'auto'
       ..style.minHeight = constraints?.minHeight != null
           ? '${constraints?.minHeight}px'
-          : 'inherit'
-      ..style.minWidth = constraints?.minWidth != null
-          ? '${constraints?.minWidth}px'
-          : 'inherit'
-      ..style.padding = padding != null ? padding.toString() : 'inherit'
-      ..style.margin = margin != null ? margin.toString() : 'inherit'
-      ..style.backgroundColor = decoration?.color?.rgba ?? 'inherit'
+          : 'auto'
+      ..style.minWidth =
+          constraints?.minWidth != null ? '${constraints?.minWidth}px' : 'auto'
+      ..style.padding = padding?.toString() ?? 'auto'
+      ..style.margin = margin?.toString() ?? 'auto'
+      ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
       ..style.borderRadius = '${decoration?.border?.borderRadius ?? 0}px'
       ..style.border =
           '${decoration?.border?.width ?? 0}px solid ${decoration?.border?.color?.rgba}'
       ..style.boxShadow =
-          decoration?.boxShadow?.map((e) => e.toString()).join(', ') ??
-              "inherit"
+          decoration?.boxShadow?.map((e) => e.toString()).join(', ') ?? "auto"
       ..style.display = 'flex'
-      ..style.justifyContent = alignment?.x ?? 'inherit'
-      ..style.alignItems = alignment?.y ?? 'inherit'
+      ..style.justifyContent = alignment?.x ?? 'auto'
+      ..style.alignItems = alignment?.y ?? 'auto'
       ..children.add(child?.createElement() ?? DivElement());
   }
 }
