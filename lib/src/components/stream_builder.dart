@@ -27,11 +27,19 @@ import 'package:kitawi/src/types/async_snapshot.dart';
 /// )
 /// ```
 class StreamBuilder<T> extends Widget {
+  /// The [Stream] to build the widget from.
   final Stream<T> stream;
+
+  /// The [Widget] to display after the stream has emitted its first event.
   final Widget Function(AsynSnapshot<T> data) builder;
-  final Widget? loadingWidget;
+
+  /// The data to display before the stream has emitted its first event.
+  final T? initialData;
+
+  /// The [Widget] to display when the stream emits an error.
   final Widget Function(dynamic error)? errorWidgetBuilder;
 
+  /// [StreamSubscription] to the stream.
   StreamSubscription<T>? _subscription;
 
   /// Creates a new `StreamBuilder` widget.
@@ -41,8 +49,8 @@ class StreamBuilder<T> extends Widget {
   /// The `builder` argument is a function that takes the most recent event of
   /// the stream and returns a widget to display.
   ///
-  /// The `loadingWidget` argument is an optional widget to display while the
-  /// stream is waiting for the first event. If no loading widget is provided,
+  /// The `initialData` argument is an optional [T] to be displayed before the
+  /// stream emits its first event. If no [initialData] is provided,
   /// no widget will be displayed while waiting for the first event.
   ///
   /// The `errorWidgetBuilder` argument is an optional function that takes the
@@ -52,7 +60,7 @@ class StreamBuilder<T> extends Widget {
   StreamBuilder({
     required this.stream,
     required this.builder,
-    this.loadingWidget,
+    this.initialData,
     this.errorWidgetBuilder,
     Key? key,
   }) : super(key: key);
@@ -64,8 +72,13 @@ class StreamBuilder<T> extends Widget {
 
     /// loading widget is displayed while waiting for the first event
     /// from the stream
-    if (loadingWidget != null) {
-      container.children.add(loadingWidget!.render());
+    if (initialData != null) {
+      container.children.add(builder(AsynSnapshot(
+        data: initialData,
+        error: null,
+        hasData: true,
+        hasError: false,
+      )).render());
     }
 
     /// listen to the stream and update the widget when a new event is added
