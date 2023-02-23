@@ -94,7 +94,7 @@ Future<void> create(String name) async {
 
   // Add kitawi: any as a dependency
   final updatedContents =
-      contents.replaceFirst('dependencies:', 'dependencies:\n  kitawi: ^0.0.1');
+      contents.replaceFirst('dependencies:', 'dependencies:\n  kitawi: ^0.0.3');
 
   // Write the updated contents to the pubspec.yaml file
   await pubspec.writeAsString(updatedContents);
