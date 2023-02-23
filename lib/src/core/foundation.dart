@@ -30,7 +30,7 @@ class Border {
   Border({
     this.width,
     this.color,
-    this.type,
+    this.type = BorderType.solid,
     this.borderRadius,
   });
 
