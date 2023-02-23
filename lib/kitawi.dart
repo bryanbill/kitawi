@@ -8,6 +8,9 @@ export 'package:kitawi/src/components/container.dart';
 /// The run function is the entry point for the Kitawi library. It takes a
 /// [Widget] as an argument and renders it to the DOM.
 ///
+/// The [id] argument is optional. If it is not provided, the [Widget] is
+/// attached to the element with the id `output`.
+///
 /// ```dart
 /// import 'package:kitawi/kitawi.dart';
 ///
@@ -16,7 +19,7 @@ export 'package:kitawi/src/components/container.dart';
 /// }
 /// ```
 void run(Widget widget, {String? id}) {
-  render(widget, document.getElementById(id ?? 'root'));
+  render(widget, document.getElementById(id ?? 'output'));
 }
 
 /// The render function takes a [Widget] and a [Element] as arguments and
