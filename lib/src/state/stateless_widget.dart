@@ -17,4 +17,9 @@ abstract class StatelessWidget extends Widget {
   /// It is an abstract method and must be implemented by the subclasses.
   @override
   Widget build();
+
+  @override
+  Element createElement() {
+    return build().render();
+  }
 }

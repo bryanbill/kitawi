@@ -32,6 +32,11 @@ abstract class StatefulWidget extends Widget {
   }
 
   @override
+  Element createElement() {
+    return render();
+  }
+
+  @override
   void build() {
     _state?.build();
   }
