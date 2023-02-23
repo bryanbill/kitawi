@@ -18,9 +18,7 @@ abstract class Widget with Resize {
 
   /// The [render] method creates the element for the widget.
   html.Element render() {
-    ///  generate key if not provided
-    key ??= Key(Random().nextInt(1000000000).toString());
-    _element ??= createElement()..id = key?.value ?? 'this is not right';
+    _element ??= createElement()..id;
     return _element!;
   }
 
