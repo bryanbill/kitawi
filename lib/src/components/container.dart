@@ -9,9 +9,9 @@ import 'package:kitawi/src/core/widget.dart';
 class Container extends Widget {
   final Widget? child;
   final double? width;
-  final EdgeInsets? height;
+  final double? height;
   final EdgeInsets? padding;
-  final double? margin;
+  final EdgeInsets? margin;
   final Decoration? decoration;
   final Alignment? alignment;
   final BoxConstraints? constraints;
@@ -46,8 +46,8 @@ class Container extends Widget {
       ..style.minWidth = constraints?.minWidth != null
           ? '${constraints?.minWidth}px'
           : 'inherit'
-      ..style.padding = '${padding ?? 0}px'
-      ..style.margin = '${margin ?? 0}px'
+      ..style.padding = padding != null ? padding.toString() : 'inherit'
+      ..style.margin = margin != null ? margin.toString() : 'inherit'
       ..style.backgroundColor = decoration?.color?.rgba ?? 'inherit'
       ..style.borderRadius = '${decoration?.border?.borderRadius ?? 0}px'
       ..style.border =
