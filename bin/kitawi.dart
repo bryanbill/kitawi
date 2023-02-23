@@ -3,6 +3,9 @@
 import 'dart:io';
 import 'package:args/args.dart';
 
+/// This is a Dart program that uses the ArgParser library to parse
+/// command-line arguments. The program defines two commands
+/// (`create` and `run`) and two options (`port` and `name`).
 void main(List<String> args) async {
   late ArgParser parser;
   try {
@@ -40,6 +43,9 @@ void main(List<String> args) async {
   }
 }
 
+/// This function creates a new Dart web app using the `dart create` command.
+/// It then adds the kitawi dependency to the pubspec.yaml file and runs
+/// `pub get` to install the kitawi dependency.
 Future<void> create(String name) async {
   // Enable webdev
   final webdev =
@@ -110,6 +116,9 @@ Future<void> create(String name) async {
   await pubGet.exitCode;
 }
 
+/// This function runs the web app using the `webdev serve` command.
+/// It takes the port to run the app on as an argument.
+/// The default port is 8080.
 Future<void> run(int port) async {
   // Run webdev serve
   final webdev = await Process.start('webdev', ['serve', 'web:$port']);
