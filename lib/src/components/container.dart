@@ -33,7 +33,7 @@ class Container extends Widget {
     return DivElement()
       ..id = key?.value ?? ''
       ..style.width = width != null ? '${width}px' : '100%'
-      ..style.height = height != null ? '${height}px' : '100%'
+      ..style.height = height != null ? '${height}px' : 'auto'
       ..style.maxHeight = constraints?.maxHeight != null
           ? '${constraints?.maxHeight}px'
           : 'inherit'

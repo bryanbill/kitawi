@@ -19,7 +19,8 @@ export 'package:kitawi/src/components/container.dart';
 /// }
 /// ```
 void run(Widget widget, {String? id}) {
-  render(widget, document.getElementById(id ?? 'output'));
+  render(
+      widget, document.getElementById(id ?? 'output')?..style.height = '100%');
 }
 
 /// The render function takes a [Widget] and a [Element] as arguments and
