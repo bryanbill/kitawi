@@ -32,8 +32,8 @@ class Container extends Widget {
   Element createElement() {
     return DivElement()
       ..id = key?.value ?? ''
-      ..style.width = width != null ? '${width}px' : '100%'
-      ..style.height = height != null ? '${height}px' : '100%'
+      ..style.width = width != null ? '${width}px' : 'auto'
+      ..style.height = height != null ? '${height}px' : 'auto'
       ..style.maxHeight = constraints?.maxHeight != null
           ? '${constraints?.maxHeight}px'
           : 'auto'
@@ -49,7 +49,7 @@ class Container extends Widget {
       ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
       ..style.borderRadius = '${decoration?.border?.borderRadius ?? 0}px'
       ..style.border =
-          '${decoration?.border?.width ?? 0}px solid ${decoration?.border?.color?.rgba}'
+          '${decoration?.border?.width ?? 0}px ${decoration?.border?.type.toString().split('.').last} ${decoration?.border?.color?.rgba}'
       ..style.boxShadow =
           decoration?.boxShadow?.map((e) => e.toString()).join(', ') ?? "auto"
       ..style.display = 'flex'
