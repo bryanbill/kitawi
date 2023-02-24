@@ -12,13 +12,15 @@ import 'package:kitawi/src/mixins/resize.dart';
 /// the widget changes, so that the widget can rebuild itself.
 abstract class Widget with Resize {
   Key? key;
+
   html.Element? _element;
 
-  Widget({Key? key});
+  Widget({this.key});
 
   /// The [render] method creates the element for the widget.
   html.Element render() {
-    _element ??= createElement()..id;
+    key ??= Key(Random().nextInt(1000000).toString());
+    _element ??= createElement()..id = key!.value;
     return _element!;
   }
 
