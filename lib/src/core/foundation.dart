@@ -1,4 +1,4 @@
-import 'package:kitawi/src/core/color.dart';
+import 'package:kitawi/src/basic.dart';
 
 /// The Decoration class is used to decorate a widget
 /// with a color, border, and box shadow e.t.c
@@ -198,10 +198,10 @@ class BoxFit {
 /// It has a minimum width, maximum width, minimum height, and maximum height
 
 class BoxConstraints {
-  final double? minWidth;
-  final double? maxWidth;
-  final double? minHeight;
-  final double? maxHeight;
+  final Dimensions? minWidth;
+  final Dimensions? maxWidth;
+  final Dimensions? minHeight;
+  final Dimensions? maxHeight;
 
   BoxConstraints({
     this.minWidth,
@@ -213,10 +213,10 @@ class BoxConstraints {
   /// The [copyWith] method is used to copy the current [BoxConstraints] object
   ///
   BoxConstraints copyWith({
-    double? minWidth,
-    double? maxWidth,
-    double? minHeight,
-    double? maxHeight,
+    Dimensions? minWidth,
+    Dimensions? maxWidth,
+    Dimensions? minHeight,
+    Dimensions? maxHeight,
   }) {
     return BoxConstraints(
       minWidth: minWidth ?? this.minWidth,
@@ -228,6 +228,6 @@ class BoxConstraints {
 
   @override
   String toString() {
-    return 'min-width: ${minWidth ?? 0}px; max-width: ${maxWidth ?? double.infinity}px; min-height: ${minHeight ?? 0}px; max-height: ${maxHeight ?? double.infinity}px;';
+    return 'min-width: ${minWidth ?? ''}; max-width: ${maxWidth ?? double.infinity}; min-height: ${minHeight ?? ''}; max-height: ${maxHeight ?? double.infinity};';
   }
 }
