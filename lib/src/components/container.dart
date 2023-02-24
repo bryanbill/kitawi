@@ -4,12 +4,13 @@ import 'package:kitawi/src/core/edge_insets.dart';
 import 'package:kitawi/src/core/foundation.dart';
 import 'package:kitawi/src/core/key.dart';
 import 'package:kitawi/src/core/widget.dart';
+import 'package:kitawi/src/types/dimensions.dart';
 
 /// The [Container] class is a widget that creates a div element with the defined props.
 class Container extends Widget {
   final Widget? child;
-  final double? width;
-  final double? height;
+  final Dimensions? width;
+  final Dimensions? height;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final Decoration? decoration;
@@ -32,8 +33,8 @@ class Container extends Widget {
   Element createElement() {
     return DivElement()
       ..id = key?.value ?? ''
-      ..style.width = width != null ? '${width}px' : 'auto'
-      ..style.height = height != null ? '${height}px' : 'auto'
+      ..style.width = width != null ? '$width' : '100%'
+      ..style.height = height != null ? '$height' : 'auto'
       ..style.maxHeight = constraints?.maxHeight != null
           ? '${constraints?.maxHeight}px'
           : 'auto'
