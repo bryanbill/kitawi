@@ -49,12 +49,11 @@ void render(Widget widget, Element? element) {
 /// The [VoidCallback] is called when the window is loaded and when the window
 /// is resized.
 void start(VoidCallback callback) {
+  print("Starting Kitawi...");
   // The [VoidCallback] is called when the window is loaded.
   Size().updateSize();
   Theme().updateMode();
   callback();
-
-  print("Starting Kitawi...");
 
   window.addEventListener('load', (event) {
     // Your code here will execute after all resources are loaded
@@ -67,9 +66,13 @@ void start(VoidCallback callback) {
     callback();
   });
 
+  final scheme = window.matchMedia('(prefers-color-scheme: dark)');
+
   /// The [VoidCallback] is called when the color scheme is changed.
-  window.matchMedia('(prefers-color-scheme: dark)').addListener((event) {
+  scheme.addListener((event) {
     Theme().updateMode();
     callback();
   });
+
+  print("Kitawi up and running :)");
 }
