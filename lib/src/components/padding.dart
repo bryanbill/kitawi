@@ -12,9 +12,8 @@ class Padding extends Widget {
   @override
   Element createElement() {
     final element = Element.div();
-    print(padding);
-    element.style.width = '100%';
-    element.style.maxWidth = '100%';
+    element.style.width = 'auto';
+    element.style.maxWidth = 'auto';
     element.style.height = 'auto';
     element.style.boxSizing = 'border-box !important';
     element.style.padding = padding.toString();
