@@ -25,6 +25,8 @@ class EdgeInsets {
   /// [EdgeInsets] with value offset on from left -> top -> right -> bottom.
   const EdgeInsets.fromLTRB(this.left, this.top, this.right, this.bottom);
 
+  static EdgeInsets get zero => EdgeInsets.all(0.0);
+
   final double left;
   final double top;
   final double right;
