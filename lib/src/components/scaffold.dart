@@ -26,16 +26,17 @@ class Scaffold extends StatelessWidget {
   @override
   Widget build() {
     return Container(
-        width: Size().width,
+        width: Dimensions.full,
         constraints: BoxConstraints(
-          minHeight: Size().height,
+          minHeight: Dimensions.of(Size().height.toInt()),
         ),
         decoration: Decoration(
           color: Theme().mode == ThemeMode.light ? Colors.white : Colors.grey24,
         ),
         child: Row(
           children: [
-            sidebar ?? Container(height: 0, width: 0),
+            sidebar ??
+                Container(height: Dimensions.zero, width: Dimensions.zero),
             Expanded(
               child: Column(
                 children: [
