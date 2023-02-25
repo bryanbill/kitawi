@@ -8,11 +8,10 @@ class Decoration {
   final Border? border;
   final List<BoxShadow>? boxShadow;
 
-  Decoration({
-    this.color,
-    this.border,
-    this.boxShadow,
-  });
+  /// The [BorderRadius] `borderRadius` parameter is optional and specifies the border radius of the image.
+  final BorderRadius? borderRadius;
+
+  Decoration({this.color, this.border, this.boxShadow, this.borderRadius});
 }
 
 /// The border type can be solid, dashed, dotted, double, groove, ridge, inset, or outset

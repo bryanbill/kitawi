@@ -17,17 +17,17 @@ class Container extends Widget {
   final Alignment? alignment;
   final BoxConstraints? constraints;
 
-  Container(
-      {Key? key,
-      this.child,
-      this.width,
-      this.height,
-      this.padding,
-      this.margin,
-      this.decoration,
-      this.alignment,
-      this.constraints})
-      : super(key: key);
+  Container({
+    Key? key,
+    this.child,
+    this.width,
+    this.height,
+    this.padding,
+    this.margin,
+    this.decoration,
+    this.alignment,
+    this.constraints,
+  }) : super(key: key);
 
   @override
   Element createElement() {
@@ -48,7 +48,7 @@ class Container extends Widget {
       ..style.padding = padding?.toString() ?? 'auto'
       ..style.margin = margin?.toString() ?? 'auto'
       ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
-      ..style.borderRadius = '${decoration?.border?.borderRadius ?? 0}px'
+      ..style.borderRadius = decoration?.borderRadius?.toString() ?? 'inherit'
       ..style.border =
           '${decoration?.border?.width ?? 0}px ${decoration?.border?.type.toString().split('.').last} ${decoration?.border?.color?.rgba}'
       ..style.boxShadow =

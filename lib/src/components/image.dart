@@ -28,20 +28,22 @@ class Image extends Widget {
   final Alignment? alignment;
 
   /// The [BoxFit] `fit` parameter is optional and specifies the fit of the image.
-
   final BoxFit? fit;
 
   /// The [Action]s to be performed on the image.
   final List<Action>? actions;
-  Image(this.src,
-      {this.width,
-      this.height,
-      this.padding,
-      this.margin,
-      this.decoration,
-      this.alignment,
-      this.fit,
-      this.actions});
+
+  Image(
+    this.src, {
+    this.width,
+    this.height,
+    this.padding,
+    this.margin,
+    this.decoration,
+    this.alignment,
+    this.fit,
+    this.actions,
+  });
 
   /// The [createElement] method creates the [ImageElement] for the widget.
 
@@ -55,7 +57,8 @@ class Image extends Widget {
           ..style.padding = '${padding ?? 0}px'
           ..style.margin = '${margin ?? 0}px'
           ..style.backgroundColor = decoration?.color?.rgba ?? 'inherit'
-          ..style.borderRadius = '${decoration?.border?.borderRadius ?? 0}px'
+          ..style.borderRadius =
+              decoration?.borderRadius?.toString() ?? 'inherit'
           ..style.border =
               '${decoration?.border?.width ?? 0}px solid ${decoration?.border?.color?.rgba}'
           ..style.boxShadow =
