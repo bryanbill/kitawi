@@ -13,7 +13,7 @@ class Scaffold extends StatelessWidget {
   final Widget? sidebar;
   final Widget? footer;
   final Widget? drawer;
-  final Widget? floatingActionButton;
+  final FloatingActionButton? floatingActionButton;
 
   Scaffold(
       {required this.body,
@@ -26,9 +26,10 @@ class Scaffold extends StatelessWidget {
   @override
   Widget build() {
     return Container(
+        height: Dimensions.full,
         width: Dimensions.full,
         constraints: BoxConstraints(
-          minHeight: Dimensions.of(Size().height.toInt()),
+          minHeight: Dimensions.of(Size().height),
         ),
         decoration: Decoration(
           color: Theme().mode == ThemeMode.light ? Colors.white : Colors.grey24,
@@ -37,12 +38,16 @@ class Scaffold extends StatelessWidget {
           children: [
             sidebar ??
                 Container(height: Dimensions.zero, width: Dimensions.zero),
-            Expanded(
+            Sizedbox(
+              height: Dimensions.full,
+              width: Dimensions.full,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   navbar ?? Container(),
                   body,
                   footer ?? Container(),
+                  floatingActionButton ?? Container(),
                 ],
               ),
             ),
