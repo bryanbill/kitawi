@@ -21,10 +21,10 @@ class Size {
   }
 
   /// The width of the window.
-  double get width => _x.toDouble();
+  int get width => _x;
 
   /// The height of the window.
-  double get height => _y.toDouble();
+  int get height => _y;
 
   set x(int value) {
     _x = value;
