@@ -25,14 +25,8 @@ class Border {
   final double? width;
   final Color? color;
   final BorderType? type;
-  final double? borderRadius;
 
-  Border({
-    this.width,
-    this.color,
-    this.type = BorderType.solid,
-    this.borderRadius,
-  });
+  Border({this.width, this.color, this.type = BorderType.solid});
 
   @override
   String toString() {
@@ -229,5 +223,68 @@ class BoxConstraints {
   @override
   String toString() {
     return 'min-width: ${minWidth ?? ''}; max-width: ${maxWidth ?? double.infinity}; min-height: ${minHeight ?? ''}; max-height: ${maxHeight ?? double.infinity};';
+  }
+}
+
+/// The [BorderRadius] class is used to set the border radius of a widget
+/// It has a top left, top right, bottom left, and bottom right radius
+/// It has the following constructors:
+/// - BorderRadius.circular(double radius)
+/// - BorderRadius.only({double topLeft = 0, double topRight = 0, double bottomLeft = 0, double bottomRight = 0})
+/// - BorderRadius.all(double radius)
+///
+/// The BorderRadius.circular(double radius) constructor is used to set the same border radius for all corners
+/// The BorderRadius.only({double topLeft = 0, double topRight = 0, double bottomLeft = 0, double bottomRight = 0}) constructor is used to set the border radius for each corner
+/// The BorderRadius.all(double radius) constructor is used to set the same border radius for all corners
+///
+/// Example:
+/// ```dart
+/// BorderRadius.circular(10)
+/// BorderRadius.only(topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10)
+/// BorderRadius.all(10)
+/// ```
+class BorderRadius {
+  final double topLeft;
+  final double topRight;
+  final double bottomLeft;
+  final double bottomRight;
+
+  BorderRadius({
+    required this.topLeft,
+    required this.topRight,
+    required this.bottomLeft,
+    required this.bottomRight,
+  });
+
+  factory BorderRadius.circular(double radius) {
+    return BorderRadius(
+      topLeft: radius,
+      topRight: radius,
+      bottomLeft: radius,
+      bottomRight: radius,
+    );
+  }
+
+  factory BorderRadius.only({
+    double topLeft = 0,
+    double topRight = 0,
+    double bottomLeft = 0,
+    double bottomRight = 0,
+  }) {
+    return BorderRadius(
+      topLeft: topLeft,
+      topRight: topRight,
+      bottomLeft: bottomLeft,
+      bottomRight: bottomRight,
+    );
+  }
+
+  factory BorderRadius.all(double radius) {
+    return BorderRadius.circular(radius);
+  }
+
+  @override
+  String toString() {
+    return '${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px';
   }
 }
