@@ -28,7 +28,7 @@ class Theme {
 
   set mode(ThemeMode value) {
     _mode = value;
-    
+
     // set the prefers-color-scheme media query to the window
   }
 

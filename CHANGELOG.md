@@ -8,3 +8,9 @@
 - added basic widget support
 - minor state management improvements
 - migrated to webdev
+
+## 0.0.3 (2023-02-25)
+
+- added other widget types such as Listviews, Scaffold, etc. See docs for more info
+- App can now be wrapped by StatelessWidget
+- Minor cli improvements

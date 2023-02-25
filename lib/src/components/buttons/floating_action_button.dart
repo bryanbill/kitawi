@@ -32,7 +32,7 @@ class FloatingActionButton extends Button {
             width: width,
             height: height,
             borderRadius: borderRadius,
-            child: child) {}
+            child: child);
 
   final Alignment? position;
 

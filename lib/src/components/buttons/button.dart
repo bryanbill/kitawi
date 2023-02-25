@@ -24,7 +24,7 @@ import 'dart:html' as html;
 class Button extends Widget {
   /// Creates a new `Button` widget with the given parameters.
   ///
-  /// The [action] parameter is required and specifies the action to perform
+  /// The [actions] parameter is required and specifies the action to perform
   /// when the button is clicked. The [child] parameter is optional and specifies
   /// the child widget to display inside the button. The [decoration], [padding],
   /// [margin], [width] and [height] parameters are optional and specify the
