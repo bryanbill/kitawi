@@ -8,7 +8,8 @@ class Decoration {
   final Border? border;
   final List<BoxShadow>? boxShadow;
 
-  /// The [BorderRadius] `borderRadius` parameter is optional and specifies the border radius of the image.
+  /// The [BorderRadius] `borderRadius` parameter is optional and
+  /// specifies the border radius of the widget.
   final BorderRadius? borderRadius;
 
   Decoration({this.color, this.border, this.boxShadow, this.borderRadius});
