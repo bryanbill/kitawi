@@ -62,7 +62,7 @@ class Dimensions {
   /// See also:
   /// * [Dimensions.valueOf], which returns a string representation of this object.
   /// * [Dimensions.toString], which returns a string representation of this object.
-  static Dimensions of(int value) => Dimensions._("${value}px");
+  static Dimensions of(num value) => Dimensions._("${value}px");
 
   /// Returns a [String] representation of this [Dimensions] object.
   /// If the value is null, returns "auto".
