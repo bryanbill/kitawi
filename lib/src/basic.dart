@@ -24,6 +24,7 @@ export 'package:kitawi/src/components/scaffold.dart';
 export 'package:kitawi/src/components/spacer.dart';
 export 'package:kitawi/src/components/padding.dart';
 export 'package:kitawi/src/components/image.dart';
+export 'package:kitawi/src/components/sizedbox.dart';
 
 // Themes
 export 'package:kitawi/src/themes/theme.dart';
@@ -35,3 +36,6 @@ export 'package:kitawi/src/state/stateless_widget.dart';
 
 // size
 export 'package:kitawi/src/types/dimensions.dart';
+
+// types
+export 'package:kitawi/src/types/axis.dart';
