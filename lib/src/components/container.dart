@@ -35,22 +35,24 @@ class Container extends Widget {
       ..id = key?.value ?? ''
       ..style.width = width != null ? '$width' : '100%'
       ..style.height = height != null ? '$height' : 'auto'
-      ..style.maxHeight = constraints?.maxHeight != null
-          ? '${constraints?.maxHeight}px'
-          : 'auto'
+      ..style.maxHeight =
+          constraints?.maxHeight != null ? '${constraints?.maxHeight}' : 'auto'
       ..style.maxWidth =
-          constraints?.maxWidth != null ? '${constraints?.maxWidth}px' : 'auto'
-      ..style.minHeight = constraints?.minHeight != null
-          ? '${constraints?.minHeight}px'
-          : 'auto'
+          constraints?.maxWidth != null ? '${constraints?.maxWidth}' : 'auto'
+      ..style.minHeight =
+          constraints?.minHeight != null ? '${constraints?.minHeight}' : 'auto'
       ..style.minWidth =
-          constraints?.minWidth != null ? '${constraints?.minWidth}px' : 'auto'
+          constraints?.minWidth != null ? '${constraints?.minWidth}' : 'auto'
       ..style.padding = padding?.toString() ?? 'auto'
       ..style.margin = margin?.toString() ?? 'auto'
       ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
       ..style.borderRadius = decoration?.borderRadius?.toString() ?? 'inherit'
-      ..style.border =
-          '${decoration?.border?.width ?? 0}px ${decoration?.border?.type.toString().split('.').last} ${decoration?.border?.color?.rgba}'
+      ..style.borderColor = decoration?.border?.color?.rgba ?? 'auto'
+      ..style.borderWidth = decoration?.border?.side != null
+          ? '${decoration?.border?.side}'
+          : 'auto'
+      ..style.borderStyle =
+          decoration?.border?.type?.toString().split(".").last ?? 'auto'
       ..style.boxShadow =
           decoration?.boxShadow?.map((e) => e.toString()).join(', ') ?? "auto"
       ..style.display = 'flex'
