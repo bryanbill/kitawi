@@ -3,7 +3,7 @@ import 'dart:html';
 enum ThemeMode { light, dark, system }
 
 class Theme {
-  late ThemeMode _mode;
+  static late ThemeMode _mode;
 
   static final Theme _instance = Theme._internal();
 
@@ -16,7 +16,7 @@ class Theme {
   }
 
   /// Returns the current theme mode.
-  ThemeMode get mode {
+  static ThemeMode get mode {
     if (_mode == ThemeMode.system) {
       return window.matchMedia('(prefers-color-scheme: dark)').matches
           ? ThemeMode.dark
@@ -26,7 +26,7 @@ class Theme {
     }
   }
 
-  set mode(ThemeMode value) {
+  static set mode(ThemeMode value) {
     _mode = value;
 
     // set the prefers-color-scheme media query to the window
@@ -35,6 +35,9 @@ class Theme {
   void setColorScheme(e) {}
 
   void updateMode() {
+    // whenever the theme changes, all text and background colors should be
+    // updated based on the new theme.
+
     _mode = ThemeMode.system;
   }
 

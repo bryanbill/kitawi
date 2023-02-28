@@ -23,7 +23,7 @@ class Text extends Widget {
   Element createElement() {
     return ParagraphElement()
       ..text = _text
-      ..style.color = style?.color?.rgba
+      ..style.color = style?.color?.rgba 
       ..style.backgroundColor = style?.backgroundColor?.rgba
       ..style.fontFamily = style?.fontFamily
       ..style.fontSize = '${style?.fontSize}px'
