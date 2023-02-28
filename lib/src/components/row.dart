@@ -32,8 +32,9 @@ class Row extends Widget {
     row.style.flexDirection = 'row';
     row.style.justifyContent = mainAxisAlignment.toString();
     row.style.alignItems = crossAxisAlignment.toString();
-
     row.style.width = '100%';
+    row.style.height = '100%';
+    row.style.overflow = 'hidden';
     for (final child in children) {
       row.children.add(child.render());
     }

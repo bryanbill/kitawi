@@ -32,6 +32,7 @@ class Column extends Widget {
     column.style.alignItems = crossAxisAlignment.toString();
     column.style.height = '100%';
     column.style.width = '100%';
+    column.style.overflow = 'hidden';
     for (final child in children) {
       column.children.add(child.render());
     }
