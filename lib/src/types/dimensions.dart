@@ -51,8 +51,23 @@ class Dimensions {
   /// * [Dimensions.valueOf], which returns a string representation of this object.
   /// * [Dimensions.toString], which returns a string representation of this object.
   static Dimensions calc(
-          {required Dimensions from, required Dimensions inset}) =>
-      Dimensions._("calc($from - $inset)");
+      {required Dimensions from,
+      required Dimensions inset,
+      Operator? operator = Operator.minus}) {
+    switch (operator) {
+      case Operator.minus:
+        return Dimensions._("calc($from - $inset)");
+      case Operator.plus:
+        return Dimensions._("calc($from + $inset)");
+      case Operator.times:
+        return Dimensions._("calc($from * $inset)");
+      case Operator.divide:
+        return Dimensions._("calc($from / $inset)");
+
+      default:
+        return Dimensions._("calc($from - $inset)");
+    }
+  }
 
   /// Returns a [Dimensions] object with the given [value] in pixels.
   /// Example:
@@ -97,3 +112,5 @@ class Dimensions {
   @override
   String toString() => _value;
 }
+
+enum Operator { minus, plus, times, divide }
