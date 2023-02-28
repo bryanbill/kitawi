@@ -31,10 +31,8 @@ class Container extends Widget {
 
   @override
   Element createElement() {
-    return DivElement()
+    final div = DivElement()
       ..id = key?.value ?? ''
-      ..style.width = width != null ? '$width' : '100%'
-      ..style.height = height != null ? '$height' : 'auto'
       ..style.maxHeight =
           constraints?.maxHeight != null ? '${constraints?.maxHeight}' : 'auto'
       ..style.maxWidth =
@@ -59,5 +57,22 @@ class Container extends Widget {
       ..style.justifyContent = alignment?.x ?? 'auto'
       ..style.alignItems = alignment?.y ?? 'auto'
       ..children.add(child?.createElement() ?? DivElement());
+
+    if (padding != null) {
+      var paddingLeft = padding?.left ?? 0;
+      var paddingRight = padding?.right ?? 0;
+      var paddingTop = padding?.top ?? 0;
+      var paddingBottom = padding?.bottom ?? 0;
+      div.style.width = width != null
+          ? '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}'
+          : 'auto';
+      div.style.height = height != null
+          ? '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingTop + paddingBottom))}'
+          : 'auto';
+    } else {
+      div.style.width = width != null ? '$width' : 'auto';
+      div.style.height = height != null ? '$height' : 'auto';
+    }
+    return div;
   }
 }
