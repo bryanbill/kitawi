@@ -12,10 +12,17 @@ class Text extends Widget {
   /// The [style] parameter is optional and specifies the style of the text [TextStyle].
   final TextStyle? style;
 
-  /// The [action] parameter is optional and specifies the action to perform when the text is clicked [Action].
-  final Action? action;
+  /// The [TextAlign] class is used to align the text in the [Text] widget.
+  /// The [TextAlign] class has the following values:
+  /// - [TextAlign.left] - Aligns the text to the left.
+  /// - [TextAlign.right] - Aligns the text to the right.
+  /// - [TextAlign.center] - Aligns the text to the center.
+  /// - [TextAlign.justify] - Aligns the text to the justify.
+  /// - [TextAlign.start] - Aligns the text to the start.
+  /// - [TextAlign.end] - Aligns the text to the end.
+  final TextAlign? textAlign;
 
-  Text(this._text, {this.style, this.action});
+  Text(this._text, {this.style, this.textAlign});
 
   /// The [createElement] method creates the [ParagraphElement] for the widget.
 
@@ -23,7 +30,7 @@ class Text extends Widget {
   Element createElement() {
     return ParagraphElement()
       ..text = _text
-      ..style.color = style?.color?.rgba 
+      ..style.color = style?.color?.rgba
       ..style.backgroundColor = style?.backgroundColor?.rgba
       ..style.fontFamily = style?.fontFamily
       ..style.fontSize = '${style?.fontSize}px'
@@ -31,8 +38,19 @@ class Text extends Widget {
       ..style.fontStyle = style?.fontStyle?.value
       ..style.padding = '0'
       ..style.margin = '0'
-      ..on[action?.type ?? ''].listen((event) {
-        action?.callback.call(event);
-      });
+      ..style.textAlign = textAlign?.value;
   }
+}
+
+class TextAlign {
+  final String value;
+
+  const TextAlign._(this.value);
+
+  static const left = TextAlign._('left');
+  static const right = TextAlign._('right');
+  static const center = TextAlign._('center');
+  static const justify = TextAlign._('justify');
+  static const start = TextAlign._('start');
+  static const end = TextAlign._('end');
 }
