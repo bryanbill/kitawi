@@ -29,6 +29,8 @@ class Text extends Widget {
       ..style.fontSize = '${style?.fontSize}px'
       ..style.fontWeight = '${style?.fontWeight?.index}'
       ..style.fontStyle = style?.fontStyle?.value
+      ..style.padding = '0'
+      ..style.margin = '0'
       ..on[action?.type ?? ''].listen((event) {
         action?.callback.call(event);
       });
