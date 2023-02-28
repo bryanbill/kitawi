@@ -5,7 +5,6 @@ import 'package:kitawi/src/basic.dart';
 /// This class is used to create a navigation bar widget.
 
 class Navbar extends Widget {
-
   /// The [title] parameter is optional and specifies the title of the navigation bar.
   /// The [title] parameter can be any widget.
   final Widget? title;
@@ -41,22 +40,21 @@ class Navbar extends Widget {
 
   /// The [elevation] parameter is optional and specifies the elevation of the navigation bar.
   /// The [elevation] parameter can be any integer.
-  final int? elevation;
+  final double? elevation;
 
   Navbar(
       {this.title,
       this.automaticallyImplyLeading = false,
       this.leading,
       this.actions,
-      this.elevation = 1,
+      this.elevation = 1.0,
       this.position = Position.fixed,
       this.backgroundColor,
-      this.shadowColor = Colors.red});
+      this.shadowColor = Colors.grey});
 
   @override
   Element createElement() {
-    var elevation = this.elevation! * 10;
-    print(elevation);
+    final elev = elevation! * 10;
     return DivElement()
       ..style.backgroundColor = backgroundColor?.rgba
       ..style.padding = '16px'
@@ -68,18 +66,19 @@ class Navbar extends Widget {
       ..style.left = '0'
       ..style.width = 'calc(100% - 32px)'
       ..style.height = '64px'
+      ..style.maxHeight = '64px'
+      ..style.zIndex = '999'
+      ..style.boxShadow = '0px 0px ${elev}px 0px ${shadowColor?.rgba}'
       ..children = [
-        Sizedbox(width: Dimensions.percentageOf(30), child: leading)
+        SizedBox(width: Dimensions.percentageOf(30), child: leading)
             .createElement(),
-        Expanded(child: title ?? Sizedbox()).createElement(),
-        Sizedbox(
+        Expanded(child: title ?? SizedBox()).createElement(),
+        SizedBox(
           width: Dimensions.percentageOf(30),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: actions ?? [],
-          ),
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: actions ?? []),
         ).createElement()
-      ]
-      ..style.boxShadow = '0px 0px ${elevation}px 0px $shadowColor';
+      ];
   }
 }
