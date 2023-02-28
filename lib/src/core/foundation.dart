@@ -22,15 +22,45 @@ enum BorderType { solid, dashed, dotted, double, groove, ridge, inset, outset }
 /// The Border class is used to add a border to a widget
 /// It has a width, color [Color], type [BorderType], and border radius
 class Border {
-  final double? width;
+  final BorderSide? side;
   final Color? color;
   final BorderType? type;
 
-  Border({this.width, this.color, this.type = BorderType.solid});
+  Border({this.side, this.color, this.type = BorderType.solid});
+}
+
+/// The BorderSide class is used to add a border to a widget
+/// It has side, width, color [Color], and type [BorderType]
+
+class BorderSide {
+  final int top;
+  final int right;
+  final int bottom;
+  final int left;
+
+  const BorderSide({
+    this.top = 0,
+    this.right = 0,
+    this.bottom = 0,
+    this.left = 0,
+  });
+
+  BorderSide.all(int value)
+      : top = value,
+        right = value,
+        bottom = value,
+        left = value;
+
+  BorderSide.only({
+    this.top = 0,
+    this.right = 0,
+    this.bottom = 0,
+    this.left = 0,
+  });
 
   @override
   String toString() {
-    return '${width ?? 0}px ${type?.name.split(".").last ?? BorderType.solid.name.split(".").last} ${color?.rgba ?? 'inherit'}';
+    return '${top}px ${right}px ${bottom}px ${left}px';
   }
 }
 

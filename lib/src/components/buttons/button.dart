@@ -29,20 +29,21 @@ class Button extends Widget {
   /// the child widget to display inside the button. The [decoration], [padding],
   /// [margin], [width] and [height] parameters are optional and specify the
   /// various decorations and layout properties of the button.
-  Button({
-    Key? key,
-    required this.actions,
-    this.child,
-    this.decoration,
-    this.padding,
-    this.margin,
-    this.width,
-    this.height,
-    this.borderRadius,
-    this.borderColor,
-    this.fontSize,
-    this.textColor,
-  }) : super(key: key);
+  Button(
+      {Key? key,
+      required this.actions,
+      this.child,
+      this.decoration,
+      this.padding,
+      this.margin,
+      this.width,
+      this.height,
+      this.borderRadius,
+      this.borderColor,
+      this.fontSize,
+      this.textColor,
+      this.splashColor})
+      : super(key: key);
 
   /// The child widget to display inside the button.
   final Widget? child;
@@ -79,6 +80,10 @@ class Button extends Widget {
   /// specified, then this property will be ignored.
   final Color? textColor;
 
+  /// The splash color of the button. This is the color that will be displayed
+  /// when the button is clicked, hovered or focused.
+  final Color? splashColor;
+
   @override
   html.Element createElement() {
     var button = html.ButtonElement()
@@ -87,7 +92,7 @@ class Button extends Widget {
       ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
       ..style.borderColor = borderColor?.rgba ?? 'auto'
       ..style.borderRadius = borderRadius?.toString() ?? 'inherit'
-      ..style.borderWidth = '${decoration?.border?.width ?? 0}px'
+      ..style.borderWidth = '${decoration?.border?.side ?? 0}px'
       ..style.color = 'inherit'
       ..style.cursor = 'pointer'
       ..style.display = 'flex'
@@ -97,7 +102,9 @@ class Button extends Widget {
       ..style.outline = 'none'
       ..style.padding = padding?.toString() ?? '2px 2px'
       ..style.width = width != null ? '$width' : 'auto'
-      ..style.height = height != null ? '$height' : 'auto';
+      ..style.height = height != null ? '$height' : 'auto'
+      ..style.tapHighlightColor = splashColor?.rgba ?? 'auto'
+      ..style.textAlign = 'center';
 
     if (actions.isNotEmpty) {
       for (final action in actions) {

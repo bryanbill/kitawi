@@ -22,6 +22,7 @@ class FloatingActionButton extends Button {
       Dimensions? width,
       Dimensions? height,
       BorderRadius? borderRadius,
+      Color? splashColor = Colors.blue87,
       this.position,
       required List<Action> actions})
       : super(
@@ -32,7 +33,8 @@ class FloatingActionButton extends Button {
             width: width,
             height: height,
             borderRadius: borderRadius,
-            child: child);
+            child: child,
+            splashColor: splashColor);
 
   final Alignment? position;
 
@@ -40,6 +42,10 @@ class FloatingActionButton extends Button {
   Element createElement() {
     var element = super.createElement();
     element.style.position = 'fixed';
+    element.style.zIndex = '9999';
+
+    // add elevation
+    element.style.boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.2)';
 
     switch (position) {
       case Alignment.bottomCenter:

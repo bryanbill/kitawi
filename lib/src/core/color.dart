@@ -46,6 +46,11 @@ class Color {
     return Color.fromARGB((opacity * 255).round(), red, green, blue);
   }
 
+  /// Returns [Color] from the given hex string.
+  static Color fromHex(String hex) {
+    return Color(int.parse(hex.substring(1, 7), radix: 16) + 0xFF000000);
+  }
+
   /// Returns the color in the rgba format.
   String get rgba {
     return 'rgba($red, $green, $blue, ${alpha / 255})';

@@ -81,6 +81,19 @@ class Dimensions {
   /// * [Dimensions.toString], which returns a string representation of this object.
   static String valueOf(Dimensions? value) => value?._value ?? "auto";
 
+  /// Returns a percentage representation of this [Dimensions] object.
+  /// If the value is null, returns "100%".
+  ///
+  /// Example:
+  /// ```dart
+  /// Dimensions? width;
+  /// print(Dimensions.percentageOf(width)); // "100%" => width is null
+  ///
+  /// width = Dimensions.of(100);
+  /// print(Dimensions.percentageOf(width)); // "100%" => width is not null
+  /// ```
+  static Dimensions percentageOf(Object value) => Dimensions._("$value%");
+
   @override
   String toString() => _value;
 }
