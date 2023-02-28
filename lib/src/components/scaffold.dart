@@ -14,6 +14,7 @@ class Scaffold extends StatelessWidget {
   final Widget? footer;
   final Widget? drawer;
   final FloatingActionButton? floatingActionButton;
+  final Color? backgroundColor;
 
   Scaffold(
       {required this.body,
@@ -21,7 +22,8 @@ class Scaffold extends StatelessWidget {
       this.sidebar,
       this.footer,
       this.drawer,
-      this.floatingActionButton});
+      this.floatingActionButton,
+      this.backgroundColor});
 
   @override
   Widget build() {
@@ -32,7 +34,7 @@ class Scaffold extends StatelessWidget {
           minHeight: Dimensions.of(Size().height),
         ),
         decoration: Decoration(
-          color: Theme().mode == ThemeMode.light ? Colors.white : Colors.grey24,
+          color: backgroundColor,
         ),
         child: Row(
           children: [
