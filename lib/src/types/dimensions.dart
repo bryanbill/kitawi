@@ -114,3 +114,19 @@ class Dimensions {
 }
 
 enum Operator { minus, plus, times, divide }
+
+extension DimensionsUtils on Dimensions {
+  Dimensions operator +(Dimensions other) =>
+      Dimensions.calc(from: this, inset: other, operator: Operator.plus);
+  Dimensions operator -(Dimensions other) =>
+      Dimensions.calc(from: this, inset: other, operator: Operator.minus);
+  Dimensions operator *(Dimensions other) =>
+      Dimensions.calc(from: this, inset: other, operator: Operator.times);
+  Dimensions operator /(Dimensions other) =>
+      Dimensions.calc(from: this, inset: other, operator: Operator.divide);
+}
+
+extension NumberDimensions on num {
+  Dimensions get px => Dimensions.of(this);
+  Dimensions get percent => Dimensions.percentageOf(this);
+}
