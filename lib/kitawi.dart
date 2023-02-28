@@ -49,8 +49,7 @@ void render(Widget widget, Element? element) {
 /// The [VoidCallback] is called when the window is loaded and when the window
 /// is resized.
 void start(VoidCallback callback) {
-  print("Starting Kitawi...");
-  // The [VoidCallback] is called when the window is loaded.
+  ascii();
   Size().updateSize();
   Theme().updateMode();
   callback();
@@ -75,4 +74,14 @@ void start(VoidCallback callback) {
   });
 
   print("Kitawi up and running :)");
+}
+
+void ascii() {
+  print('''
+        ,                            
+/|   / o                   o  
+ |__/    _|_  __,             
+ | \\   |  |  /  |  |  |  |_|  
+ |  \\_/|_/|_/\\_/|_/ \\/ \\/  |_/
+        ''');
 }
