@@ -27,6 +27,7 @@ export 'package:kitawi/src/components/padding.dart';
 export 'package:kitawi/src/components/image.dart';
 export 'package:kitawi/src/components/sizedbox.dart';
 export 'package:kitawi/src/components/listview.dart';
+export 'package:kitawi/src/components/navbar.dart';
 
 // Themes
 export 'package:kitawi/src/themes/theme.dart';

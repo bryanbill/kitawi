@@ -20,9 +20,11 @@ class Text extends Widget {
   /// - [TextAlign.justify] - Aligns the text to the justify.
   /// - [TextAlign.start] - Aligns the text to the start.
   /// - [TextAlign.end] - Aligns the text to the end.
+  /// 
+  /// The default value is [TextAlign.left].
   final TextAlign? textAlign;
 
-  Text(this._text, {this.style, this.textAlign});
+  Text(this._text, {this.style, this.textAlign = TextAlign.left});
 
   /// The [createElement] method creates the [ParagraphElement] for the widget.
 
