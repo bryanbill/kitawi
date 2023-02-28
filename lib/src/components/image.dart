@@ -59,8 +59,9 @@ class Image extends Widget {
           ..style.backgroundColor = decoration?.color?.rgba ?? 'inherit'
           ..style.borderRadius =
               decoration?.borderRadius?.toString() ?? 'inherit'
-          ..style.border =
-              '${decoration?.border?.width ?? 0}px solid ${decoration?.border?.color?.rgba}'
+          ..style.borderWidth = '${decoration?.border?.side ?? 0}'
+          ..style.borderColor = decoration?.border?.color?.rgba ?? 'inherit'
+          ..style.borderStyle = decoration?.border?.type?.toString() ?? 'solid'
           ..style.boxShadow =
               decoration?.boxShadow?.map((e) => e.toString()).join(', ') ??
                   "inherit"
