@@ -40,14 +40,21 @@ class Scaffold extends StatelessWidget {
           children: [
             sidebar ??
                 Container(height: Dimensions.zero, width: Dimensions.zero),
-            Sizedbox(
+            SizedBox(
               height: Dimensions.full,
               width: Dimensions.full,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   navbar ?? Container(),
-                  body,
+                  navbar != null
+                      ? Container(
+                          margin: EdgeInsets.only(top: 64 + 32),
+                          width: Dimensions.full,
+                          height: Dimensions.calc(
+                              from: Dimensions.full, inset: 96.px),
+                          child: body)
+                      : body,
                   footer ?? Container(),
                   floatingActionButton ?? Container(),
                 ],
