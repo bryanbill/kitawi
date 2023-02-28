@@ -24,7 +24,7 @@ void main(List<String> args) async {
 
     final results = parser.parse(args);
     if (results.command == null) {
-      print('No command specified');
+      print(parser.usage);
       exit(1);
     } else {
       if (results.command?.name == 'create') {
