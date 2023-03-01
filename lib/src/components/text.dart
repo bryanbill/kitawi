@@ -1,6 +1,5 @@
 import 'dart:html';
-
-import 'package:kitawi/src/core/action.dart';
+import 'package:kitawi/src/basic.dart';
 import 'package:kitawi/src/core/text_style.dart';
 import 'package:kitawi/src/core/widget.dart';
 
@@ -20,11 +19,12 @@ class Text extends Widget {
   /// - [TextAlign.justify] - Aligns the text to the justify.
   /// - [TextAlign.start] - Aligns the text to the start.
   /// - [TextAlign.end] - Aligns the text to the end.
-  /// 
+  ///
   /// The default value is [TextAlign.left].
   final TextAlign? textAlign;
 
-  Text(this._text, {this.style, this.textAlign = TextAlign.left});
+  Text(this._text, {Key? key, this.style, this.textAlign = TextAlign.left})
+      : super(key: key);
 
   /// The [createElement] method creates the [ParagraphElement] for the widget.
 

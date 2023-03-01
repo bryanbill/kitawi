@@ -22,7 +22,7 @@ class FloatingActionButton extends Button {
       Dimensions? width,
       Dimensions? height,
       BorderRadius? borderRadius,
-      Color? splashColor = Colors.blue87,
+      Color? splashColor,
       this.position,
       required List<Action> actions})
       : super(

@@ -9,7 +9,7 @@ class SizedBox extends Widget {
   final Dimensions? width;
   final Dimensions? height;
   final Widget? child;
-  SizedBox({this.width, this.height, this.child});
+  SizedBox({Key? key, this.width, this.height, this.child}) : super(key: key);
 
   @override
   Element createElement() {
