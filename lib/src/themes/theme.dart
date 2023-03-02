@@ -32,8 +32,6 @@ class Theme {
     // set the prefers-color-scheme media query to the window
   }
 
-  void setColorScheme(e) {}
-
   void updateMode() {
     // whenever the theme changes, all text and background colors should be
     // updated based on the new theme.
