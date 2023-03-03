@@ -3,8 +3,8 @@ import 'dart:html';
 import 'package:kitawi/src/basic.dart';
 
 ///
-abstract class StatelessWidget extends Widget {
-  StatelessWidget({Key? key}) : super(key: key);
+abstract class Kitawi extends Widget {
+  Kitawi({Key? key}) : super(key: key);
 
   /// The [render] method creates the element for the widget.
   @override
