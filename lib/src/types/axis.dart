@@ -1,3 +1,4 @@
+/// Defines the direction in which a box flexes.
 class Axis {
   const Axis._(this._value);
   final int _value;
