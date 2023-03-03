@@ -44,6 +44,14 @@ class Text extends Widget {
   }
 }
 
+/// The TextAlign property aligns the text to the specified side in it's main axis
+///
+/// Example:
+/// ```dart
+/// Text(
+///  'Hello World',
+/// textAlign: TextAlign.center,
+/// )
 class TextAlign {
   final String value;
 

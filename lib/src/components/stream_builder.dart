@@ -21,7 +21,7 @@ import 'package:kitawi/src/types/async_snapshot.dart';
 /// StreamBuilder<String>(
 ///   stream: myStream,
 ///   builder: (data) => Text(data),
-///   loadingWidget: Text('Loading...'),
+///   intialData: myStream.value,
 ///   errorWidgetBuilder: (error) => Text('Error: $error'),
 /// )
 /// ```

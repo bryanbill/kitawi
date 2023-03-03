@@ -286,6 +286,11 @@ class BorderRadius {
     required this.bottomRight,
   });
 
+  /// The [BorderRadius.circular] constructor is used to set the same border radius for all corners
+  /// Example:
+  /// ```dart
+  /// BorderRadius.circular(10)
+  /// ```
   factory BorderRadius.circular(double radius) {
     return BorderRadius(
       topLeft: radius,
@@ -295,6 +300,11 @@ class BorderRadius {
     );
   }
 
+  /// The [BorderRadius.only] constructor is used to set the border radius for each corner
+  /// Example:
+  /// ```dart
+  /// BorderRadius.only(topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10)
+  /// ```
   factory BorderRadius.only({
     double topLeft = 0,
     double topRight = 0,
@@ -309,6 +319,11 @@ class BorderRadius {
     );
   }
 
+  /// The [BorderRadius.all] constructor is used to set the same border radius for all corners
+  /// Example:
+  /// ```dart
+  /// BorderRadius.all(10)
+  /// ```
   factory BorderRadius.all(double radius) {
     return BorderRadius.circular(radius);
   }
