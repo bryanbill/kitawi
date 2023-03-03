@@ -45,7 +45,7 @@ class Position {
   /// ```dart
   /// print(Position.sticky); // "sticky"
   /// ```
-  /// 
+  ///
   /// See also:
   /// * [Position.absolute], which returns a [Position] object with the value "absolute".
   /// * [Position.relative], which returns a [Position] object with the value "relative".
@@ -59,7 +59,7 @@ class Position {
   /// ```dart
   /// print(Position.static); // "static"
   /// ```
-  /// 
+  ///
   /// See also:
   /// * [Position.absolute], which returns a [Position] object with the value "absolute".
   /// * [Position.relative], which returns a [Position] object with the value "relative".
@@ -67,8 +67,6 @@ class Position {
   /// * [Position.toString], which returns a string representation of this object.
   /// * [Position.fixed], which returns a [Position] object with the value "fixed".
   static const Position static = Position._("static");
-
-  
 
   /// Returns a [String] representation of this [Position] object.
   /// If the value is null, returns "relative".
@@ -83,7 +81,6 @@ class Position {
   /// * [Position.relative], which returns a [Position] object with the value "relative".
   /// * [Position.valueOf], which returns a string representation of this object.
   String valueOf() => _value;
-
 
   /// Returns a [String] representation of this [Position] object.
   /// If the value is null, returns "relative".

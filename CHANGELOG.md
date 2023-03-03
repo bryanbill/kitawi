@@ -14,3 +14,9 @@
 - added other widget types such as Listviews, Scaffold, etc. See docs for more info
 - App can now be wrapped by StatelessWidget
 - Minor cli improvements
+
+## 0.0.4 (2023-03-03)
+
+- BREAKING: removed `stateless` and `stateful` widgets
+- adds a an example app
+- added more widgets e.g TextFields and Buttons
