@@ -1,7 +1,13 @@
 import 'dart:html';
 
+/// The accepted theme modes for the application
+///
+/// * `light` - The light theme is used when the user prefers light colors.
+/// * `dark` - The dark theme is used when the user prefers dark colors.
+/// * `system` - The system theme is used when the user prefers either light or dark colors.
 enum ThemeMode { light, dark, system }
 
+/// The `Theme` class is used to manage the theme of the application.
 class Theme {
   static late ThemeMode _mode;
 
@@ -26,6 +32,7 @@ class Theme {
     }
   }
 
+  /// Sets the theme mode.
   static set mode(ThemeMode value) {
     _mode = value;
 

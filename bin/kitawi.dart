@@ -80,6 +80,9 @@ Future<void> create(String name) async {
   // Wait for the create command to finish
   await create.exitCode;
 
+  // scaffold the app
+  scaffold(name);
+
   // Change directory to the newly created app
   Directory.current = name;
 
@@ -94,7 +97,7 @@ Future<void> create(String name) async {
 
   // Add kitawi: any as a dependency
   final updatedContents =
-      contents.replaceFirst('dependencies:', 'dependencies:\n  kitawi: ^0.0.3');
+      contents.replaceFirst('dependencies:', 'dependencies:\n  kitawi: ^0.0.4');
 
   // Write the updated contents to the pubspec.yaml file
   await pubspec.writeAsString(updatedContents);
@@ -136,4 +139,133 @@ Future<void> run(int port) async {
 
   // Wait for the webdev command to finish
   await webdev.exitCode;
+}
+
+/// This function is used to scaffold a new kitawi app.
+/// It takes the name of the app as an argument.
+void scaffold(String name) {
+  try {
+    // delete the index.html, style.css, and main.dart files in the <name>/web directory
+
+    final deleteResources = Directory('$name/web').listSync();
+
+    for (final file in deleteResources) {
+      file.deleteSync();
+    }
+
+    // create a new index.html file in the <name>/web directory
+    final index = File('$name/web/index.html');
+
+    // Write the contents of the index.html file
+    index.writeAsStringSync('''
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kitawi is a responsive UI framework for building modern web applications.">
+    <meta name="keywords" content="kitawi, ui framework, web development">
+    <title>$name</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="main.dart.js"></script>
+  </body>
+</html>
+''');
+
+// create new main.dart file in the <name>/web directory
+    final main = File('$name/web/main.dart');
+
+    // Write the contents of the main.dart file
+    main.writeAsStringSync('''
+import 'package:kitawi/kitawi.dart';
+
+/// This is the entry point of the app.
+void main() {
+
+  /// This is the root element of the app.
+  /// [run] takes id of the root element as an argument.
+  /// The default id is 'root'.
+  start(
+    () => run(MyApp(), id: 'output'),
+  );
+}
+
+class Clock {
+  final int? hour;
+  final int? minute;
+  final int? second;
+
+  Clock({this.hour, this.minute, this.second});
+
+  @override
+  String toString() {
+    return '\$hour:\$minute:\$second';
+  }
+}
+
+/// This is the main widget of the app.
+class MyApp extends Kitawi {
+
+  /// This is a stream of [Clock] objects.
+  /// It is used to update the time every second.
+  Stream<Clock> clock() async* {
+    int hour = 0;
+    int minute = 0;
+    int second = 0;
+    while (true) {
+      await Future.delayed(Duration(seconds: 1));
+
+      if (second - 1 == 60) {
+        second = 0;
+        minute++;
+      }
+
+      if (minute - 1 == 60) {
+        minute = 0;
+        hour++;
+      }
+
+      if (hour - 1 == 24) {
+        hour = 0;
+      }
+      yield Clock(hour: hour, minute: minute, second: second++);
+    }
+  }
+
+/// This is the build method of the app.
+/// It returns a [Scaffold] widget.
+  @override
+  Widget build() {
+    return Scaffold(
+      body: Container(
+        height: 100.percent,
+        width: 100.percent,
+        alignment: Alignment.center,
+        decoration: Decoration(
+          color: Theme.mode == ThemeMode.dark ? Colors.white : Colors.black,
+        ),
+        child: StreamBuilder<Clock>(
+          stream: clock(),
+          initialData: Clock(hour: 0, minute: 0, second: 0),
+          builder: (snapshot) {
+            return Text(
+              snapshot.data.toString(),
+              style: TextStyle(fontSize: 30),
+            );
+          },
+          errorWidgetBuilder: (error) => Text(
+            error.toString(),
+            style: TextStyle(fontSize: 30, color: Colors.red),
+          ),
+        ),
+      ),
+    );
+  }
+}
+''');
+  } catch (e) {
+    print(e.toString());
+  }
 }

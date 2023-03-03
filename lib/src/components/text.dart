@@ -1,7 +1,5 @@
 import 'dart:html';
 import 'package:kitawi/src/basic.dart';
-import 'package:kitawi/src/core/text_style.dart';
-import 'package:kitawi/src/core/widget.dart';
 
 /// The [Text] class is a widget that displays a single line of text.
 class Text extends Widget {
@@ -44,6 +42,14 @@ class Text extends Widget {
   }
 }
 
+/// The TextAlign property aligns the text to the specified side in it's main axis
+///
+/// Example:
+/// ```dart
+/// Text(
+///  'Hello World',
+/// textAlign: TextAlign.center,
+/// )
 class TextAlign {
   final String value;
 

@@ -19,8 +19,20 @@ export 'package:kitawi/src/components/container.dart';
 /// }
 /// ```
 void run(Widget widget, {String? id}) {
+  // the overrides below are compulsory
+  document.documentElement?.style.height = '100%';
+  document.body?.style.height = '100%';
+  document.body?.style.padding = '0';
+  document.body?.style.margin = '0';
+  document.body?.style.boxSizing = 'border-box';
+
   render(
-      widget, document.getElementById(id ?? 'output')?..style.height = '100%');
+    widget,
+    document.getElementById(id ?? 'root')
+      ?..style.height = '100%'
+      ..style.padding = '0'
+      ..style.margin = '0',
+  );
 }
 
 /// The render function takes a [Widget] and a [Element] as arguments and

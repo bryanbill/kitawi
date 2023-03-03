@@ -10,7 +10,7 @@ class Navbar extends Widget {
   final Widget? title;
 
   /// The [automaticallyImplyLeading] parameter is optional and specifies whether the navigation bar should automatically imply the leading widget.
-  /// The default value is [false].
+  /// The default value is false.
   final bool? automaticallyImplyLeading;
 
   /// The [leading] parameter is optional and specifies the leading widget of the navigation bar.

@@ -7,7 +7,7 @@ import 'package:kitawi/src/basic.dart';
 /// It consists of a [navbar], [body], [sidebar], [footer], [drawer] and
 /// [floatingActionButton].
 /// The [Scaffold] class is a [Widget] class.
-class Scaffold extends StatelessWidget {
+class Scaffold extends Kitawi {
   final Widget body;
   final Widget? navbar;
   final Widget? sidebar;
