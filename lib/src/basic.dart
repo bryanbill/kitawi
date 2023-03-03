@@ -33,9 +33,8 @@ export 'package:kitawi/src/components/navbar.dart';
 export 'package:kitawi/src/themes/theme.dart';
 
 // State
-export 'package:kitawi/src/state/stateful_widget.dart';
 export 'package:kitawi/src/state/value_stream.dart';
-export 'package:kitawi/src/state/stateless_widget.dart';
+export 'package:kitawi/src/state/kitawi_widget.dart';
 
 // size
 export 'package:kitawi/src/types/dimensions.dart';
