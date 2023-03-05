@@ -74,9 +74,11 @@ void start(VoidCallback callback) {
   /// The [VoidCallback] is called when the window is resized.
   window.onResize.listen((event) {
     Size().updateSize();
-    // callback(); => uncomment this line if you want the callback to be called
-    // when the window is resized. This is not recommended because it can cause
-    // unwanted re-renders.
+
+    // this will cause re-rendering of the entire app
+    // to avoid this, we'll temporarily use global variables
+    // to store the state of the app
+    callback();
   });
 
   final scheme = window.matchMedia('(prefers-color-scheme: dark)');
