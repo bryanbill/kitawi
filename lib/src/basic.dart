@@ -35,3 +35,5 @@ export 'package:kitawi/src/types/axis.dart';
 export 'package:kitawi/src/types/position.dart';
 export 'package:kitawi/src/utils/seo.dart';
 export 'package:kitawi/src/utils/fetch.dart';
+export 'package:kitawi/src/components/circular_progress_indicator.dart';
+export 'package:kitawi/src/components/animations/bouncing_dot.dart';
