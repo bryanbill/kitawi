@@ -60,7 +60,10 @@ void render(Widget widget, Element? element) {
 ///
 /// The [VoidCallback] is called when the window is loaded and when the window
 /// is resized.
-void start(VoidCallback callback) {
+///
+/// The [updateOnResize] argument is optional. It is used to determine whether
+/// the [VoidCallback] should be called when the window is resized.
+void start(VoidCallback callback, {bool? updateOnResize = false}) {
   ascii();
   Size().updateSize();
   Theme().updateMode();
@@ -75,10 +78,13 @@ void start(VoidCallback callback) {
   window.onResize.listen((event) {
     Size().updateSize();
 
-    // this will cause re-rendering of the entire app
-    // to avoid this, we'll temporarily use global variables
-    // to store the state of the app
-    callback();
+    // the callback is called when the window is resized
+    // this produces a consistent responsive design
+    // without refreshing the page. However, it is
+    // not recommended to use this callback for
+    // heavy computations as it causes re-rendering
+    // of the entire page.
+    updateOnResize! ? callback() : null;
   });
 
   final scheme = window.matchMedia('(prefers-color-scheme: dark)');
