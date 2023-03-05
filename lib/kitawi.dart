@@ -60,21 +60,27 @@ void render(Widget widget, Element? element) {
 ///
 /// The [VoidCallback] is called when the window is loaded and when the window
 /// is resized.
-void start(VoidCallback callback) {
+///
+/// The [updateOnResize] argument is optional. It is used to determine whether
+/// the [VoidCallback] should be called when the window is resized.
+void start(VoidCallback callback, {bool? updateOnResize = false}) {
   ascii();
   Size().updateSize();
   Theme().updateMode();
   callback();
 
-  window.addEventListener('load', (event) {
-    // Your code here will execute after all resources are loaded
-    window.alert('All resources finished loading!');
-  });
 
   /// The [VoidCallback] is called when the window is resized.
   window.onResize.listen((event) {
     Size().updateSize();
-    callback();
+
+    // the callback is called when the window is resized
+    // this produces a consistent responsive design
+    // without refreshing the page. However, it is
+    // not recommended to use this callback for
+    // heavy computations as it causes re-rendering
+    // of the entire page.
+    updateOnResize! ? callback() : null;
   });
 
   final scheme = window.matchMedia('(prefers-color-scheme: dark)');
@@ -90,10 +96,10 @@ void start(VoidCallback callback) {
 
 void ascii() {
   print('''
-        ,                            
-/|   / o                   o  
- |__/    _|_  __,             
- | \\   |  |  /  |  |  |  |_|  
+        ,
+/|   / o                   o
+ |__/    _|_  __,
+ | \\   |  |  /  |  |  |  |_|
  |  \\_/|_/|_/\\_/|_/ \\/ \\/  |_/
         ''');
 }

@@ -11,8 +11,6 @@ export 'package:kitawi/src/core/action.dart';
 export 'package:kitawi/src/core/media_query.dart';
 export 'package:kitawi/src/core/edge_insets.dart';
 export 'package:kitawi/src/core/key.dart';
-
-// Components
 export 'package:kitawi/src/components/column.dart';
 export 'package:kitawi/src/components/row.dart';
 export 'package:kitawi/src/components/future_builder.dart';
@@ -29,17 +27,13 @@ export 'package:kitawi/src/components/sizedbox.dart';
 export 'package:kitawi/src/components/listview.dart';
 export 'package:kitawi/src/components/navbar.dart';
 export 'package:kitawi/src/components/textfields/text_field.dart';
-
-// Themes
 export 'package:kitawi/src/themes/theme.dart';
-
-// State
 export 'package:kitawi/src/state/value_stream.dart';
 export 'package:kitawi/src/state/kitawi_widget.dart';
-
-// size
 export 'package:kitawi/src/types/dimensions.dart';
-
-// types
 export 'package:kitawi/src/types/axis.dart';
 export 'package:kitawi/src/types/position.dart';
+export 'package:kitawi/src/utils/seo.dart';
+export 'package:kitawi/src/utils/fetch.dart';
+export 'package:kitawi/src/components/circular_progress_indicator.dart';
+export 'package:kitawi/src/components/animations/bouncing_dot.dart';
