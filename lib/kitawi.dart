@@ -69,10 +69,6 @@ void start(VoidCallback callback, {bool? updateOnResize = false}) {
   Theme().updateMode();
   callback();
 
-  window.addEventListener('load', (event) {
-    // Your code here will execute after all resources are loaded
-    window.alert('All resources finished loading!');
-  });
 
   /// The [VoidCallback] is called when the window is resized.
   window.onResize.listen((event) {
