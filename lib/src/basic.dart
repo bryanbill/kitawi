@@ -34,3 +34,4 @@ export 'package:kitawi/src/types/dimensions.dart';
 export 'package:kitawi/src/types/axis.dart';
 export 'package:kitawi/src/types/position.dart';
 export 'package:kitawi/src/utils/seo.dart';
+export 'package:kitawi/src/utils/fetch.dart';
