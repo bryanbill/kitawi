@@ -102,7 +102,7 @@ class Dimensions {
   /// Example:
   /// ```dart
   /// Dimensions? width;
-  /// print(Dimensions.percentageOf(width)); // "100%" => width is null
+  /// print(Dimensions.percentageOf(width)); // "null" => width is null
   ///
   /// width = Dimensions.of(100);
   /// print(Dimensions.percentageOf(width)); // "100%" => width is not null
