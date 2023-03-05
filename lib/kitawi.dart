@@ -96,10 +96,10 @@ void start(VoidCallback callback, {bool? updateOnResize = false}) {
 
 void ascii() {
   print('''
-        ,                            
-/|   / o                   o  
- |__/    _|_  __,             
- | \\   |  |  /  |  |  |  |_|  
+        ,
+/|   / o                   o
+ |__/    _|_  __,
+ | \\   |  |  /  |  |  |  |_|
  |  \\_/|_/|_/\\_/|_/ \\/ \\/  |_/
         ''');
 }
