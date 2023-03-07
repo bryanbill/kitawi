@@ -1,6 +1,6 @@
 import 'dart:html';
-
 import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/src/types/flavour.dart';
 
 export 'package:kitawi/src/basic.dart';
 export 'package:kitawi/src/components/container.dart';
@@ -63,12 +63,13 @@ void render(Widget widget, Element? element) {
 ///
 /// The [updateOnResize] argument is optional. It is used to determine whether
 /// the [VoidCallback] should be called when the window is resized.
-void start(VoidCallback callback, {bool? updateOnResize = false}) {
+void start(VoidCallback callback,
+    {bool? updateOnResize = false, Flavour? flavour = Flavour.dev}) {
+  if (flavour == Flavour.prod) {}
   ascii();
   Size().updateSize();
   Theme().updateMode();
   callback();
-
 
   /// The [VoidCallback] is called when the window is resized.
   window.onResize.listen((event) {
