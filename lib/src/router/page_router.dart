@@ -2,21 +2,37 @@ import 'dart:html';
 
 import 'package:kitawi/kitawi.dart';
 
+/// The [Router] class is used to navigate between routes.
+///
+/// The following methods are available:
+/// - [init] - Initializes the router with a `builder` function to render the default route.
+/// - [pushNamed] - Navigates to a named `route` using the given `builder` function to render it.
+/// - [push] - Navigates to a `route` using the given `builder` function to render it.
+/// - [pop] - Pops the current route and navigates to the previous route.
+/// - [popUntil] - Pops all routes until the `route` is reached, and renders it.
 class Router {
   static final Map<String, Widget Function()> _routes = {};
-
   static String? root = document.body?.children.first.id;
 
+  /// Initializes the router with a [builder] function to render the default route.
   static void init(Widget Function() builder) {
     _routes['/'] = builder;
   }
 
-  static void pushNamed(String route, Widget Function() builder,
-      {bool replace = false, bool clean = false, dynamic arguments}) {
+  /// Navigates to a named [route] using the given [builder] function to render it.
+  /// If [replace] is `true`, replaces the current route with the new route.
+  /// If [clean] is `true`, clears all routes and sets the new route as the default.
+  static void pushNamed({
+    required String route,
+    required Widget Function() builder,
+    bool replace = false,
+    bool clean = false,
+    dynamic arguments,
+  }) {
     assert(!(clean && replace),
         'clean and replace cannot be true at the same time');
 
-    injectBuilder(Widget Function() builder) {
+    void renderWidget(Widget Function() builder) {
       final container = document.getElementById(root!);
       container?.children.clear();
       container?.children.add(builder().render());
@@ -27,7 +43,7 @@ class Router {
       for (var key in _routes.keys) {
         if (key == route) {
           _routes[key] = builder;
-          injectBuilder(builder);
+          renderWidget(builder);
           return;
         }
       }
@@ -36,16 +52,16 @@ class Router {
     if (clean) {
       _routes.clear();
       _routes[route] = builder;
-      injectBuilder(builder);
+      renderWidget(builder);
       return;
     }
 
     _routes[route] = builder;
-    injectBuilder(builder);
+    renderWidget(builder);
   }
 
+  /// Removes the current route from the stack and navigates to the previous route.
   static void pop() {
-    //remove the last route
     _routes.remove(_routes.keys.last);
 
     var widget = _routes[_routes.keys.last];
@@ -54,6 +70,7 @@ class Router {
     document.getElementById(root!)?.children.add(widget!().render());
   }
 
+  /// Removes all routes from the stack until the [route] is reached, and renders it.
   static void popUntil(String route) {
     for (var key in _routes.keys) {
       if (key == route) {
@@ -64,6 +81,7 @@ class Router {
     }
   }
 
+  /// Navigates to a new route using the given [builder] function.
   static void push(Widget Function() builder) {
     _routes['/${_routes.length}'] = builder;
 
