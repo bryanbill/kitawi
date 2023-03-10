@@ -26,6 +26,7 @@ void run(Widget widget, {String? id}) {
   document.body?.style.margin = '0';
   document.body?.style.boxSizing = 'border-box';
 
+  // Initialize the router
   Router.init(() => widget);
 
   render(

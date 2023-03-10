@@ -48,7 +48,7 @@ class Navbar extends Widget {
       this.leading,
       this.actions,
       this.elevation = 1.0,
-      this.position = Position.fixed,
+      this.position = Position.relative,
       this.backgroundColor,
       this.shadowColor = Colors.grey});
 
