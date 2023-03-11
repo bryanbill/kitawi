@@ -12,11 +12,17 @@ import 'package:kitawi/kitawi.dart';
 /// - [popUntil] - Pops all routes until the `route` is reached, and renders it.
 class Router {
   static final Map<String, Widget Function()> _routes = {};
-  static String? root = document.body?.children.first.id;
+  static Element? root;
 
   /// Initializes the router with a [builder] function to render the default route.
-  static void init(Widget Function() builder) {
-    _routes['/'] = builder;
+  static void init(Widget Function() builder, Element? root) {
+    Router.root = root;
+    if (_routes.isEmpty) {
+      _routes['/'] = builder;
+      root?.children.add(builder().render());
+    } else {
+      root?.children.add(_routes[_routes.keys.last]!().render());
+    }
   }
 
   /// Navigates to a named [route] using the given [builder] function to render it.
@@ -33,7 +39,7 @@ class Router {
         'clean and replace cannot be true at the same time');
 
     void renderWidget(Widget Function() builder) {
-      final container = document.getElementById(root!);
+      final container = root;
       container?.children.clear();
       container?.children.add(builder().render());
     }
@@ -66,16 +72,16 @@ class Router {
 
     var widget = _routes[_routes.keys.last];
 
-    document.getElementById(root!)?.children.clear();
-    document.getElementById(root!)?.children.add(widget!().render());
+    root?.children.clear();
+    root?.children.add(widget!().render());
   }
 
   /// Removes all routes from the stack until the [route] is reached, and renders it.
   static void popUntil(String route) {
     for (var key in _routes.keys) {
       if (key == route) {
-        document.getElementById(root!)?.children.clear();
-        document.getElementById(root!)?.children.add(_routes[key]!().render());
+        root?.children.clear();
+        root?.children.add(_routes[key]!().render());
         return;
       }
     }
@@ -85,7 +91,7 @@ class Router {
   static void push(Widget Function() builder) {
     _routes['/${_routes.length}'] = builder;
 
-    final container = document.getElementById(root!);
+    final container = root;
 
     container?.children.clear();
 

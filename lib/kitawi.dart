@@ -26,16 +26,13 @@ void run(Widget widget, {String? id}) {
   document.body?.style.margin = '0';
   document.body?.style.boxSizing = 'border-box';
 
-  // Initialize the router
-  Router.init(() => widget);
+  var root = document.getElementById(id ?? 'root')
+    ?..style.height = '100%'
+    ..style.padding = '0'
+    ..style.margin = '0';
 
-  render(
-    widget,
-    document.getElementById(id ?? 'root')
-      ?..style.height = '100%'
-      ..style.padding = '0'
-      ..style.margin = '0',
-  );
+  // Initialize the router
+  Router.init(() => widget, root);
 }
 
 /// The render function takes a [Widget] and a [Element] as arguments and
