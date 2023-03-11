@@ -333,3 +333,90 @@ class BorderRadius {
     return '${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px';
   }
 }
+
+class Gradient {
+  final List<Color> colors;
+  final List<double>? stops;
+  final GradientType? type;
+
+  Gradient({
+    required this.colors,
+    this.stops,
+    this.type = GradientType.linear,
+  });
+
+  @override
+  String toString() {
+    if (type == GradientType.linear) {
+      return 'linear-gradient(${colors.map((e) => e.rgba.toString()).join(', ')})';
+    }
+    if (type == GradientType.radial) {
+      return 'radial-gradient(${colors.map((e) => e.toString()).join(', ')})';
+    }
+    if (type == GradientType.sweep) {
+      return 'sweep-gradient(${colors.map((e) => e.toString()).join(', ')})';
+    }
+    if (type == GradientType.conic) {
+      return 'conic-gradient(${colors.map((e) => e.toString()).join(', ')})';
+    }
+    if (type == GradientType.image) {
+      return 'image-gradient(${colors.map((e) => e.toString()).join(', ')})';
+    }
+    if (type == GradientType.repeatingLinear) {
+      return 'repeating-linear-gradient(${colors.map((e) => e.toString()).join(', ')})';
+    }
+    if (type == GradientType.repeatingRadial) {
+      return 'repeating-radial-gradient(${colors.map((e) => e.toString()).join(', ')})';
+    }
+    if (type == GradientType.repeatingSweep) {
+      return 'repeating-sweep-gradient(${colors.map((e) => e.toString()).join(', ')})';
+    }
+    return '';
+  }
+}
+
+/// The [GradientType] class is used to set the gradient type of a widget
+/// It has the following values:
+/// - linear : The linear value sets the gradient type to linear
+/// - radial : The radial value sets the gradient type to radial
+/// - sweep : The sweep value sets the gradient type to sweep
+/// - conic : The conic value sets the gradient type to conic
+/// - image : The image value sets the gradient type to image
+/// - repeatingLinear : The repeatingLinear value sets the gradient type to repeatingLinear
+/// - repeatingRadial : The repeatingRadial value sets the gradient type to repeatingRadial
+/// - repeatingSweep : The repeatingSweep value sets the gradient type to repeatingSweep
+
+class GradientType {
+  final String _value;
+
+  const GradientType._(this._value);
+
+  /// The linear value sets the gradient type to linear
+  static const GradientType linear = GradientType._('linear');
+
+  /// The radial value sets the gradient type to radial
+  static const GradientType radial = GradientType._('radial');
+
+  /// The sweep value sets the gradient type to sweep
+  static const GradientType sweep = GradientType._('sweep');
+
+  /// The conic value sets the gradient type to conic
+  static const GradientType conic = GradientType._('conic');
+
+  /// The image value sets the gradient type to image
+  static const GradientType image = GradientType._('image');
+
+  /// The repeatingLinear value sets the gradient type to repeatingLinear
+  static const GradientType repeatingLinear =
+      GradientType._('repeating-linear');
+
+  /// The repeatingRadial value sets the gradient type to repeatingRadial
+  static const GradientType repeatingRadial =
+      GradientType._('repeating-radial');
+
+  /// The repeatingSweep value sets the gradient type to repeatingSweep
+  static const GradientType repeatingSweep = GradientType._('repeating-sweep');
+
+  @override
+  String toString() => _value;
+}

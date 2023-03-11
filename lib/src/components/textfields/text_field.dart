@@ -1,4 +1,5 @@
 import 'dart:html';
+import 'dart:math';
 
 import 'package:kitawi/src/basic.dart';
 import 'package:kitawi/src/state/change_notifier.dart';
@@ -35,18 +36,16 @@ class TextField extends Widget {
   @override
   Element createElement() {
     var input = InputElement()
-      ..id = key?.value ?? ''
-      ..style.width = '100%'
       ..style.height = '100%'
-      ..style.padding = decoration?.contentPadding?.toString() ?? 'auto'
-      ..style.backgroundColor = decoration?.fillColor?.rgba ?? 'auto'
-      ..style.borderRadius = decoration?.borderRadius?.toString() ?? 'inherit'
-      ..style.borderColor = decoration?.border?.color?.rgba ?? 'auto'
-      ..style.borderWidth = decoration?.border?.side != null
-          ? '${decoration?.border?.side}'
-          : 'auto'
-      ..style.borderStyle =
-          decoration?.border?.type?.toString().split(".").last ?? 'auto';
+      ..style.width = '100%'
+      ..style.border = 'none'
+      ..style.outline = 'none'
+      ..style.padding = '0'
+      ..style.margin = '0'
+      ..style.backgroundColor = 'transparent'
+      ..style.tapHighlightColor = 'transparent'
+      ..style.flex = '1'
+      ..style;
 
     if (controller != null) {
       input.value = controller!.text;
@@ -106,7 +105,41 @@ class TextField extends Widget {
 
     input.placeholder = decoration?.hintText ?? '';
 
-    return input;
+    var wrapperDiv = DivElement()
+      ..id = key?.value ?? Random.secure().toString()
+      ..style.height = '100%'
+      ..style.width = '100%'
+      ..style.display = 'flex'
+      ..style.alignItems = 'center'
+      ..style.padding = decoration?.contentPadding?.toString() ?? '5px'
+      ..style.backgroundColor = decoration?.fillColor?.rgba ?? 'auto'
+      ..style.borderRadius = decoration?.borderRadius?.toString() ?? 'inherit'
+      ..style.borderColor = decoration?.border?.color?.rgba ?? 'auto'
+      ..style.borderWidth = decoration?.border?.side != null
+          ? '${decoration?.border?.side}'
+          : 'auto'
+      ..style.borderStyle =
+          decoration?.border?.type?.toString().split(".").last ?? 'auto';
+
+    var prefix = SpanElement()
+      ..style.marginRight = '10px'
+      ..style.display = 'flex'
+      ..style.alignItems = 'center'
+      ..append(decoration?.prefixIcon?.createElement() ?? DivElement());
+
+    var suffix = SpanElement()
+      ..style.marginLeft = '10px'
+      ..style.display = 'flex'
+      ..style.alignItems = 'center'
+      ..append(decoration?.suffixIcon?.createElement() ?? DivElement());
+
+    wrapperDiv.children = [
+      decoration?.prefixIcon != null ? prefix : DivElement(),
+      input,
+      decoration?.suffixIcon != null ? suffix : DivElement(),
+    ];
+
+    return wrapperDiv;
   }
 }
 

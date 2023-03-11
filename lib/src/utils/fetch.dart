@@ -112,7 +112,6 @@ class Fetch {
 
   /// The [delete] method makes a DELETE request to the specified [url].
   /// The [headers] argument is optional. It is used to add headers to the request.
-  /// The [context] argument is optional. It is used to add a security context to the request.
   /// ```dart
   /// import 'package:kitawi/kitawi.dart';
   /// void main() async{
@@ -143,7 +142,6 @@ class Fetch {
   /// It takes a [body] argument which is the data to be sent to the server.
   /// The [body] argument is optional.
   /// The [headers] argument is optional. It is used to add headers to the request.
-  /// The [context] argument is optional. It is used to add a security context to the request.
   /// ```dart
   /// import 'package:kitawi/kitawi.dart';
   ///
@@ -174,7 +172,6 @@ class Fetch {
 
   /// The [head] method makes a HEAD request to the specified [url].
   /// The [headers] argument is optional. It is used to add headers to the request.
-  /// The [context] argument is optional. It is used to add a security context to the request.
   ///
   /// ```dart
   /// import 'package:kitawi/kitawi.dart';
@@ -213,12 +210,19 @@ class Headers {
   Headers(this.name, this.value, {this.preserveCase = false});
 }
 
-class Response {
+class Response<T> {
   final Map<String, dynamic>? headers;
   final dynamic body;
   final int? statusCode;
 
   Response({this.headers, this.body, this.statusCode});
 
-  dynamic get json => jsonDecode(body as String);
+  T? get json {
+    try {
+      return jsonDecode(body as String) as T;
+    } catch (e) {
+      print(e);
+      return null;
+    }
+  }
 }

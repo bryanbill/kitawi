@@ -17,8 +17,7 @@ class SizedBox extends Widget {
       width: width,
       height: height,
       constraints: BoxConstraints(
-        minWidth: width,
-        minHeight: height,
+
         maxHeight: height,
         maxWidth: width,
       ),

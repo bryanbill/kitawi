@@ -16,6 +16,7 @@ class Container extends Widget {
   final Decoration? decoration;
   final Alignment? alignment;
   final BoxConstraints? constraints;
+  final Gradient? gradient;
 
   Container({
     Key? key,
@@ -27,30 +28,25 @@ class Container extends Widget {
     this.decoration,
     this.alignment,
     this.constraints,
+    this.gradient,
   }) : super(key: key);
 
   @override
   Element createElement() {
     final div = DivElement()
       ..id = key?.value ?? ''
-      ..style.maxHeight =
-          constraints?.maxHeight != null ? '${constraints?.maxHeight}' : 'auto'
-      ..style.maxWidth =
-          constraints?.maxWidth != null ? '${constraints?.maxWidth}' : 'auto'
-      ..style.minHeight =
-          constraints?.minHeight != null ? '${constraints?.minHeight}' : 'auto'
-      ..style.minWidth =
-          constraints?.minWidth != null ? '${constraints?.minWidth}' : 'auto'
-      ..style.padding = padding?.toString() ?? 'auto'
-      ..style.margin = margin?.toString() ?? 'auto'
-      ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
-      ..style.borderRadius = decoration?.borderRadius?.toString() ?? 'inherit'
-      ..style.borderColor = decoration?.border?.color?.rgba ?? 'auto'
-      ..style.borderWidth = decoration?.border?.side != null
-          ? '${decoration?.border?.side}'
-          : 'auto'
-      ..style.borderStyle =
-          decoration?.border?.type?.toString().split(".").last ?? 'auto'
+      ..style.maxHeight = '${constraints?.maxHeight}'
+      ..style.maxWidth = '${constraints?.maxWidth}'
+      ..style.minHeight = '${constraints?.minHeight}'
+      ..style.minWidth = '${constraints?.minWidth}'
+      ..style.padding = padding?.toString()
+      ..style.margin = margin?.toString()
+      ..style.backgroundColor = decoration?.color?.rgba
+      ..style.background = gradient?.toString()
+      ..style.borderRadius = decoration?.borderRadius?.toString() ?? '0'
+      ..style.borderColor = decoration?.border?.color?.rgba
+      ..style.borderWidth = '${decoration?.border?.side}'
+      ..style.borderStyle = decoration?.border?.type?.toString().split(".").last
       ..style.boxShadow =
           decoration?.boxShadow?.map((e) => e.toString()).join(', ') ?? "auto"
       ..style.display = 'flex'
@@ -63,15 +59,13 @@ class Container extends Widget {
       var paddingRight = padding?.right ?? 0;
       var paddingTop = padding?.top ?? 0;
       var paddingBottom = padding?.bottom ?? 0;
-      div.style.width = width != null
-          ? '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}'
-          : 'auto';
-      div.style.height = height != null
-          ? '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingTop + paddingBottom))}'
-          : 'auto';
+      div.style.width =
+          '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}';
+      div.style.height =
+          '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingTop + paddingBottom))}';
     } else {
-      div.style.width = width != null ? '$width' : 'auto';
-      div.style.height = height != null ? '$height' : 'auto';
+      div.style.width = width.toString();
+      div.style.height = height.toString();
     }
     return div;
   }

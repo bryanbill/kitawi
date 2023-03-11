@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 ///
 abstract class Kitawi extends Widget {
@@ -9,7 +9,12 @@ abstract class Kitawi extends Widget {
   /// The [render] method creates the element for the widget.
   @override
   Element render() {
-    return build().render();
+    return StreamBuilder<Size?>(
+        initialData: windowSize.value,
+        stream: windowSize.stream,
+        errorWidgetBuilder: (error) =>
+            ErrorWidget(message: "Resize Error", details: error),
+        builder: (snap) => build()).render();
   }
 
   /// The [build] method creates the element for the widget.

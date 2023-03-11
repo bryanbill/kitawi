@@ -85,6 +85,7 @@ class StreamBuilder<T> extends Widget {
     _subscription = stream.listen(
       (data) {
         container.children.clear();
+
         container.children.add(builder(AsynSnapshot(
           data: data,
           error: null,
@@ -100,7 +101,12 @@ class StreamBuilder<T> extends Widget {
       },
     );
 
-    return container;
+    return container
+      ..style.height = '100%'
+      ..style.width = '100%'
+      ..style.display = 'flex'
+      ..style.justifyContent = 'center'
+      ..style.alignItems = 'center';
   }
 
   /// Cancels the subscription to the stream when the widget is removed from the
