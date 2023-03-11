@@ -47,14 +47,7 @@ class Scaffold extends Kitawi {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   navbar ?? Container(),
-                  navbar != null
-                      ? Container(
-                          margin: EdgeInsets.only(top: 64 + 32),
-                          width: Dimensions.full,
-                          height: Dimensions.calc(
-                              from: Dimensions.full, inset: 96.px),
-                          child: body)
-                      : body,
+                  body,
                   footer ?? Container(),
                   floatingActionButton ?? Container(),
                 ],
