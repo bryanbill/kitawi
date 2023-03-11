@@ -39,4 +39,5 @@ export 'package:kitawi/src/components/circular_progress_indicator.dart';
 export 'package:kitawi/src/components/animations/bouncing_dot.dart';
 export 'package:kitawi/src/components/card.dart';
 export 'package:kitawi/src/components/pageview.dart';
-export 'package:kitawi/src/router/page_router.dart';
+export 'package:kitawi/src/router/router.dart';
+export 'package:kitawi/src/components/error_widget.dart';
