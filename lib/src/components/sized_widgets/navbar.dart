@@ -55,7 +55,7 @@ class Navbar extends Widget {
   @override
   Element createElement() {
     final elev = elevation! * 10;
-    return DivElement()
+    return Element.tag("nav")
       ..style.backgroundColor = backgroundColor?.rgba
       ..style.padding = '16px'
       ..style.display = 'flex'
@@ -70,10 +70,14 @@ class Navbar extends Widget {
       ..style.zIndex = '999'
       ..style.boxShadow = '0px 0px ${elev}px 0px ${shadowColor?.rgba}'
       ..children = [
-        SizedBox(width: Dimensions.percentageOf(30), child: leading)
+        SizedBox(
+                height: 100.percent,
+                width: Dimensions.percentageOf(30),
+                child: leading)
             .createElement(),
         Expanded(child: title ?? SizedBox()).createElement(),
         SizedBox(
+          height: 100.percent,
           width: Dimensions.percentageOf(30),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
