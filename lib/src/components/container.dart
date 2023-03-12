@@ -33,6 +33,8 @@ class Container extends Widget {
 
   @override
   Element createElement() {
+    
+
     final div = DivElement()
       ..id = key?.value ?? ''
       ..style.maxHeight = '${constraints?.maxHeight}'
@@ -42,7 +44,6 @@ class Container extends Widget {
       ..style.padding = padding?.toString()
       ..style.margin = margin?.toString()
       ..style.backgroundColor = decoration?.color?.rgba
-      ..style.background = gradient?.toString()
       ..style.borderRadius = decoration?.borderRadius?.toString() ?? '0'
       ..style.borderColor = decoration?.border?.color?.rgba
       ..style.borderWidth = '${decoration?.border?.side}'
