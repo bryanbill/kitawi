@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'package:kitawi/src/basic.dart';
-import 'package:kitawi/src/types/flavour.dart';
+import 'package:kitawi/src/core/flavour.dart';
 
 export 'package:kitawi/src/basic.dart';
 export 'package:kitawi/src/components/container.dart';
@@ -30,7 +30,8 @@ void run(List<Route> routes, {String? id}) {
     ?..style.height = '100%'
     ..style.padding = '0'
     ..style.margin = '0';
-
+  Size().updateSize();
+  Theme().updateMode();
   // Initialize the router
   Router.init(root: root, routes: routes);
 }

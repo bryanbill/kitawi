@@ -1,8 +1,6 @@
 import 'package:kitawi/src/basic.dart';
 import 'dart:html' as html;
 
-import 'package:kitawi/src/types/async_snapshot.dart';
-
 /// A widget that asynchronously builds itself based on the result of a future.
 ///
 /// When a `FutureBuilder` is created, it takes a `Future` and a `builder`

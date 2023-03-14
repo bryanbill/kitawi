@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:kitawi/src/basic.dart';
 import 'dart:html' as html;
 
-import 'package:kitawi/src/types/async_snapshot.dart';
-
 /// A widget that asynchronously builds itself based on the events of a stream.
 ///
 /// When a `StreamBuilder` is created, it takes a `Stream` and a `builder`

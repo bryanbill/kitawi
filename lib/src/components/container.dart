@@ -1,10 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/core/edge_insets.dart';
-import 'package:kitawi/src/core/foundation.dart';
-import 'package:kitawi/src/core/key.dart';
-import 'package:kitawi/src/core/widget.dart';
-import 'package:kitawi/src/types/dimensions.dart';
+import 'package:kitawi/src/basic.dart';
 
 /// The [Container] class is a widget that creates a div element with the defined props.
 class Container extends Widget {
@@ -33,8 +29,6 @@ class Container extends Widget {
 
   @override
   Element createElement() {
-    
-
     final div = DivElement()
       ..id = key?.value ?? ''
       ..style.maxHeight = '${constraints?.maxHeight}'
