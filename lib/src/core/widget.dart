@@ -19,8 +19,7 @@ abstract class Widget with Resize {
 
   /// The [render] method creates the element for the widget.
   html.Element render() {
-    key ??= Key(Random().nextInt(1000000).toString());
-    _element ??= createElement()..id = key!.value;
+    _element ??= createElement();
     return _element!;
   }
 
@@ -28,12 +27,8 @@ abstract class Widget with Resize {
   /// It is an abstract method and must be implemented by the subclasses.
   html.Element createElement();
 
-  /// The [build] method is called when the state of the widget changes.
-  /// It is an abstract method and must be implemented by the subclasses.
-
   void build() {
-    _element?.replaceWith(render());
-    _element = render();
+    _element ??= createElement();
   }
 
   /// The [dispose] method is called when the widget is removed from the tree.
@@ -44,4 +39,6 @@ abstract class Widget with Resize {
     _element?.remove();
     _element = null;
   }
+
+  void init() {}
 }
