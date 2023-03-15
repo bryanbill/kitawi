@@ -28,10 +28,7 @@ class FloatingActionButton extends Button {
       : super(
             actions: actions,
             decoration: decoration,
-            padding: padding,
-            margin: margin,
-            width: width,
-            height: height,
+          
             borderRadius: borderRadius,
             child: child,
             splashColor: splashColor);
