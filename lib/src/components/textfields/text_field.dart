@@ -36,6 +36,7 @@ class TextField extends Widget {
   @override
   Element createElement() {
     var input = InputElement()
+      ..id = key?.value ?? Random.secure().nextInt(100000).toString()
       ..style.height = '100%'
       ..style.width = '100%'
       ..style.border = 'none'
@@ -107,8 +108,6 @@ class TextField extends Widget {
 
     var wrapperDiv = DivElement()
       ..id = key?.value ?? Random.secure().toString()
-      ..style.height = '100%'
-      ..style.width = '100%'
       ..style.display = 'flex'
       ..style.alignItems = 'center'
       ..style.padding = decoration?.contentPadding?.toString() ?? '5px'
@@ -138,6 +137,20 @@ class TextField extends Widget {
       input,
       decoration?.suffixIcon != null ? suffix : DivElement(),
     ];
+
+    if (decoration?.contentPadding != null) {
+      var paddingLeft = decoration?.contentPadding?.left ?? 0;
+      var paddingRight = decoration?.contentPadding?.right ?? 0;
+      var paddingTop = decoration?.contentPadding?.top ?? 0;
+      var paddingBottom = decoration?.contentPadding?.bottom ?? 0;
+      wrapperDiv.style.width =
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of(paddingLeft + paddingRight))}';
+      wrapperDiv.style.height =
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of(paddingTop + paddingBottom))}';
+    } else {
+      wrapperDiv.style.width = 'calc(100% - 10px)';
+      wrapperDiv.style.height = 'calc(100% - 10px)';
+    }
 
     return wrapperDiv;
   }
