@@ -57,7 +57,7 @@ class Container extends Widget {
       div.style.width =
           '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}';
       div.style.height =
-          '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingTop + paddingBottom))}';
+          '${Dimensions.calc(from: height!, inset: Dimensions.of(paddingTop + paddingBottom))}';
     } else {
       div.style.width = width.toString();
       div.style.height = height.toString();
