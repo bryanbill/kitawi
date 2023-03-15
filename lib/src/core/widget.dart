@@ -1,6 +1,4 @@
 import 'dart:html' as html;
-import 'dart:math';
-
 import 'package:kitawi/src/core/key.dart';
 import 'package:kitawi/src/mixins/resize.dart';
 
