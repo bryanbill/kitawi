@@ -27,7 +27,7 @@ class Card extends Widget {
       ..style.borderRadius = borderRadius?.toString() ?? '0'
       ..style.boxShadow =
           '0 0 ${elevation ?? 0}px ${shadowColor?.rgba ?? 'transparent'}'
-      ..style.backgroundColor = color?.toString() ?? 'transparent'
+      ..style.backgroundColor = color?.rgba ?? 'transparent'
       ..children.add(child.render());
 
     if (padding != null) {
