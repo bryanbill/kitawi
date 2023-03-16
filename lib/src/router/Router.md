@@ -70,23 +70,3 @@ The Kitawi Library provides a routing system that allows the user to define a se
   ```dart
       Router.pop();
   ```
-
-### Router.popUntil(String path)
-
-- #### Description
-
-  The `Router.popUntil()` method pops the current route off the router's history stack until the route with the specified path is reached.
-
-- ##### Parameters
-
-- `path`
-
-  The `path` parameter is a string that represents the path of the route that will be popped off the router's history stack.
-
-- ##### Example
-
-  ```dart
-
-    Router.popUntil('/');
-
-  ```

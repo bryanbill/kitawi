@@ -8,12 +8,11 @@ import 'package:kitawi/kitawi.dart';
 /// - [init] - Initializes the router with a `builder` function to render the default route.
 /// - [push] - Navigates to a `route` using the given `builder` function to render it.
 /// - [pop] - Pops the current route and navigates to the previous route.
-/// - [popUntil] - Pops all routes until the `route` is reached, and renders it.
 class Router {
   static final List<Route> _routes = [];
   static late Element? _root;
   static final List<String> _history = [];
-  static final String currentPath = window.location.hash.substring(1);
+  static late String currentPath;
 
   static void init({
     List<Route>? routes,
@@ -24,7 +23,10 @@ class Router {
       _routes.addAll(routes ?? []);
       _root = root;
 
-      print(currentPath);
+      currentPath = window.location.hash.isNotEmpty
+          ? window.location.hash.substring(1)
+          : '/';
+
       var route = _routes.firstWhere((r) => r.path == currentPath);
       _history.add(route.path);
       render(route.builder(), _root);
@@ -64,27 +66,6 @@ class Router {
 
     // Update the URL to the previous route
     window.history.replaceState(null, '', "/#${route.path}");
-  }
-
-  static void popUntil(String path) {
-    try {
-      while (_history.isNotEmpty && _history.last != path) {
-        _history.removeLast();
-      }
-      var route = _routes.firstWhere((r) => r.path == _history.last,
-          orElse: () => _routes.firstWhere((r) => r.path == path));
-
-      render(route.builder(), _root);
-
-      // Update the URL to the final route
-      window.history.replaceState(null, '', "/#${route.path}");
-    } catch (e) {
-      // if e is a StateError, then no route was found
-      var message = e is StateError ? 'Path not found' : e.toString();
-
-      // no route found
-      render(ErrorWidget(message: message, details: e.toString()), _root);
-    }
   }
 }
 
