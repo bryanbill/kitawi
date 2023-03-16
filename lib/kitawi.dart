@@ -1,7 +1,5 @@
 import 'dart:html';
 import 'package:kitawi/src/basic.dart';
-import 'package:kitawi/src/core/flavour.dart';
-
 export 'package:kitawi/src/basic.dart';
 export 'package:kitawi/src/components/container.dart';
 
@@ -34,7 +32,6 @@ void run(List<Route> routes, {String? id}) {
   Theme().updateMode();
   // Initialize the router
   Router.init(root: root, routes: routes);
-  
 }
 
 /// The render function takes a [Widget] and a [Element] as arguments and

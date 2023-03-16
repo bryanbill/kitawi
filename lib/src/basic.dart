@@ -44,3 +44,4 @@ export 'package:kitawi/src/components/error_widget.dart';
 export 'package:kitawi/src/components/sized_widgets/sidebar.dart';
 export 'package:kitawi/src/core/async_snapshot.dart';
 export 'package:kitawi/src/components/center.dart';
+export 'package:kitawi/src/core/scroll_physics.dart';
