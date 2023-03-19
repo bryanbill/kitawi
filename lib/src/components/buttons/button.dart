@@ -33,7 +33,6 @@ class Button extends Widget {
       required this.actions,
       this.child,
       this.decoration,
-      this.borderRadius,
       this.splashColor})
       : super(key: key);
 
@@ -46,9 +45,6 @@ class Button extends Widget {
   /// The decoration to apply to the button.
   final Decoration? decoration;
 
-  /// The border radius of the button.
-  final BorderRadius? borderRadius;
-
   /// The splash color of the button. This is the color that will be displayed
   /// when the button is clicked, hovered or focused.
   final Color? splashColor;
@@ -57,12 +53,13 @@ class Button extends Widget {
   html.Element createElement() {
     var button = html.ButtonElement()
       ..id = key?.value ?? ''
+      ..setAttribute('aria-label', "Button")
       ..style.width = '100%'
       ..style.height = '100%'
       ..style.overflow = 'hidden'
       ..style.backgroundColor = decoration?.color?.rgba ?? 'auto'
       ..style.borderColor = decoration?.border?.color?.rgba ?? 'auto'
-      ..style.borderRadius = borderRadius?.toString() ?? 'inherit'
+      ..style.borderRadius = decoration?.borderRadius?.toString() ?? 'inherit'
       ..style.borderWidth = '${decoration?.border?.side ?? 0}px'
       ..style.color = 'inherit'
       ..style.cursor = 'pointer'
@@ -73,10 +70,10 @@ class Button extends Widget {
       ..style.tapHighlightColor = splashColor?.rgba ?? 'auto'
       ..style.textAlign = 'center';
 
-    if (actions.isNotEmpty) {
-      for (final action in actions) {
-        button.on[action.type].listen((event) => action.callback(event));
-      }
+    actions.removeWhere(
+        (action) => action.type == null || action.callback == null);
+    for (var action in actions) {
+      button.on[action.type!].listen(action.callback!);
     }
 
     if (child != null) {
