@@ -37,6 +37,4 @@ abstract class Widget with Resize {
     _element?.remove();
     _element = null;
   }
-
-  void init() {}
 }
