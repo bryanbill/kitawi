@@ -75,10 +75,9 @@ class Image extends Widget {
           ..style.alignItems = alignment?.y ?? 'inherit'
           ..style.objectFit = fit?.toString() ?? 'inherit'
           ..alt = src;
-    actions?.removeWhere(
-        (action) => action.type == null || action.callback == null);
+
     for (var action in actions ?? <Action>[]) {
-      imageElement.on[action.type!].listen(action.callback!);
+      imageElement.on[action.type].listen(action.callback);
     }
     imageElement.onError.listen((event) {
       var parent = imageElement.parent;

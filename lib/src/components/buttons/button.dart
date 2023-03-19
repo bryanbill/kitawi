@@ -70,10 +70,8 @@ class Button extends Widget {
       ..style.tapHighlightColor = splashColor?.rgba ?? 'auto'
       ..style.textAlign = 'center';
 
-    actions.removeWhere(
-        (action) => action.type == null || action.callback == null);
     for (var action in actions) {
-      button.on[action.type!].listen(action.callback!);
+      button.on[action.type].listen(action.callback);
     }
 
     if (child != null) {
