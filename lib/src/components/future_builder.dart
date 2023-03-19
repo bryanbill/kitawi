@@ -49,7 +49,9 @@ class FutureBuilder<T> extends Widget {
 
   @override
   html.Element createElement() {
-    final container = html.DivElement();
+    final container = html.DivElement()
+      ..style.width = '100%'
+      ..style.height = '100%';
 
     if (loadingWidget != null) {
       container.children.add(loadingWidget!.render());
