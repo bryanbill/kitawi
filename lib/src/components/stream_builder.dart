@@ -25,7 +25,7 @@ import 'dart:html' as html;
 /// ```
 class StreamBuilder<T> extends Widget {
   /// The [Stream] to build the widget from.
-  final Stream<T> stream;
+  final Stream<T>? stream;
 
   /// The [Widget] to display after the stream has emitted its first event.
   final Widget Function(AsynSnapshot<T> data) builder;
@@ -55,7 +55,7 @@ class StreamBuilder<T> extends Widget {
   /// if the stream fails. If no error widget builder is provided, the error
   /// message will not be displayed.
   StreamBuilder({
-    required this.stream,
+    this.stream,
     required this.builder,
     this.initialData,
     this.errorWidgetBuilder,
@@ -80,7 +80,7 @@ class StreamBuilder<T> extends Widget {
 
     /// listen to the stream and update the widget when a new event is added
     /// to the stream
-    _subscription = stream.listen(
+    _subscription = stream?.listen(
       (data) {
         container.children.clear();
 

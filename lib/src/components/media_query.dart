@@ -31,6 +31,16 @@ class MediaQuery extends Widget {
         initialData: _valueStream.value,
         builder: (snapshot) => builder(snapshot)).render();
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _valueStream.dispose();
+    window.onResize.drain();
+    window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', (event) {});
+  }
 }
 
 class MediaQueryData {

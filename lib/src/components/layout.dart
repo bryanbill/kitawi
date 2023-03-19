@@ -33,9 +33,6 @@ abstract class Layout extends Widget {
   @override
   void dispose() {
     super.dispose();
-    _element.remove();
+    windowSize.dispose();
   }
-
-  @override
-  void init() {}
 }
