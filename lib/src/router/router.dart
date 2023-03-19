@@ -42,7 +42,7 @@ class Router {
     }
   }
 
-  static void push(String path) {
+  static void push(String path, {bool replace = false, dynamic args}) {
     try {
       var route = _routes.firstWhere((r) => r.path == path);
       _history.add(route.path);
