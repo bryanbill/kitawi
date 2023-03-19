@@ -16,7 +16,7 @@ export 'package:kitawi/src/components/container.dart';
 ///  run([Route(path: '/', builder: () => MyApp())]);
 /// }
 /// ```
-void run(List<Route> routes, {String? id}) {
+void run(List<Route> routes, {String? id, Environment env = Environment.dev}) {
   // the overrides below are compulsory
   document.documentElement?.style.height = '100%';
   document.body?.style.height = '100%';
@@ -30,8 +30,17 @@ void run(List<Route> routes, {String? id}) {
     ..style.margin = '0';
   Size().updateSize();
   Theme().updateMode();
-  // Initialize the router
-  Router.init(root: root, routes: routes);
+
+  if (env == Environment.dev) {
+    // Initialize the router
+    Router.init(root: root, routes: routes);
+  } else {
+    // Initialize the router only after the window has loaded
+    window.onLoad.listen((event) {
+      // Initialize the router
+      Router.init(root: root, routes: routes);
+    });
+  }
 }
 
 /// The render function takes a [Widget] and a [Element] as arguments and
