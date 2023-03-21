@@ -49,3 +49,5 @@ export 'package:kitawi/src/core/environment.dart';
 export 'package:kitawi/src/components/progress_indicators/linear_progress_indicator.dart';
 export 'package:kitawi/src/components/media/video.dart';
 export 'package:kitawi/src/components/gesture_detector.dart';
+export 'package:kitawi/src/components/icons/icon.dart';
+export 'package:kitawi/src/components/icons/icon_data.dart';

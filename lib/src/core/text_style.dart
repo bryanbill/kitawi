@@ -37,7 +37,6 @@ class TextStyle {
   final FontStyle? fontStyle;
 }
 
-// TODO! - Fontweight not being applied to text
 /// A font weight.
 ///
 /// The font weights that match the numeric values specified by the
