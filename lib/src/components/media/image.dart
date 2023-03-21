@@ -30,9 +30,6 @@ class Image extends Widget {
   /// The [BoxFit] `fit` parameter is optional and specifies the fit of the image.
   final BoxFit? fit;
 
-  /// The [Action]s to be performed on the image.
-  final List<Action>? actions;
-
   /// The alternative widget to be displayed if an error occurs while loading the image.
   /// This is optional and defaults to a [Text] widget with the text "Image not found".
   Widget Function(StackTrace? stackTrace)? errorWidget;
@@ -47,7 +44,6 @@ class Image extends Widget {
     this.alignment,
     this.fit,
     this.errorWidget,
-    this.actions,
   });
 
   /// The [createElement] method creates the [ImageElement] for the widget.
@@ -76,9 +72,6 @@ class Image extends Widget {
           ..style.objectFit = fit?.toString() ?? 'inherit'
           ..alt = src;
 
-    for (var action in actions ?? <Action>[]) {
-      imageElement.on[action.type].listen(action.callback);
-    }
     imageElement.onError.listen((event) {
       var parent = imageElement.parent;
       imageElement.remove();
@@ -88,6 +81,7 @@ class Image extends Widget {
               .render() ??
           Text('Image not found').render());
     });
+    
     return imageElement;
   }
 }
