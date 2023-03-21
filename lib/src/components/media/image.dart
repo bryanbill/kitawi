@@ -57,7 +57,7 @@ class Image extends Widget {
           ..style.maxWidth = width != null ? '${width}px' : '100%'
           ..style.padding = '${padding ?? 0}px'
           ..style.margin = '${margin ?? 0}px'
-          ..style.backgroundColor = decoration?.color?.rgba ?? 'inherit'
+          ..style.color = decoration?.color?.rgba ?? 'inherit'
           ..style.borderRadius =
               decoration?.borderRadius?.toString() ?? 'inherit'
           ..style.borderWidth = '${decoration?.border?.side ?? 0}'
@@ -81,7 +81,7 @@ class Image extends Widget {
               .render() ??
           Text('Image not found').render());
     });
-    
+
     return imageElement;
   }
 }
