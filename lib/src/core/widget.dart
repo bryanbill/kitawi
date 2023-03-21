@@ -9,7 +9,7 @@ import 'package:kitawi/src/mixins/resize.dart';
 /// a `render` method that can be used to generate the HTML element for the
 /// widget. It also provides a `build` method that is called when the state of
 /// the widget changes, so that the widget can rebuild itself.
-abstract class Widget with Resize {
+abstract class Widget {
   Key? key;
 
   html.Element? _element;
@@ -32,9 +32,7 @@ abstract class Widget with Resize {
 
   /// The [dispose] method is called when the widget is removed from the tree.
   /// It is an abstract method and must be implemented by the subclasses.
-  @override
   void dispose() {
-    super.dispose();
     _element?.remove();
     _element = null;
   }
