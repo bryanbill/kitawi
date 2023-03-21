@@ -1,4 +1,5 @@
 import 'dart:html';
+import 'dart:math';
 
 import 'package:kitawi/src/basic.dart';
 
@@ -10,6 +11,7 @@ class LinearProgressIndicator extends Widget {
   final BorderRadius? borderRadius;
 
   LinearProgressIndicator({
+    Key? key,
     this.value,
     this.backgroundColor,
     this.valueColor,
@@ -18,17 +20,17 @@ class LinearProgressIndicator extends Widget {
   });
   @override
   Element createElement() {
-    String id = 'progress-indicator-${DateTime.now().millisecondsSinceEpoch}';
+    key ??= Key('progress-indicator-${Random.secure().nextInt(100)}');
     String css = """
-  #$id::-webkit-progress-bar {
+  #$key::-webkit-progress-bar {
     background-color: ${backgroundColor?.rgba ?? 'transparent'};
   }
   
-  #$id::-webkit-progress-value {
+  #$key::-webkit-progress-value {
     background-color: ${valueColor?.rgba ?? 'transparent'};
   }
   
-  #$id::-moz-progress-bar {
+  #$key::-moz-progress-bar {
     background-color: ${valueColor?.rgba ?? 'transparent'};
   }
 
@@ -38,7 +40,7 @@ class LinearProgressIndicator extends Widget {
     document.head!.children.add(style);
 
     return ProgressElement()
-      ..id = id
+      ..id = key!.value
       ..style.width = '100%'
       ..style.height = '${height ?? 5}px'
       ..style.color = backgroundColor?.rgba ?? 'transparent'
