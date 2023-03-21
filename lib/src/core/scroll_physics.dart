@@ -3,7 +3,6 @@ abstract class ScrollPhysics {
 
   final ScrollPhysics? parent;
 
-
   void applyTo(ScrollPhysics? ancestor);
 
   void applyPhysicsToUserOffset(ScrollMetrics position, double offset) {}

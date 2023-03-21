@@ -71,7 +71,6 @@ class Video extends Widget {
   }
 }
 
-
 class MediaController {
   final bool? autoPlay;
   final bool? autoPictureInPicture;

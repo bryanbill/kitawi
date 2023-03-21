@@ -5,7 +5,6 @@ import 'package:kitawi/kitawi.dart';
 /// This is a simple animation that creates a bouncing dot effect
 /// using animate method.
 class BouncingDot extends Widget {
-
   /// The color of the dot.
   final Color? dotColor;
 

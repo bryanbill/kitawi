@@ -2,7 +2,6 @@ import 'dart:html';
 
 import 'package:kitawi/kitawi.dart';
 
-
 class Icon extends Widget {
   final IconData icon;
   final Color? color;
