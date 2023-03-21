@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/src/components/sized_widgets/preffered_size_widget.dart';
 
 /// NOTE: This is a work in progress.
 ///
@@ -11,8 +12,8 @@ import 'package:kitawi/src/basic.dart';
 /// The [Frame] class is a [Widget] class.
 class Frame extends Widget {
   final Widget body;
-  final Widget? appbar;
-  final Widget? drawer;
+  final PreferredSizeWidget? appbar;
+  final PreferredSizeWidget? drawer;
   final Widget? bottomNavigationBar;
   final FloatingActionButton? floatingActionButton;
   final Color? backgroundColor;

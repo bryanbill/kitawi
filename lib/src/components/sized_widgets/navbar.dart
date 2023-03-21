@@ -1,10 +1,11 @@
 import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/src/components/sized_widgets/preffered_size_widget.dart';
 
 /// This class is used to create a navigation bar widget.
 
-class Navbar extends Widget {
+class Navbar extends PreferredSizeWidget {
   /// The [title] parameter is optional and specifies the title of the navigation bar.
   /// The [title] parameter can be any widget.
   final Widget? title;
@@ -49,36 +50,36 @@ class Navbar extends Widget {
       this.actions,
       this.elevation = 1.0,
       this.position = Position.relative,
-      this.backgroundColor,
+      this.backgroundColor = Colors.transparent,
       this.shadowColor = Colors.grey});
 
   @override
   Element createElement() {
     final elev = elevation! * 10;
-    return Element.tag("nav")
+    return super.createElement()
       ..style.backgroundColor = backgroundColor?.rgba
-      ..style.padding = '16px'
+      ..style.padding = '8px'
       ..style.display = 'flex'
       ..style.alignItems = 'center'
       ..style.justifyContent = 'space-between'
       ..style.position = '$position'
       ..style.top = '0'
       ..style.left = '0'
-      ..style.width = 'calc(100% - 32px)'
-      ..style.height = '64px'
-      ..style.maxHeight = '64px'
+      ..style.width = 'calc(100% - 16px)'
       ..style.zIndex = '999'
       ..style.boxShadow = '0px 0px ${elev}px 0px ${shadowColor?.rgba}'
       ..children = [
-        SizedBox(
+        Container(
                 height: 100.percent,
-                width: Dimensions.percentageOf(30),
+                constraints: BoxConstraints(maxWidth: 30.percent),
+                alignment: Alignment.centerLeft,
                 child: leading)
             .createElement(),
         Expanded(child: title ?? SizedBox()).createElement(),
-        SizedBox(
+        Container(
           height: 100.percent,
-          width: Dimensions.percentageOf(30),
+          constraints: BoxConstraints(maxWidth: 30.percent),
+          alignment: Alignment.centerRight,
           child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: actions ?? []),
