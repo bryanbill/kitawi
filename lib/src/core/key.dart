@@ -12,4 +12,7 @@ class Key {
 
   /// Returns the [Element] from the DOM.
   Element? get get => document.getElementById(value);
+
+  @override
+  String toString() => _key;
 }

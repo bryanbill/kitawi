@@ -3,6 +3,8 @@ import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
 
+/// This [Video] class is a widget that is used to render video elements
+///
 class Video extends Widget {
   final String src;
   final MediaController? controller;
@@ -68,6 +70,7 @@ class Video extends Widget {
     return video;
   }
 }
+
 
 class MediaController {
   final bool? autoPlay;
