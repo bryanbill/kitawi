@@ -62,6 +62,9 @@ class Container extends Widget {
       div.style.width = width.toString();
       div.style.height = height.toString();
     }
+    if (gradient != null) {
+      div.style.backgroundImage = gradient!.toString();
+    }
     return div;
   }
 }
