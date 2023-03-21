@@ -54,10 +54,14 @@ class Container extends Widget {
       var paddingRight = padding?.right ?? 0;
       var paddingTop = padding?.top ?? 0;
       var paddingBottom = padding?.bottom ?? 0;
-      div.style.width =
-          '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}';
-      div.style.height =
-          '${Dimensions.calc(from: height!, inset: Dimensions.of(paddingTop + paddingBottom))}';
+      if (width != null) {
+        div.style.width =
+            '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}';
+      }
+      if (height != null) {
+        div.style.height =
+            '${Dimensions.calc(from: height!, inset: Dimensions.of(paddingTop + paddingBottom))}';
+      }
     } else {
       div.style.width = width.toString();
       div.style.height = height.toString();
