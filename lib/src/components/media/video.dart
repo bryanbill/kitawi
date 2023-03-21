@@ -23,6 +23,7 @@ class Video extends Widget {
       ..id = key!.value
       ..style.width = '100%'
       ..style.height = '100%'
+      ..style.objectFit = 'cover'
       ..setAttribute('src', src)
       ..setAttribute('autoPictureInPicture',
           controller?.autoPictureInPicture!.toString() ?? 'false')
@@ -121,6 +122,10 @@ class MediaController {
   void stop() {
     _element?.pause();
     _element?.currentTime = 0;
+  }
+
+  void seek(Duration duration) {
+    _element?.currentTime = duration.inSeconds.toDouble();
   }
 
   Stream<Duration?>? get onDurationChange {
