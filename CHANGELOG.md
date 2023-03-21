@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.5 (2023-03-21)
+
+- Added more widgets, Icons, VideoPlayer, etc. See docs for more info
+- Simplified the Routing and Initialization process
+- Minor improvements
+
 ## 0.0.4 (2023-03-03)
 
 - BREAKING: removed `stateless` and `stateful` widgets

@@ -7,8 +7,7 @@ import 'package:kitawi/src/components/sized_widgets/preffered_size_widget.dart';
 ///
 ///
 /// The [Frame] class provides a basic layout structure for a page.
-/// It consists of a [navbar], [body], [sidebar], [footer], [drawer] and
-/// [floatingActionButton].
+
 /// The [Frame] class is a [Widget] class.
 class Frame extends Widget {
   final Widget body;
