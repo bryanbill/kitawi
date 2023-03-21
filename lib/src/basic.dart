@@ -48,3 +48,4 @@ export 'package:kitawi/src/core/scroll_physics.dart';
 export 'package:kitawi/src/core/environment.dart';
 export 'package:kitawi/src/components/progress_indicators/linear_progress_indicator.dart';
 export 'package:kitawi/src/components/media/video.dart';
+export 'package:kitawi/src/components/gesture_detector.dart';
