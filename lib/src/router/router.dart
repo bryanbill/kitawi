@@ -29,10 +29,20 @@ class Router {
 
       var route = _routes.firstWhere((r) => r.path == currentPath);
       _history.add(route.path);
-      render(route.builder(), _root);
+      render(route.builder(null), _root);
 
       // Set the URL to the current route
       window.history.replaceState(null, '', "#${route.path}");
+
+      window.onPopState.listen((event) {
+        currentPath = window.location.hash.isNotEmpty
+            ? window.location.hash.substring(1)
+            : '/';
+
+        var route = _routes.firstWhere((r) => r.path == currentPath);
+        _history.add(route.path);
+        render(route.builder(null), _root);
+      });
     } catch (e) {
       // if e is a StateError, then no route was found
       var message = e is StateError ? 'Path not found' : e.toString();
@@ -42,11 +52,15 @@ class Router {
     }
   }
 
-  static void push(String path, {bool replace = false, dynamic args}) {
+  /// This method pushes a named route to the route stacl
+  ///
+  /// See also:
+  /// - Router.init([], root) - Initializes named routes
+  static void pushNamed(String path, {bool replace = false, dynamic args}) {
     try {
       var route = _routes.firstWhere((r) => r.path == path);
       _history.add(route.path);
-      render(route.builder(), _root);
+      render(route.builder(args), _root);
 
       // Update the URL to the new route
       window.history.pushState(null, '', "/#$path");
@@ -59,10 +73,21 @@ class Router {
     }
   }
 
-  static void pop() {
+  static void push(Widget Function() builder, {bool replace = false}) {
+    // generate a random path
+    var path = '/${DateTime.now().millisecondsSinceEpoch}';
+
+    _history.add(path);
+    render(builder(), _root);
+
+    // Update the URL to the new route
+    window.history.pushState(null, '', "/#$path");
+  }
+
+  static void pop({dynamic args}) {
     _history.removeLast();
     var route = _routes.firstWhere((r) => r.path == _history.last);
-    render(route.builder(), _root);
+    render(route.builder(args), _root);
 
     // Update the URL to the previous route
     window.history.replaceState(null, '', "/#${route.path}");
@@ -80,7 +105,7 @@ class Route {
   final String? name;
 
   /// The [builder] property is the builder function used to render the route.
-  final Widget Function() builder;
+  final Widget Function(dynamic args) builder;
 
   /// The [path] property is the path of the route.
   final String path;
