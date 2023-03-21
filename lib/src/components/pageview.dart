@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 
 import 'package:kitawi/src/basic.dart';
@@ -7,8 +8,7 @@ class PageView extends Widget {
   final Axis scrollDirection;
   final double bounceExtent;
   final ScrollPhysics? physics;
-  final PageController Function(
-      int initialOffset, ScrollMetrics metrics, Element element)? controller;
+  final PageController? controller;
 
   PageView({
     Key? key,
@@ -29,23 +29,20 @@ class PageView extends Widget {
           (scrollDirection == Axis.horizontal) ? 'flex-start' : 'center'
       ..style.alignItems =
           (scrollDirection == Axis.horizontal) ? 'center' : 'flex-start'
-      ..children = children.map((e) => e.createElement()).toList()
       ..classes.add('scrollable');
 
     if (physics is NeverScrollablePhysics) {
-      div.style.overflow = 'hidden';
+      var pageStream = StreamBuilder<int>(
+        stream: controller?.stream,
+        initialData: controller?.initialOffset,
+        builder: (snapshot) => children[snapshot.data ?? 0],
+        errorWidgetBuilder: (error) => Text(error.toString()),
+      );
+
+      div.children.add(pageStream.createElement());
+    } else {
+      div.children.addAll(children.map((e) => e.createElement()).toList());
     }
-
-    
-
-    if (physics is AlwaysScrollableScrollPhysics) {
-      div.style.overflow = 'scroll';
-
-      for (var element in div.children) {
-        element.classes.add('inner');
-      }
-    }
-
     return div;
   }
 
@@ -69,17 +66,26 @@ class PageView extends Widget {
 }
 
 class PageController {
-  final int? initialScrollOffset;
-
+  final int? initialOffset;
   final ScrollMetrics? metrics;
-
   final Element? element;
+  final StreamController<int> _controller = StreamController<int>.broadcast();
 
-  PageController({this.metrics, this.initialScrollOffset = 0, this.element});
+  PageController({this.initialOffset = 0, this.metrics, this.element});
 
-  void jumpTo(double value) {
-    if (element != null) {
-      element!.scrollLeft = value.toInt();
-    }
+  Stream<int> get stream => _controller.stream;
+
+  void jumpToPage(int page) {
+    _controller.add(page);
+  }
+
+  void animateToPage(int page,
+      {Duration duration = const Duration(seconds: 1)}) {
+    _controller.add(page);
+  }
+
+  void dispose() {
+    _controller.close();
+    print(_controller.isClosed);
   }
 }
