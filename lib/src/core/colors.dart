@@ -5,6 +5,8 @@ import 'package:kitawi/src/core/color.dart';
 /// The colors are divided into two categories:
 
 class Colors {
+  static const Color transparent = Color(0x00000000);
+
   /// white
   static const Color white = Color(0xFFFFFFFF);
   static const Color white12 = Color(0x1FFFFFFF);

@@ -1,10 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/core/edge_insets.dart';
-import 'package:kitawi/src/core/foundation.dart';
-import 'package:kitawi/src/core/key.dart';
-import 'package:kitawi/src/core/widget.dart';
-import 'package:kitawi/src/types/dimensions.dart';
+import 'package:kitawi/src/basic.dart';
 
 /// The [Container] class is a widget that creates a div element with the defined props.
 class Container extends Widget {
@@ -42,7 +38,6 @@ class Container extends Widget {
       ..style.padding = padding?.toString()
       ..style.margin = margin?.toString()
       ..style.backgroundColor = decoration?.color?.rgba
-      ..style.background = gradient?.toString()
       ..style.borderRadius = decoration?.borderRadius?.toString() ?? '0'
       ..style.borderColor = decoration?.border?.color?.rgba
       ..style.borderWidth = '${decoration?.border?.side}'
@@ -59,13 +54,20 @@ class Container extends Widget {
       var paddingRight = padding?.right ?? 0;
       var paddingTop = padding?.top ?? 0;
       var paddingBottom = padding?.bottom ?? 0;
-      div.style.width =
-          '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}';
-      div.style.height =
-          '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingTop + paddingBottom))}';
+      if (width != null) {
+        div.style.width =
+            '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}';
+      }
+      if (height != null) {
+        div.style.height =
+            '${Dimensions.calc(from: height!, inset: Dimensions.of(paddingTop + paddingBottom))}';
+      }
     } else {
       div.style.width = width.toString();
       div.style.height = height.toString();
+    }
+    if (gradient != null) {
+      div.style.backgroundImage = gradient!.toString();
     }
     return div;
   }

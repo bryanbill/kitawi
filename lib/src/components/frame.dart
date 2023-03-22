@@ -1,32 +1,32 @@
+import 'dart:html';
+
 import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/src/components/sized_widgets/preffered_size_widget.dart';
 
 /// NOTE: This is a work in progress.
 ///
 ///
-/// The [Scaffold] class provides a basic layout structure for a page.
-/// It consists of a [navbar], [body], [sidebar], [footer], [drawer] and
-/// [floatingActionButton].
-/// The [Scaffold] class is a [Widget] class.
-class Scaffold extends Kitawi {
+/// The [Frame] class provides a basic layout structure for a page.
+
+/// The [Frame] class is a [Widget] class.
+class Frame extends Widget {
   final Widget body;
-  final Widget? navbar;
-  final Widget? sidebar;
-  final Widget? footer;
-  final Widget? drawer;
+  final PreferredSizeWidget? appbar;
+  final PreferredSizeWidget? drawer;
+  final Widget? bottomNavigationBar;
   final FloatingActionButton? floatingActionButton;
   final Color? backgroundColor;
 
-  Scaffold(
+  Frame(
       {required this.body,
-      this.navbar,
-      this.sidebar,
-      this.footer,
+      this.appbar,
       this.drawer,
+      this.bottomNavigationBar,
       this.floatingActionButton,
       this.backgroundColor});
 
   @override
-  Widget build() {
+  Element createElement() {
     return Container(
         height: Dimensions.full,
         width: Dimensions.full,
@@ -38,7 +38,7 @@ class Scaffold extends Kitawi {
         ),
         child: Row(
           children: [
-            sidebar ??
+            drawer ??
                 Container(height: Dimensions.zero, width: Dimensions.zero),
             SizedBox(
               height: Dimensions.full,
@@ -46,14 +46,14 @@ class Scaffold extends Kitawi {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  navbar ?? Container(),
+                  appbar ?? Container(),
                   body,
-                  footer ?? Container(),
+                  bottomNavigationBar ?? Container(),
                   floatingActionButton ?? Container(),
                 ],
               ),
             ),
           ],
-        ));
+        )).render();
   }
 }

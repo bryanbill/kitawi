@@ -3,18 +3,15 @@ import 'dart:html';
 import 'package:kitawi/kitawi.dart';
 
 ///
-abstract class Kitawi extends Widget {
-  Kitawi({Key? key}) : super(key: key);
+abstract class Layout extends Widget {
+  Layout({Key? key}) : super(key: key);
+
+  late Element? _element;
 
   /// The [render] method creates the element for the widget.
   @override
   Element render() {
-    return StreamBuilder<Size?>(
-        initialData: windowSize.value,
-        stream: windowSize.stream,
-        errorWidgetBuilder: (error) =>
-            ErrorWidget(message: "Resize Error", details: error),
-        builder: (snap) => build()).render();
+    return build().render();
   }
 
   /// The [build] method creates the element for the widget.
@@ -24,6 +21,13 @@ abstract class Kitawi extends Widget {
 
   @override
   Element createElement() {
-    return build().render();
+    _element = build().render();
+    return _element!;
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    windowSize.dispose();
   }
 }

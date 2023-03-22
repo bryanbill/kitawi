@@ -348,28 +348,28 @@ class Gradient {
   @override
   String toString() {
     if (type == GradientType.linear) {
-      return 'linear-gradient(${colors.map((e) => e.rgba.toString()).join(', ')})';
+      return 'linear-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     if (type == GradientType.radial) {
-      return 'radial-gradient(${colors.map((e) => e.toString()).join(', ')})';
+      return 'radial-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     if (type == GradientType.sweep) {
-      return 'sweep-gradient(${colors.map((e) => e.toString()).join(', ')})';
+      return 'sweep-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     if (type == GradientType.conic) {
-      return 'conic-gradient(${colors.map((e) => e.toString()).join(', ')})';
+      return 'conic-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     if (type == GradientType.image) {
-      return 'image-gradient(${colors.map((e) => e.toString()).join(', ')})';
+      return 'image-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     if (type == GradientType.repeatingLinear) {
-      return 'repeating-linear-gradient(${colors.map((e) => e.toString()).join(', ')})';
+      return 'repeating-linear-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     if (type == GradientType.repeatingRadial) {
-      return 'repeating-radial-gradient(${colors.map((e) => e.toString()).join(', ')})';
+      return 'repeating-radial-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     if (type == GradientType.repeatingSweep) {
-      return 'repeating-sweep-gradient(${colors.map((e) => e.toString()).join(', ')})';
+      return 'repeating-sweep-gradient(${colors.map((e) => e.rgba).join(', ')})';
     }
     return '';
   }

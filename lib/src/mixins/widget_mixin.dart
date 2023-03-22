@@ -1,5 +1,3 @@
-
-
 // mixin WidgetMixin {
 //   /// The [widgetOf] method is used to get the widget of the specified key.
 //   /// The [key] parameter is required and specifies the key of the widget.

@@ -166,6 +166,26 @@ void scaffold(String name) {
     <meta name="description" content="Kitawi is a responsive UI framework for building modern web applications.">
     <meta name="keywords" content="kitawi, ui framework, web development">
     <title>$name</title>
+    <style>
+      /* Hide scrollbar for all modern browsers except IE */
+      .scrollable::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .scrollable {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      /* Hide scrollbar thumb */
+      .scrollable::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0);
+        width: 0;
+        height: 0;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

@@ -30,8 +30,9 @@ class Image extends Widget {
   /// The [BoxFit] `fit` parameter is optional and specifies the fit of the image.
   final BoxFit? fit;
 
-  /// The [Action]s to be performed on the image.
-  final List<Action>? actions;
+  /// The alternative widget to be displayed if an error occurs while loading the image.
+  /// This is optional and defaults to a [Text] widget with the text "Image not found".
+  Widget Function(StackTrace? stackTrace)? errorWidget;
 
   Image(
     this.src, {
@@ -42,7 +43,7 @@ class Image extends Widget {
     this.decoration,
     this.alignment,
     this.fit,
-    this.actions,
+    this.errorWidget,
   });
 
   /// The [createElement] method creates the [ImageElement] for the widget.
@@ -56,7 +57,7 @@ class Image extends Widget {
           ..style.maxWidth = width != null ? '${width}px' : '100%'
           ..style.padding = '${padding ?? 0}px'
           ..style.margin = '${margin ?? 0}px'
-          ..style.backgroundColor = decoration?.color?.rgba ?? 'inherit'
+          ..style.color = decoration?.color?.rgba ?? 'inherit'
           ..style.borderRadius =
               decoration?.borderRadius?.toString() ?? 'inherit'
           ..style.borderWidth = '${decoration?.border?.side ?? 0}'
@@ -68,14 +69,19 @@ class Image extends Widget {
           ..style.display = 'flex'
           ..style.justifyContent = alignment?.x ?? 'inherit'
           ..style.alignItems = alignment?.y ?? 'inherit'
-          ..style.objectFit = fit?.toString() ?? 'inherit';
-    if (actions != null) {
-      for (var action in actions!) {
-        imageElement.on[action.type].listen((event) {
-          action.callback(event);
-        });
-      }
-    }
+          ..style.objectFit = fit?.toString() ?? 'inherit'
+          ..alt = src;
+
+    imageElement.onError.listen((event) {
+      var parent = imageElement.parent;
+      imageElement.remove();
+      // get the error message
+      parent?.children.add(errorWidget
+              ?.call(StackTrace.fromString("Failed to load image: $src"))
+              .render() ??
+          Text('Image not found').render());
+    });
+
     return imageElement;
   }
 }

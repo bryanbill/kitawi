@@ -1,6 +1,6 @@
 name: kitawi
 description: Kitawi is a web UI library based on Flutter's widgets.
-version: 0.0.4
+version: 0.0.5
 repository: https://github.com/bryanbill/kitawi
 
 executables:
@@ -16,4 +16,3 @@ dependencies:
 dev_dependencies:
   lints: ^2.0.0
   test: ^1.21.0
-  

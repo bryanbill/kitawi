@@ -40,8 +40,7 @@ class TextStyle {
 /// A font weight.
 ///
 /// The font weights that match the numeric values specified by the
-/// [CSS font-weight
-/// property](https://www.w3.org/TR/css-fonts-3/#propdef-font-weight) are as
+/// [CSS font-weight property](https://www.w3.org/TR/css-fonts-3/#propdef-font-weight) are as
 /// follows:
 ///
 /// * 100: [w100]
