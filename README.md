@@ -45,16 +45,11 @@ Here is a simple example of a Kitawi project:
 import 'package:kitawi/kitawi.dart';
 
 void main() {
-  start((){
-    // Your code goes here
-    ...
-    run(Container(
-        child: Text('Hello, world!'),
-        decoration: Decoration(
-            color: Colors.green,
-            border: Border(color: Colors.black, width: 2.0),
-    ));
-  });
+  run(
+  [
+    Route(builder: (args) => App(), path: "/app", name: "App"),
+  ],
+  );
 }
 ```
 
