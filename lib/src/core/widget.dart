@@ -1,7 +1,6 @@
 import 'dart:html' as html;
 import 'package:kitawi/src/basic.dart';
 import 'package:kitawi/src/core/key.dart';
-import 'package:kitawi/src/mixins/resize.dart';
 
 /// A widget that can be built and rendered to HTML.
 ///
