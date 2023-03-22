@@ -25,11 +25,11 @@ class LinearProgressIndicator extends Widget {
   #$key::-webkit-progress-bar {
     background-color: ${backgroundColor?.rgba ?? 'transparent'};
   }
-  
+
   #$key::-webkit-progress-value {
     background-color: ${valueColor?.rgba ?? 'transparent'};
   }
-  
+
   #$key::-moz-progress-bar {
     background-color: ${valueColor?.rgba ?? 'transparent'};
   }

@@ -92,7 +92,7 @@ class CircularProgressIndicator extends Widget {
   height: ${childElement?.style.height};
   border-radius: 50%;
   background-color: ${childElement?.style.backgroundColor};
-  
+
   position: absolute;
   text-align: center;
   z-index: 100;
