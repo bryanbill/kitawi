@@ -22,7 +22,7 @@ dart pub global activate kitawi
 To create a new Kitawi project, run the following command:
 
 ```bash
-kitawi create <project_name>
+kitawi create -n <project_name>
 
 ```
 
@@ -37,7 +37,7 @@ kitawi run
 This will start a local server on port `8080`. If the port is in use, you can specify a different port by running the following command:
 
 ```bash
-kitawi run --port <port_number>
+kitawi run -p <port_number>
 ```
 
  You can now access your project by navigating to `http://localhost:<port_number>` in your browser.
@@ -90,8 +90,6 @@ class App extends Layout {
   }
 }
 ```
-
-This will create a div with a green container that contains a black border and the text(p) "Hello, world!".
 
 ## Documentation
 
