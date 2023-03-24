@@ -21,6 +21,13 @@ class TextField extends Widget {
 
   final RegExp? validator;
 
+  final TextAlign? textAlign;
+  final TextAlign? textAlignVertical;
+
+  final TextStyle? style;
+
+  final int? maxLines;
+
   TextField(
       {Key? key,
       this.controller,
@@ -28,6 +35,10 @@ class TextField extends Widget {
       this.keyboardType,
       this.onChanged,
       this.onSubmitted,
+      this.maxLines = 1,
+      this.textAlign = TextAlign.start,
+      this.textAlignVertical = TextAlign.center,
+      this.style,
       this.autofocus = true,
       this.obscureText = false,
       this.validator})
@@ -35,7 +46,9 @@ class TextField extends Widget {
 
   @override
   Element createElement() {
-    var input = InputElement()
+    dynamic input = (((maxLines == null || maxLines! > 1)
+        ? TextAreaElement()
+        : InputElement())
       ..id = key?.value ?? Random.secure().nextInt(100000).toString()
       ..style.height = '100%'
       ..style.width = '100%'
@@ -43,11 +56,23 @@ class TextField extends Widget {
       ..style.outline = 'none'
       ..style.padding = '0'
       ..style.margin = '0'
-      ..style.backgroundColor = 'transparent'
+      ..style.backgroundColor = decoration?.fillColor?.rgba ?? 'transparent'
       ..style.tapHighlightColor = 'transparent'
       ..style.flex = '1'
-      ..style;
-
+      ..style.fontFamily = style?.fontFamily
+      ..style.fontSize = '${style?.fontSize}px'
+      ..style.fontWeight = '${style?.fontWeight?.index}'
+      ..style.fontStyle = style?.fontStyle?.value
+      ..style.display = 'flex'
+      ..style.color = style?.color?.rgba
+      ..style.alignItems = textAlignVertical!.value
+      ..style.textAlign = textAlign?.value);
+    if (maxLines != null && maxLines! > 1) {
+      input = input as TextAreaElement;
+      input.rows = maxLines!;
+    } else {
+      input = input as InputElement;
+    }
     if (controller != null) {
       input.value = controller!.text;
       input.onInput.listen((event) {
@@ -69,7 +94,7 @@ class TextField extends Widget {
       });
     }
 
-    if (keyboardType != null) {
+    if (keyboardType != null && maxLines == 1) {
       switch (keyboardType) {
         case TextInputType.emailAddress:
           input.type = 'email';
@@ -96,7 +121,7 @@ class TextField extends Widget {
       input.autofocus = autofocus!;
     }
 
-    if (obscureText != null) {
+    if (obscureText != null && maxLines == 1) {
       input.type = obscureText! ? 'password' : 'text';
     }
 
