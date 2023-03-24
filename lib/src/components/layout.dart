@@ -2,11 +2,12 @@ import 'dart:html';
 
 import 'package:kitawi/kitawi.dart';
 
-///
 abstract class Layout extends Widget {
-  Layout({Key? key}) : super(key: key);
+  Layout({Key? key}) : super(key: key) {
+    init();
+  }
 
-  late Element? _element;
+  Element? _element;
 
   /// The [render] method creates the element for the widget.
   @override
@@ -14,8 +15,6 @@ abstract class Layout extends Widget {
     return build().render();
   }
 
-  /// The [build] method creates the element for the widget.
-  /// It is an abstract method and must be implemented by the subclasses.
   @override
   Widget build();
 
@@ -25,9 +24,12 @@ abstract class Layout extends Widget {
     return _element!;
   }
 
+  void init() {}
+
   @override
   void dispose() {
+    _element?.remove();
+    _element = null;
     super.dispose();
-    windowSize.dispose();
   }
 }

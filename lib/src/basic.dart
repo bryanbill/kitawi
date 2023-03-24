@@ -51,3 +51,4 @@ export 'package:kitawi/src/components/media/video.dart';
 export 'package:kitawi/src/components/gesture_detector.dart';
 export 'package:kitawi/src/components/icons/icon.dart';
 export 'package:kitawi/src/components/icons/icon_data.dart';
+export 'package:kitawi/src/database/local_store.dart';

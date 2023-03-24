@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.6 (2023-03-24)
+
+- Added init() method for Layout
+- Updated the CLI - Help, run, build commands are now available
+- PWA configuration is now available in the pubspec.yaml file
+
 ## 0.0.5 (2023-03-21)
 
 - Added more widgets, Icons, VideoPlayer, etc. See docs for more info
