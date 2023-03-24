@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'dart:convert';
+
 import 'package:yaml/yaml.dart';
 
 void main(List<String> arguments) {
@@ -181,7 +182,6 @@ manifest:
 
   // Wait for the pub get command to finish
   await pubGet.exitCode;
-  ;
 }
 
 ArgParser _buildCommandParser() {
