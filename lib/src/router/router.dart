@@ -60,6 +60,14 @@ class Router {
     try {
       var route = _routes.firstWhere((r) => r.path == path);
       _history.add(route.path);
+
+      // get the previous route builder
+      var previousRoute = _routes.firstWhere((r) => r.path == currentPath);
+
+      if (previousRoute.builder(null) is Layout) {
+        previousRoute.builder(null).dispose();
+      }
+
       render(route.builder(args), _root);
 
       // Update the URL to the new route
@@ -85,12 +93,12 @@ class Router {
   }
 
   static void pop({dynamic args}) {
-    _history.removeLast();
-    var route = _routes.firstWhere((r) => r.path == _history.last);
-    render(route.builder(args), _root);
-
-    // Update the URL to the previous route
-    window.history.replaceState(null, '', "/#${route.path}");
+    try {
+      _history.removeLast();
+      window.history.back();
+    } catch (e) {
+      print(e);
+    }
   }
 }
 
