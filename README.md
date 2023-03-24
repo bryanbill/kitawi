@@ -40,13 +40,13 @@ This will start a local server on port `8080`. If the port is in use, you can sp
 kitawi run -p <port_number>
 ```
 
- You can now access your project by navigating to `http://localhost:<port_number>` in your browser.
+You can now access your project by navigating to `http://localhost:<port_number>` in your browser.
 
- To build your project, run the following command:
+To build your project, run the following command:
 
- ```bash
-  kitawi build
-  ```
+```bash
+ kitawi build
+```
 
 This will create a `build` directory in your project directory. This directory contains the compiled JavaScript and CSS files for your project. You can now deploy your project to any web server. [See this Vercel guide for more information](https://vercel.com/docs/concepts/deployments/overview#vercel-cli)
 
@@ -69,8 +69,8 @@ void main() {
   run(
     [
       Route(
-        builder: (args) => App(), 
-        path: "/app", 
+        builder: (args) => App(),
+        path: "/app",
         name: "App"
       ),
     ],

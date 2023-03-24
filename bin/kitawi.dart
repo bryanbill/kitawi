@@ -144,7 +144,7 @@ void _handleCreateCommand(ArgResults args) async {
 
   final manifest = '''
 
-manifest: 
+manifest:
   - name: $projectName
   - short_name: $projectName
   - id: /#/
@@ -325,14 +325,14 @@ body {
     index.writeAsStringSync('''
 <!DOCTYPE html>
 <html lang="en">
-  <head>    
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kitawi is a responsive UI framework for building modern web applications.">
     <meta name="keywords" content="kitawi, ui framework, web development">
     <meta name="author" content="Kitawi">
     <meta name="theme-color" content="#4DB6AC">
-    
+
     <title>$name</title>
     <link rel="stylesheet" href="assets/css/main.css">
   </head>
@@ -356,8 +356,8 @@ void main() {
   run(
     [
       Route(
-        builder: (args) => App(), 
-        path: "/", 
+        builder: (args) => App(),
+        path: "/",
         name: "App"
       ),
     ],
