@@ -3,7 +3,7 @@
 export 'package:kitawi/src/components/text.dart';
 export 'package:kitawi/src/core/colors.dart';
 export 'package:kitawi/src/core/text_style.dart';
-export 'package:kitawi/src/core/widget.dart';
+export 'package:kitawi/src/components/widget.dart';
 export 'package:kitawi/src/core/color.dart';
 export 'package:kitawi/src/core/foundation.dart';
 export 'package:kitawi/src/core/size.dart';
