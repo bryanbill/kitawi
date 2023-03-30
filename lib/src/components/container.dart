@@ -12,7 +12,6 @@ class Container extends Widget {
   final Decoration? decoration;
   final Alignment? alignment;
   final BoxConstraints? constraints;
-  final Gradient? gradient;
 
   Container({
     Key? key,
@@ -24,7 +23,6 @@ class Container extends Widget {
     this.decoration,
     this.alignment,
     this.constraints,
-    this.gradient,
   }) : super(key: key);
 
   @override
@@ -66,8 +64,8 @@ class Container extends Widget {
       div.style.width = width.toString();
       div.style.height = height.toString();
     }
-    if (gradient != null) {
-      div.style.backgroundImage = gradient!.toString();
+    if (decoration?.gradient != null) {
+      div.style.backgroundImage = decoration?.gradient?.toString();
     }
     return div;
   }
