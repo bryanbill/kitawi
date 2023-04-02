@@ -14,12 +14,13 @@ class Decoration {
   /// specifies the border radius of the widget.
   final BorderRadius? borderRadius;
 
-  Decoration(
-      {this.color,
-      this.border,
-      this.boxShadow,
-      this.borderRadius,
-      this.gradient});
+  Decoration({
+    this.color,
+    this.border,
+    this.boxShadow,
+    this.borderRadius,
+    this.gradient,
+  });
 }
 
 /// The border type can be solid, dashed, dotted, double, groove, ridge, inset, or outset
