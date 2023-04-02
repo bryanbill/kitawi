@@ -10,7 +10,7 @@ class MediaQuery extends Widget {
       ValueStream<MediaQueryData>(MediaQueryData(size: Size(), theme: Theme()));
   MediaQuery({Key? key, required this.builder, this.data}) : super(key: key) {
     Size().updateSize();
-    Theme().updateMode();
+
     _valueStream.value = MediaQueryData(size: Size(), theme: Theme());
 
     window.onResize.listen((event) {
@@ -20,7 +20,6 @@ class MediaQuery extends Widget {
 
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',
         (event) {
-      Theme().updateMode();
       _valueStream.value = MediaQueryData(size: Size(), theme: Theme());
     });
   }
