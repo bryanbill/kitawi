@@ -64,4 +64,3 @@ class TextAlign {
   static const start = TextAlign._('start');
   static const end = TextAlign._('end');
 }
-
