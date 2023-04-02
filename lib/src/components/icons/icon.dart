@@ -5,17 +5,19 @@ import 'package:kitawi/kitawi.dart';
 class Icon extends Widget {
   final IconData icon;
   final Color? color;
-  final double? size;
-
-  Icon(this.icon, {this.color, this.size});
+  final Dimensions? size;
+  Icon(
+    this.icon, {
+    this.color,
+    this.size,
+  });
   @override
   Element createElement() {
-    var image = Image(icon.base64,
-        width: size,
-        height: size,
-        decoration: Decoration(color: color),
-        fit: BoxFit.cover);
-
-    return image.render();
+    final span = SpanElement()
+      ..classes.add(icon.type!)
+      ..style.color = color?.rgba
+      ..style.fontSize = size?.toString()
+      ..text = icon.name;
+    return span;
   }
 }
