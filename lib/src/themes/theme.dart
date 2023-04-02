@@ -1,9 +1,6 @@
 import 'dart:html';
 
 import 'package:kitawi/kitawi.dart';
-import 'package:kitawi/src/core/color.dart';
-import 'package:kitawi/src/core/text_style.dart';
-import 'package:kitawi/src/themes/theme_data.dart';
 
 enum ThemeMode { light, dark, system }
 
