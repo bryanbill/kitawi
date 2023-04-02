@@ -30,15 +30,17 @@ class Text extends Widget {
   Element createElement() {
     return ParagraphElement()
       ..text = _text
-      ..style.color = style?.color?.rgba
+      ..style.color = style?.color?.rgba ??
+          Theme.themeData?.textTheme?.bodyText1?.color?.rgba
       ..style.backgroundColor = style?.backgroundColor?.rgba
       ..style.fontFamily = style?.fontFamily
-      ..style.fontSize = '${style?.fontSize}px'
-      ..style.fontWeight = '${style?.fontWeight?.index}'
+      ..style.fontSize = '${style?.fontSize}'
+      ..style.fontWeight = style?.fontWeight?.index.toString()
       ..style.fontStyle = style?.fontStyle?.value
       ..style.padding = '0'
       ..style.margin = '0'
-      ..style.textAlign = textAlign?.value;
+      ..style.textAlign = textAlign?.value
+      ..style.textDecoration = style?.textDecoration?.toString();
   }
 }
 
@@ -62,3 +64,4 @@ class TextAlign {
   static const start = TextAlign._('start');
   static const end = TextAlign._('end');
 }
+

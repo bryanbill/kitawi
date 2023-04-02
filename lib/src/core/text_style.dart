@@ -11,7 +11,6 @@ class TextStyle {
     this.fontWeight,
     this.fontStyle,
     this.textDecoration,
-    this.textAlignment,
   });
 
   /// The color of the text.
@@ -39,25 +38,8 @@ class TextStyle {
   /// The decoration to paint near the text.
   final TextDecoration? textDecoration;
 
-  /// The TextAlignment to use when painting the text.
-  final TextAlignment? textAlignment;
 }
 
-class TextAlignment {
-  const TextAlignment._(this.alignment);
-
-  final String alignment;
-
-  static const TextAlignment left = TextAlignment._("left");
-  static const TextAlignment right = TextAlignment._("right");
-  static const TextAlignment center = TextAlignment._("center");
-  static const TextAlignment justify = TextAlignment._("justify");
-  static const TextAlignment start = TextAlignment._("start");
-  static const TextAlignment end = TextAlignment._("end");
-
-  @override
-  String toString() => alignment;
-}
 
 class TextDecoration {
   final Color? color;
@@ -79,7 +61,7 @@ class TextDecoration {
 
   @override
   String toString() {
-    return '$color $style $line $thickness';
+    return '${color?.rgba} $style $line $thickness';
   }
 }
 
@@ -135,31 +117,31 @@ class FontWeight {
   final int index;
 
   /// A font weight with a lighter value than [w400].
-  static const FontWeight w100 = FontWeight._(0);
+  static const FontWeight w100 = FontWeight._(100);
 
   /// A font weight with a lighter value than [w500].
-  static const FontWeight w200 = FontWeight._(1);
+  static const FontWeight w200 = FontWeight._(200);
 
   /// A font weight with a lighter value than [w600].
-  static const FontWeight w300 = FontWeight._(2);
+  static const FontWeight w300 = FontWeight._(300);
 
   /// The normal font weight.
-  static const FontWeight w400 = FontWeight._(3);
+  static const FontWeight w400 = FontWeight._(400);
 
   /// A font weight with a heavier value than [w400].
-  static const FontWeight w500 = FontWeight._(4);
+  static const FontWeight w500 = FontWeight._(500);
 
   /// A font weight with a heavier value than [w500].
-  static const FontWeight w600 = FontWeight._(5);
+  static const FontWeight w600 = FontWeight._(600);
 
   /// A font weight with a heavier value than [w600].
-  static const FontWeight w700 = FontWeight._(6);
+  static const FontWeight w700 = FontWeight._(700);
 
   /// A font weight with a heavier value than [w700].
-  static const FontWeight w800 = FontWeight._(7);
+  static const FontWeight w800 = FontWeight._(800);
 
   /// A font weight with a heavier value than [w800].
-  static const FontWeight w900 = FontWeight._(8);
+  static const FontWeight w900 = FontWeight._(900);
 
   /// A font weight with a heavier value than [w900].
   static const FontWeight bold = FontWeight.w700;

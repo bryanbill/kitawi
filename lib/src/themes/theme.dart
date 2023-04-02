@@ -60,7 +60,6 @@ class Theme {
     root.style.fontSize = data.textTheme?.bodyText1?.fontSize?.toString();
     root.style.fontWeight = data.textTheme?.bodyText1?.fontWeight?.toString();
     root.style.fontStyle = data.textTheme?.bodyText1?.fontStyle?.toString();
-    root.style.textAlign = data.textTheme?.bodyText1?.textAlignment?.alignment;
 
     // Set the text decoration of the root element.
     root.style.textDecoration =
@@ -92,7 +91,6 @@ class Theme {
           fontSize: 16.px,
           fontWeight: FontWeight.normal,
           fontStyle: FontStyle.normal,
-          textAlignment: TextAlignment.left,
           textDecoration: TextDecoration.none,
         ),
       ),
@@ -109,7 +107,6 @@ class Theme {
           fontSize: 16.px,
           fontWeight: FontWeight.normal,
           fontStyle: FontStyle.normal,
-          textAlignment: TextAlignment.left,
           textDecoration: TextDecoration.none,
         ),
       ),
