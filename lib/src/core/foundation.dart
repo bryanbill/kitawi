@@ -1,4 +1,4 @@
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// The Decoration class is used to decorate a widget
 /// with a color, border, and box shadow e.t.c
@@ -8,11 +8,19 @@ class Decoration {
   final Border? border;
   final List<BoxShadow>? boxShadow;
 
+  final Gradient? gradient;
+
   /// The [BorderRadius] `borderRadius` parameter is optional and
   /// specifies the border radius of the widget.
   final BorderRadius? borderRadius;
 
-  Decoration({this.color, this.border, this.boxShadow, this.borderRadius});
+  Decoration({
+    this.color,
+    this.border,
+    this.boxShadow,
+    this.borderRadius,
+    this.gradient,
+  });
 }
 
 /// The border type can be solid, dashed, dotted, double, groove, ridge, inset, or outset

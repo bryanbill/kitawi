@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.7 (2023-04-02)
+
+- Adds sample M3 Icons
+- Adds a comprehensive Theme utility
+- Improved CLI - Help, run, build commands are now available
+- PWA configuration is now available in the pubspec.yaml file
+
 ## 0.0.6 (2023-03-24)
 
 - Added init() method for Layout
