@@ -17,7 +17,7 @@ class BouncingDot extends Widget {
 
   BouncingDot({
     Key? key,
-    this.dotColor = Colors.black,
+    this.dotColor,
     this.dotSize,
     this.duration = 1000,
   });
@@ -25,10 +25,12 @@ class BouncingDot extends Widget {
   @override
   Element createElement() {
     return DivElement()
-      ..style.width = '$dotSize'
-      ..style.height = '$dotSize'
+      ..id = key?.value ?? ''
+      ..style.width = '${dotSize ?? 10.px}'
+      ..style.height = '${dotSize ?? 10.px}'
       ..style.borderRadius = '50%'
-      ..style.backgroundColor = dotColor?.rgba
+      ..style.backgroundColor =
+          dotColor?.rgba ?? Theme.themeData?.primaryColor?.rgba
       ..animate([
         {'transform': 'translateY(0px)'},
         {'transform': 'translateY(-20px)'},
