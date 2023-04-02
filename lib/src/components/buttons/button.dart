@@ -57,7 +57,8 @@ class Button extends Widget {
       ..style.width = '100%'
       ..style.height = '100%'
       ..style.overflow = 'hidden'
-      ..style.backgroundColor = decoration?.color?.rgba ?? Theme.themeData?.primaryColor?.rgba
+      ..style.backgroundColor =
+          decoration?.color?.rgba ?? Theme.themeData?.primaryColor?.rgba
       ..style.borderColor = decoration?.border?.color?.rgba ?? 'inherit'
       ..style.borderRadius = decoration?.borderRadius?.toString() ?? 'inherit'
       ..style.borderWidth = '${decoration?.border?.side ?? 0}px'

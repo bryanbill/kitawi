@@ -1,7 +1,8 @@
+/// Kitawi is a UI library that provides a set of
+/// widgets and utilities to build beautiful PWAs.
+
 library kitawi;
 
-/// Kitawi is a UI library that provides a set of
-/// components and utilities to build beautiful apps.
 export 'package:kitawi/src/core/app.dart';
 export 'package:kitawi/src/components/text.dart';
 export 'package:kitawi/src/core/colors.dart';
