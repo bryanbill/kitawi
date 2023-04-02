@@ -1,7 +1,7 @@
 import 'dart:html';
 
 import 'package:kitawi/src/core/key.dart';
-import 'package:kitawi/src/components/widget.dart';
+import 'package:kitawi/src/widgets/widget.dart';
 
 /// The [Expanded] class expands a child of a [Row] or [Column] so that the
 /// child fills the available space.
