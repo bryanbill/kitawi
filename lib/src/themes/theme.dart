@@ -1,53 +1,98 @@
 import 'dart:html';
 
-/// The accepted theme modes for the application
-///
-/// * `light` - The light theme is used when the user prefers light colors.
-/// * `dark` - The dark theme is used when the user prefers dark colors.
-/// * `system` - The system theme is used when the user prefers either light or dark colors.
+import 'package:kitawi/src/themes/theme_data.dart';
+
 enum ThemeMode { light, dark, system }
 
-/// The `Theme` class is used to manage the theme of the application.
+/// A class that provides utilities for applying and managing themes.
 class Theme {
-  static late ThemeMode _mode;
+  /// The current [ThemeData] being used.
+  static ThemeData? themeData;
 
-  static final Theme _instance = Theme._internal();
+  /// Initializes the theme.
+  static void init({
+    ThemeData? theme,
+    ThemeData? darkTheme,
+    ThemeMode? themeMode,
+  }) {
+    // If the theme mode is system, add a listener to the brightness preference of the user.
+    if (themeMode == ThemeMode.system) {
+      addBrightnessListener((brightness) {
+        if (brightness == Brightness.light) {
+          applyTheme(document.body!, theme!);
+        } else {
+          applyTheme(document.body!, darkTheme!);
+        }
+      });
+    }
 
-  factory Theme() {
-    return _instance;
-  }
-
-  Theme._internal() {
-    _mode = ThemeMode.system;
-  }
-
-  /// Returns the current theme mode.
-  static ThemeMode get mode {
-    if (_mode == ThemeMode.system) {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-          ? ThemeMode.dark
-          : ThemeMode.light;
-    } else {
-      return _mode;
+    // Apply the theme based on the theme mode.
+    switch (themeMode) {
+      case ThemeMode.light:
+        applyTheme(document.body!, theme!);
+        break;
+      case ThemeMode.dark:
+        applyTheme(document.body!, darkTheme!);
+        break;
+      case ThemeMode.system:
+        if (brightness == Brightness.light) {
+          applyTheme(document.body!, theme!);
+        } else {
+          applyTheme(document.body!, darkTheme!);
+        }
+        break;
+      default:
+        applyTheme(document.body!, theme!);
+        break;
     }
   }
 
-  /// Sets the theme mode.
-  static set mode(ThemeMode value) {
-    _mode = value;
+  /// Applies the provided [data] to the given [root] element.
+  static void applyTheme(Element root, ThemeData data) {
+    themeData = data;
 
-    // set the prefers-color-scheme media query to the window
+    // Set the background color and text color of the root element.
+    root.style.backgroundColor = data.backgroundColor?.rgba;
+    root.style.color = data.textTheme?.bodyText1?.color?.rgba;
+
+    // Set the font family, font size, font weight, font style, and text alignment of the root element.
+    root.style.fontFamily = data.textTheme?.bodyText1?.fontFamily;
+    root.style.fontSize = data.textTheme?.bodyText1?.fontSize?.toString();
+    root.style.fontWeight = data.textTheme?.bodyText1?.fontWeight?.toString();
+    root.style.fontStyle = data.textTheme?.bodyText1?.fontStyle?.toString();
+    root.style.textAlign = data.textTheme?.bodyText1?.textAlignment?.alignment;
+
+    // Set the text decoration of the root element.
+    root.style.textDecoration =
+        data.textTheme?.bodyText1?.textDecoration?.toString();
   }
 
-  void updateMode() {
-    // whenever the theme changes, all text and background colors should be
-    // updated based on the new theme.
+  /// Returns the current brightness preference of the user.
+  static Brightness get brightness {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? Brightness.dark
+        : Brightness.light;
+  }
 
-    _mode = ThemeMode.system;
+  /// Adds a listener to the brightness preference of the user, and calls the provided [callback] whenever it changes.
+  static void addBrightnessListener(Function(Brightness) callback) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',
+        (event) {
+      return callback(brightness);
+    });
   }
 
   @override
   String toString() {
-    return 'Theme(mode: $_mode)';
+    return 'Theme(data: $themeData)';
   }
+}
+
+/// An enum representing the brightness of a theme.
+enum Brightness {
+  /// The light brightness.
+  light,
+
+  /// The dark brightness.
+  dark
 }
