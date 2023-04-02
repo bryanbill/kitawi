@@ -1,6 +1,4 @@
-import 'dart:html';
-
-import 'package:kitawi/src/core/color.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// A style that applies to a [Text].
 ///
@@ -12,6 +10,8 @@ class TextStyle {
     this.fontSize,
     this.fontWeight,
     this.fontStyle,
+    this.textDecoration,
+    this.textAlignment,
   });
 
   /// The color of the text.
@@ -27,7 +27,7 @@ class TextStyle {
   final String? fontFamily;
 
   /// The size of the glyphs (in logical pixels) to use when painting the text.
-  final double? fontSize;
+  final Dimensions? fontSize;
 
   /// The font weight to use when painting the text.
   final FontWeight? fontWeight;
@@ -35,6 +35,80 @@ class TextStyle {
   /// The font style to use when painting the text.
   ///
   final FontStyle? fontStyle;
+
+  /// The decoration to paint near the text.
+  final TextDecoration? textDecoration;
+
+  /// The TextAlignment to use when painting the text.
+  final TextAlignment? textAlignment;
+}
+
+class TextAlignment {
+  const TextAlignment._(this.alignment);
+
+  final String alignment;
+
+  static const TextAlignment left = TextAlignment._("left");
+  static const TextAlignment right = TextAlignment._("right");
+  static const TextAlignment center = TextAlignment._("center");
+  static const TextAlignment justify = TextAlignment._("justify");
+  static const TextAlignment start = TextAlignment._("start");
+  static const TextAlignment end = TextAlignment._("end");
+
+  @override
+  String toString() => alignment;
+}
+
+class TextDecoration {
+  final Color? color;
+
+  final TextDecorationStyle? style;
+
+  final TextDecorationLine? line;
+
+  final Dimensions? thickness;
+
+  const TextDecoration({
+    this.color,
+    this.style,
+    this.line,
+    this.thickness,
+  });
+
+  @override
+  String toString() {
+    return '$color $style $line $thickness';
+  }
+}
+
+class TextDecorationStyle {
+  const TextDecorationStyle._(this.style);
+
+  final String style;
+
+  static const TextDecorationStyle solid = TextDecorationStyle._("solid");
+  static const TextDecorationStyle double = TextDecorationStyle._("double");
+  static const TextDecorationStyle dotted = TextDecorationStyle._("dotted");
+  static const TextDecorationStyle dashed = TextDecorationStyle._("dashed");
+  static const TextDecorationStyle wavy = TextDecorationStyle._("wavy");
+
+  @override
+  String toString() => style;
+}
+
+class TextDecorationLine {
+  const TextDecorationLine._(this.line);
+
+  final String line;
+
+  static const TextDecorationLine none = TextDecorationLine._("none");
+  static const TextDecorationLine underline = TextDecorationLine._("underline");
+  static const TextDecorationLine overline = TextDecorationLine._("overline");
+  static const TextDecorationLine lineThrough =
+      TextDecorationLine._("line-through");
+
+  @override
+  String toString() => line;
 }
 
 /// A font weight.
