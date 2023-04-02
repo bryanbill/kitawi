@@ -75,6 +75,8 @@ class TextDecoration {
     this.thickness,
   });
 
+  static const TextDecoration none = TextDecoration();
+
   @override
   String toString() {
     return '$color $style $line $thickness';

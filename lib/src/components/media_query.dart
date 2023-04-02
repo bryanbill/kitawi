@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 class MediaQuery extends Widget {
   final MediaQueryData? data;

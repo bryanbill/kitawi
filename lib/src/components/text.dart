@@ -1,5 +1,5 @@
 import 'dart:html';
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// The [Text] class is a widget that displays a single line of text.
 class Text extends Widget {

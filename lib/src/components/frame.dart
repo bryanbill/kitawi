@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 import 'package:kitawi/src/components/sized_widgets/preffered_size_widget.dart';
 
 /// NOTE: This is a work in progress.

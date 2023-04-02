@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// The [Column] class is a widget that displays its children in a vertical
 class Column extends Widget {

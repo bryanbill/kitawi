@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'dart:math';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 class LinearProgressIndicator extends Widget {
   final double? value;

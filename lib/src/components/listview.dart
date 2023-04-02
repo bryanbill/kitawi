@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// The [Listview] class is a widget that displays a list of widgets.
 class Listview extends Widget {

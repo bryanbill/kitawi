@@ -1,4 +1,4 @@
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 class ThemeData {
   /// The text theme for the application.

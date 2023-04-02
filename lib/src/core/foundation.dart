@@ -1,4 +1,4 @@
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// The Decoration class is used to decorate a widget
 /// with a color, border, and box shadow e.t.c

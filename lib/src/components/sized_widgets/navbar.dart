@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 import 'package:kitawi/src/components/sized_widgets/preffered_size_widget.dart';
 
 /// This class is used to create a navigation bar widget.

@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// The GestureDetector class is a widget that is used to
 /// wrap around widgets with actions (clic, hover, e.t.c)

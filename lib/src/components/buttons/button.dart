@@ -1,4 +1,4 @@
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 import 'dart:html' as html;
 
 /// A button widget that can be clicked to trigger an action.

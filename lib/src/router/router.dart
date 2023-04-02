@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/src/core/app.dart';
 
 /// The [Router] class is used to navigate between routes.
 ///

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 import 'dart:html' as html;
 
 /// A widget that asynchronously builds itself based on the events of a stream.

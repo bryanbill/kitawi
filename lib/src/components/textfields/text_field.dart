@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'dart:math';
 
-import 'package:kitawi/src/basic.dart';
+import 'package:kitawi/kitawi.dart';
 import 'package:kitawi/src/state/change_notifier.dart';
 
 class TextField extends Widget {

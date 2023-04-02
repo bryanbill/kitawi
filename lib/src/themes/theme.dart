@@ -1,5 +1,8 @@
 import 'dart:html';
 
+import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/src/core/color.dart';
+import 'package:kitawi/src/core/text_style.dart';
 import 'package:kitawi/src/themes/theme_data.dart';
 
 enum ThemeMode { light, dark, system }
@@ -80,6 +83,40 @@ class Theme {
         (event) {
       return callback(brightness);
     });
+  }
+
+  static ThemeData light() {
+    return ThemeData(
+      backgroundColor: Color(0xFFFFFFFF),
+      textTheme: TextTheme(
+        bodyText1: TextStyle(
+          color: Color(0xFF000000),
+          fontFamily: 'Roboto',
+          fontSize: 16.px,
+          fontWeight: FontWeight.normal,
+          fontStyle: FontStyle.normal,
+          textAlignment: TextAlignment.left,
+          textDecoration: TextDecoration.none,
+        ),
+      ),
+    );
+  }
+
+  static ThemeData dark() {
+    return ThemeData(
+      backgroundColor: Color(0xFF000000),
+      textTheme: TextTheme(
+        bodyText1: TextStyle(
+          color: Color(0xFFFFFFFF),
+          fontFamily: 'Roboto',
+          fontSize: 16.px,
+          fontWeight: FontWeight.normal,
+          fontStyle: FontStyle.normal,
+          textAlignment: TextAlignment.left,
+          textDecoration: TextDecoration.none,
+        ),
+      ),
+    );
   }
 
   @override
