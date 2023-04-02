@@ -129,46 +129,8 @@ void _handleCreateCommand(ArgResults args) async {
   // scaffold the app
   scaffold(projectName);
 
-  // Change directory to the newly created app
-  Directory.current = projectName;
-
-  // Add kitawi: any as a dependency in pubspec.yaml
-  final pubspec = File('pubspec.yaml');
-
-  // Read the contents of the pubspec.yaml file
-  final contents = await pubspec.readAsString();
-
-  // Add kitawi: any as a dependency
-  var updatedContents =
-      contents.replaceFirst('dependencies:', 'dependencies:\n  kitawi: ^0.0.5');
-
-  final manifest = '''
-
-manifest:
-  - name: $projectName
-  - short_name: $projectName
-  - id: /#/
-  - start_url: /#/
-  - display: standalone
-  - background_color: "#ffffff"
-  - theme_color: "#4DB6AC"
-  - orientation: portrait-primary
-  - icons:
-      - src: /assets/images/icon.png
-        sizes: 192x192
-        type: image/png
-''';
-
-// add the manifest contents to the pubspec.yaml file
-  updatedContents = contents.replaceFirst(
-          'dependencies:', 'dependencies:\n  kitawi: ^0.0.6') +
-      manifest;
-
-  // Write the updated contents to the pubspec.yaml file
-  await pubspec.writeAsString(updatedContents);
-
   // Run pub get to install the kitawi dependency
-  final pubGet = await Process.start('dart', ['pub', 'get']);
+  final pubGet = await Process.start('dart', ['pub', 'add', 'kitawi']);
 
   // Pipe the output of the pub get command to stdout
   pubGet.stdout.listen((event) {

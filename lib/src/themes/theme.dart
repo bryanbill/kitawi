@@ -75,7 +75,7 @@ class Theme {
   }
 
   /// Adds a listener to the brightness preference of the user, and calls the provided [callback] whenever it changes.
-  static void addBrightnessListener(Function(Brightness) callback) {
+  static void addBrightnessListener(void Function(Brightness) callback) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',
         (event) {
       return callback(brightness);
