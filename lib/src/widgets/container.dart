@@ -67,6 +67,11 @@ class Container extends Widget {
     if (decoration?.gradient != null) {
       div.style.backgroundImage = decoration?.gradient?.toString();
     }
+
+    if (decoration?.image != null) {
+      div.style.background = decoration?.image?.toString();
+    }
+
     return div;
   }
 }
