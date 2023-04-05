@@ -1,4 +1,9 @@
-import 'package:kitawi/kitawi.dart';
+library foundation;
+
+import 'package:kitawi/src/core/color.dart';
+import 'package:kitawi/src/core/dimensions.dart';
+import 'package:kitawi/src/widgets/text.dart';
+
 
 /// The Decoration class is used to decorate a widget
 /// with a color, border, and box shadow e.t.c
@@ -462,4 +467,25 @@ class DecorationImage {
     }
     return '${align?.value} / $fit no-repeat url($src)';
   }
+}
+
+/// The TextAlign property aligns the text to the specified side in it's main axis
+///
+/// Example:
+/// ```dart
+/// Text(
+///  'Hello World',
+/// textAlign: TextAlign.center,
+/// )
+class TextAlign {
+  final String value;
+
+  const TextAlign._(this.value);
+
+  static const left = TextAlign._('left');
+  static const right = TextAlign._('right');
+  static const center = TextAlign._('center');
+  static const justify = TextAlign._('justify');
+  static const start = TextAlign._('start');
+  static const end = TextAlign._('end');
 }
