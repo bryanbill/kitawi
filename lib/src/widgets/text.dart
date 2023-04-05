@@ -1,5 +1,10 @@
 import 'dart:html';
-import 'package:kitawi/kitawi.dart';
+
+import 'package:kitawi/src/core/foundation.dart';
+import 'package:kitawi/src/core/key.dart';
+import 'package:kitawi/src/core/text_style.dart';
+import 'package:kitawi/src/themes/theme.dart';
+import 'package:kitawi/src/widgets/widget.dart';
 
 /// The [TextTag] class is used to specify the tag name for the [Text] widget.
 /// The [TextTag] class has the following values:
@@ -76,8 +81,7 @@ class Text extends Widget {
                                 : SpanElement();
     return element
       ..text = text
-      ..style.color = style?.color?.rgba ??
-          Theme.themeData?.textTheme?.bodyText1?.color?.rgba
+      ..style.color = style?.color?.rgba 
       ..style.backgroundColor = style?.backgroundColor?.rgba
       ..style.fontFamily = style?.fontFamily
       ..style.fontSize = '${style?.fontSize}'
@@ -193,23 +197,4 @@ class Text extends Widget {
   }
 }
 
-/// The TextAlign property aligns the text to the specified side in it's main axis
-///
-/// Example:
-/// ```dart
-/// Text(
-///  'Hello World',
-/// textAlign: TextAlign.center,
-/// )
-class TextAlign {
-  final String value;
 
-  const TextAlign._(this.value);
-
-  static const left = TextAlign._('left');
-  static const right = TextAlign._('right');
-  static const center = TextAlign._('center');
-  static const justify = TextAlign._('justify');
-  static const start = TextAlign._('start');
-  static const end = TextAlign._('end');
-}

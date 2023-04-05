@@ -1,6 +1,12 @@
 import 'dart:html';
 
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/src/core/action.dart';
+import 'package:kitawi/src/core/color.dart';
+import 'package:kitawi/src/core/dimensions.dart';
+import 'package:kitawi/src/core/edge_insets.dart';
+import 'package:kitawi/src/core/foundation.dart';
+import 'package:kitawi/src/widgets/buttons/button.dart';
+import 'package:kitawi/src/widgets/widget.dart';
 
 /// The [FloatingActionButton] class is a widget that displays a floating action button.
 ///
