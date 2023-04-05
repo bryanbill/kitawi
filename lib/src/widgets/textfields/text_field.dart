@@ -39,7 +39,6 @@ class TextField extends Widget {
   final int? maxLines;
   // The maximum number of lines that the text field can have
 
-
   TextField(
       {Key? key,
       this.controller,
@@ -352,5 +351,3 @@ enum TextInputType {
   /// "p" on iOS and a text input field with type=tel on Android.
   phone,
 }
-
-

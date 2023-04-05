@@ -81,7 +81,7 @@ class Text extends Widget {
                                 : SpanElement();
     return element
       ..text = text
-      ..style.color = style?.color?.rgba 
+      ..style.color = style?.color?.rgba
       ..style.backgroundColor = style?.backgroundColor?.rgba
       ..style.fontFamily = style?.fontFamily
       ..style.fontSize = '${style?.fontSize}'
@@ -196,5 +196,3 @@ class Text extends Widget {
     );
   }
 }
-
-
