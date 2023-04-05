@@ -33,8 +33,8 @@ class Container extends Widget {
       ..style.maxWidth = '${constraints?.maxWidth}'
       ..style.minHeight = '${constraints?.minHeight}'
       ..style.minWidth = '${constraints?.minWidth}'
-      ..style.padding = padding?.toString()
-      ..style.margin = margin?.toString()
+      ..style.padding = "$padding"
+      ..style.margin = "$margin"
       ..style.backgroundColor = decoration?.color?.rgba
       ..style.borderRadius = decoration?.borderRadius?.toString() ?? '0'
       ..style.borderColor = decoration?.border?.color?.rgba
@@ -47,23 +47,24 @@ class Container extends Widget {
       ..style.alignItems = alignment?.y ?? 'auto'
       ..children.add(child?.createElement() ?? DivElement());
 
+    var horizontalInset = 0.0;
+    var verticalInset = 0.0;
     if (padding != null) {
-      var paddingLeft = padding?.left ?? 0;
-      var paddingRight = padding?.right ?? 0;
-      var paddingTop = padding?.top ?? 0;
-      var paddingBottom = padding?.bottom ?? 0;
-      if (width != null) {
-        div.style.width =
-            '${Dimensions.calc(from: width!, inset: Dimensions.of(paddingLeft + paddingRight))}';
-      }
-      if (height != null) {
-        div.style.height =
-            '${Dimensions.calc(from: height!, inset: Dimensions.of(paddingTop + paddingBottom))}';
-      }
-    } else {
-      div.style.width = width.toString();
-      div.style.height = height.toString();
+      horizontalInset += (padding?.left ?? 0) + (padding?.right ?? 0);
+      verticalInset += (padding?.top ?? 0) + (padding?.bottom ?? 0);
     }
+    if (margin != null) {
+      horizontalInset += (margin?.left ?? 0) + (margin?.right ?? 0);
+      verticalInset += (margin?.top ?? 0) + (margin?.bottom ?? 0);
+    }
+
+    div.style.width = width != null
+        ? '${Dimensions.calc(from: width!, inset: Dimensions.of(horizontalInset))}'
+        : div.style.width;
+    div.style.height = height != null
+        ? '${Dimensions.calc(from: height!, inset: Dimensions.of(verticalInset))}'
+        : div.style.height;
+
     if (decoration?.gradient != null) {
       div.style.backgroundImage = decoration?.gradient?.toString();
     }
