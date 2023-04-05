@@ -6,27 +6,39 @@ import 'package:kitawi/src/state/change_notifier.dart';
 
 class TextField extends Widget {
   final TextEditingController? controller;
+  // The controller that controls the text in the text field
 
   final InputDecoration? decoration;
+  // The decoration for the text field
 
   final Function(String)? onChanged;
+  // A function that is called when the text in the text field changes
 
   final Function(String)? onSubmitted;
+  // A function that is called when the text in the text field is submitted
 
   final TextInputType? keyboardType;
+  // The type of keyboard that shows up when the text field is focused
 
   final bool? autofocus;
+  // Whether the text field should be focused when the app starts
 
   final bool? obscureText;
+  // Whether the text in the text field should be obscured
 
   final RegExp? validator;
+  // A regular expression that is used to validate the text in the text field
 
   final TextAlign? textAlign;
   final TextAlign? textAlignVertical;
+  // The alignment of the text in the text field
 
   final TextStyle? style;
+  // The style of the text in the text field
 
   final int? maxLines;
+  // The maximum number of lines that the text field can have
+
 
   TextField(
       {Key? key,
@@ -181,6 +193,14 @@ class TextField extends Widget {
   }
 }
 
+/// A text editing controller maintains the current state of editing a text
+/// input. It can be used to [addListener] to changes in the text and to
+/// [text] to set the current value of the editing. It can also be used to
+/// [clear] the text.
+///
+/// This class is a [ChangeNotifier], so it can be used to listen to changes in
+/// the text by calling [addListener] and supplying a callback function. When
+/// the text changes, the provided callback will be called.
 class TextEditingController extends ChangeNotifier {
   TextEditingController({this.text = ''});
 
@@ -207,6 +227,31 @@ class TextEditingController extends ChangeNotifier {
   }
 }
 
+/// This class is used to describe the visual properties of an input field, such as
+/// a text field, with the exception of the label. The label is defined in
+/// [InputDecoration.labelText].
+///
+/// An [InputDecoration] object is passed as the `decoration` argument to the
+/// [InputDecoration] and [TextField] constructors. The [TextField] classe is used to implement material design's input fields.
+///
+/// The [InputDecoration] class provides a number of ways to customize the look
+/// of an input decorator. The most important properties are [hintText],
+/// [helperText], [errorText], [prefixIcon], [suffixIcon],
+///  and [border]. The [hintText] is displayed when the input decorator's
+/// child is empty, e.g. when the child is a [TextField] and the user hasn't
+/// entered any text. The [helperText] is displayed below the input decorator's
+/// child. The [errorText] is displayed below the input decorator's child when
+/// the input decorator's [InputDecoration.errorText] property is non-null.
+/// The [prefixIcon] and [suffixIcon] are displayed at the top and bottom of the
+/// input decorator's child, respectively. The [border] defines the
+/// input decorator's border.
+///
+/// The [InputDecoration] class provides a number of properties that are used to
+/// define the visual layout of the input decorator's elements. The
+/// [InputDecoration.contentPadding] property defines the input decorator's
+/// internal padding, i.e. the padding between the input decorator's border and
+/// all of its contents (i.e. the input decorator's child, its label, its
+/// helper/error text, its counter text, its prefix/suffix text, etc.).
 class InputDecoration {
   InputDecoration(
       {this.hintText,
@@ -259,14 +304,53 @@ class InputDecoration {
   final BorderRadius? borderRadius;
 }
 
+/// [TextInputType] is enumerated in the engine, however here we duplicate it since
+/// the framework code has no dependency on the engine.
 enum TextInputType {
+  /// Normal text input, which can include characters from any language.
   text,
+
+  /// Like [text], but will prevent the user from entering new lines.
   multiline,
+
+  /// For entering numbers, including decimal numbers.
+  ///
+  /// Uses the native keyboard on iOS, which includes easy access to the
+  /// decimal separator and number keypad. On Android, shows a number keypad
+  /// with only digits 0-9.
   number,
+
+  /// For entering a date or time (depending on the user's locale).
+  ///
+  /// Displays a native selector on iOS for picking a date or time (as
+  /// appropriate for the user's locale) and a text input field with
+  /// the selected date/time formatted to a short string on Android.
   datetime,
+
+  /// For entering an email address.
+  ///
+  /// Shows "@." keyboard on iOS and a text input field with type=email on
+  /// Android.
   emailAddress,
+
+  /// For entering a URL.
+  ///
+  /// Shows ".com/" keyboard on iOS and a text input field with type=url on
+  /// Android.
   url,
-  phoneNumber,
+
+  /// For entering a password where it is important to show the characters
+  /// being entered.
+  ///
+  /// Shows a keyboard with all keys, but does not automatically do things like
+  /// autocorrect or suggest words.
   visiblePassword,
+
+  /// For entering a telephone number.
+  ///
+  /// Shows a number pad with buttons for the digits 0-9, *, #, +, -, (, ), and
+  /// "p" on iOS and a text input field with type=tel on Android.
   phone,
 }
+
+
