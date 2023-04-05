@@ -84,7 +84,7 @@ void _handleCreateCommand(ArgResults args) async {
 
   final git = await Process.start('git', [
     'clone',
-    '',
+    'https://github.com/bryanbill/kt_template.git',
     appName,
   ]);
 
