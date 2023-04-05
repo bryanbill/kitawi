@@ -2,7 +2,6 @@ library foundation;
 
 import 'package:kitawi/src/core/color.dart';
 import 'package:kitawi/src/core/dimensions.dart';
-import 'package:kitawi/src/widgets/text.dart';
 
 
 /// The Decoration class is used to decorate a widget

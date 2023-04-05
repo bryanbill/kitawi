@@ -108,9 +108,9 @@ class MediaController {
   }
 
   Future<Duration?> get duration async {
-    return await Future.delayed(Duration(seconds: 1), () {
-      return Duration(seconds: _element?.duration.toInt() ?? 0);
-    });
+    // check if the _element has been created
+    _element ??= querySelector('#${key?.value.toString()}') as VideoElement?;
+    return Duration(seconds: _element?.duration as int);
   }
 
   void play() {
