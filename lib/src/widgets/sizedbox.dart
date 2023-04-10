@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 
 /// A widget that is a specific size.
 /// If given a child, this widget forces its child to have a specific width and/or height (assuming values are permitted by this widget's parent).

@@ -1,4 +1,4 @@
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 import 'package:test/test.dart';
 
 void main() {

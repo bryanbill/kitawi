@@ -1,4 +1,4 @@
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 import 'dart:html' as html;
 
 /// A widget that asynchronously builds itself based on the result of a future.

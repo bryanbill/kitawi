@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 
 /// The [Row] class is a widget that displays its children in a horizontal
 /// array.

@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 
 /// This is a simple animation that creates a bouncing dot effect
 /// using animate method.

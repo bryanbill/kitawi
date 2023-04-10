@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 
 /// The [Container] class is a widget that creates a div element with the defined props.
 class Container extends Widget {

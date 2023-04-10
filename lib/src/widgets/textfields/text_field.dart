@@ -1,8 +1,7 @@
 import 'dart:html';
 import 'dart:math';
 
-import 'package:kitawi/kitawi.dart';
-import 'package:kitawi/src/state/change_notifier.dart';
+import 'package:kitawi/widgets.dart';
 
 class TextField extends Widget {
   final TextEditingController? controller;
@@ -200,7 +199,7 @@ class TextField extends Widget {
 /// This class is a [ChangeNotifier], so it can be used to listen to changes in
 /// the text by calling [addListener] and supplying a callback function. When
 /// the text changes, the provided callback will be called.
-class TextEditingController extends ChangeNotifier {
+class TextEditingController  {
   TextEditingController({this.text = ''});
 
   String text;
@@ -213,17 +212,7 @@ class TextEditingController extends ChangeNotifier {
     text = '';
   }
 
-  @override
-  void addListener(Function() listener) {
-    super.addListener(listener);
-    listener();
-  }
 
-  @override
-  void dispose() {
-    text = '';
-    super.dispose();
-  }
 }
 
 /// This class is used to describe the visual properties of an input field, such as

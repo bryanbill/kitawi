@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 
 abstract class Layout extends Widget {
   Layout({Key? key}) : super(key: key) {

@@ -60,8 +60,8 @@ ArgParser _runCommandParser() {
 void _handleRunCommand(ArgResults args) async {
   final port = args['port'] ?? 8080;
 
-  final webdev = await Process.start(
-      'webdev', ['serve', 'web:$port', '--auto', 'refresh']);
+  final webdev = await Process.start('webdev',
+      ['serve', 'web:$port', '--hostname', '0.0.0.0', '--auto', 'refresh']);
 
   webdev.stdout.listen((event) {
     stdout.add(event);

@@ -1,4 +1,4 @@
-import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/widgets.dart';
 
 /// A style that applies to a [Text].
 ///
