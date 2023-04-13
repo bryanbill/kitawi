@@ -1,5 +1,11 @@
-import 'package:kitawi/kitawi.dart';
 import 'dart:html' as html;
+
+import 'package:kitawi/src/core/action.dart';
+import 'package:kitawi/src/core/color.dart';
+import 'package:kitawi/src/core/foundation.dart';
+import 'package:kitawi/src/core/key.dart';
+import 'package:kitawi/src/themes/theme.dart';
+import 'package:kitawi/src/widgets/widget.dart';
 
 /// A button widget that can be clicked to trigger an action.
 ///

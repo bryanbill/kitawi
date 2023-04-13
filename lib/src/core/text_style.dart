@@ -38,8 +38,31 @@ class TextStyle {
   /// The decoration to paint near the text.
   final TextDecoration? textDecoration;
 
-}
+  TextStyle copyWith({
+    Color? color,
+    Color? backgroundColor,
+    String? fontFamily,
+    Dimensions? fontSize,
+    FontWeight? fontWeight,
+    FontStyle? fontStyle,
+    TextDecoration? textDecoration,
+  }) {
+    return TextStyle(
+      color: color ?? this.color,
+      backgroundColor: backgroundColor ?? this.backgroundColor,
+      fontFamily: fontFamily ?? this.fontFamily,
+      fontSize: fontSize ?? this.fontSize,
+      fontWeight: fontWeight ?? this.fontWeight,
+      fontStyle: fontStyle ?? this.fontStyle,
+      textDecoration: textDecoration ?? this.textDecoration,
+    );
+  }
 
+  @override
+  String toString() {
+    return 'TextStyle(color: $color, backgroundColor: $backgroundColor, fontFamily: $fontFamily, fontSize: $fontSize, fontWeight: $fontWeight, fontStyle: $fontStyle, textDecoration: $textDecoration)';
+  }
+}
 
 class TextDecoration {
   final Color? color;

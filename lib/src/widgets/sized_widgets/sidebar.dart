@@ -1,8 +1,9 @@
 import 'dart:html';
 
 import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/src/widgets/sized_widgets/preffered_size_widget.dart';
 
-class SideBar extends Widget {
+class SideBar extends PreferredSizeWidget {
   final Widget? title;
   final Widget? body;
   final Widget? footer;
@@ -24,6 +25,7 @@ class SideBar extends Widget {
   Element createElement() {
     var div = DivElement()
       ..style.width = width?.toString() ?? '300px'
+      ..style.maxWidth = '25%'
       ..style.height = '100%'
       ..style.display = 'flex'
       ..style.flexDirection = 'column'

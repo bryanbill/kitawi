@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.8 (2023-04-05)
+
+- Adds a comprehensive Theme utility
+- Improved CLI - Help, run, build commands are now available
+- Improved performance
+- Full PWA support
+
 ## 0.0.7 (2023-04-02)
 
 - Adds sample M3 Icons

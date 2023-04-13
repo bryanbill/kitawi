@@ -60,7 +60,6 @@ class TextTheme {
   final TextStyle? subtitle2;
   final TextStyle? bodyText1;
   final TextStyle? bodyText2;
-  final TextStyle? button;
   final TextStyle? caption;
   final TextStyle? overline;
 
@@ -75,7 +74,6 @@ class TextTheme {
     this.subtitle2,
     this.bodyText1,
     this.bodyText2,
-    this.button,
     this.caption,
     this.overline,
   });
@@ -106,7 +104,6 @@ class TextTheme {
       subtitle2: subtitle2 ?? this.subtitle2,
       bodyText1: bodyText1 ?? this.bodyText1,
       bodyText2: bodyText2 ?? this.bodyText2,
-      button: button ?? this.button,
       caption: caption ?? this.caption,
       overline: overline ?? this.overline,
     );

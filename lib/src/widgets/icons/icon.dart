@@ -15,7 +15,7 @@ class Icon extends Widget {
   Element createElement() {
     final span = SpanElement()
       ..classes.add(icon.type!)
-      ..style.color = color?.rgba
+      ..style.color = color?.rgba ?? Theme.themeData?.secondaryColor?.rgba
       ..style.fontSize = size?.toString()
       ..text = icon.name;
     return span;

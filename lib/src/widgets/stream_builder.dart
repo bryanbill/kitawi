@@ -100,8 +100,8 @@ class StreamBuilder<T> extends Widget {
     );
 
     return container
-      ..style.height = '100%'
-      ..style.width = '100%'
+      ..style.height = 'min-content'
+      ..style.width = 'min-content'
       ..style.display = 'flex'
       ..style.justifyContent = 'center'
       ..style.alignItems = 'center';

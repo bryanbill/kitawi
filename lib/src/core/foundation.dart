@@ -1,4 +1,7 @@
-import 'package:kitawi/kitawi.dart';
+library foundation;
+
+import 'package:kitawi/src/core/color.dart';
+import 'package:kitawi/src/core/dimensions.dart';
 
 /// The Decoration class is used to decorate a widget
 /// with a color, border, and box shadow e.t.c
@@ -7,6 +10,7 @@ class Decoration {
   final Color? color;
   final Border? border;
   final List<BoxShadow>? boxShadow;
+  final DecorationImage? image;
 
   final Gradient? gradient;
 
@@ -20,7 +24,13 @@ class Decoration {
     this.boxShadow,
     this.borderRadius,
     this.gradient,
+    this.image,
   });
+
+  @override
+  String toString() {
+    return 'Decoration(color: $color, border: $border, boxShadow: $boxShadow, borderRadius: $borderRadius, gradient: $gradient, image: $image)';
+  }
 }
 
 /// The border type can be solid, dashed, dotted, double, groove, ridge, inset, or outset
@@ -427,4 +437,53 @@ class GradientType {
 
   @override
   String toString() => _value;
+}
+
+/// The [DecorationImage] class is used to set the background image of a widget
+/// It has the following parameters:
+/// - src : The src parameter is used to set the image source
+/// - align : The align parameter is used to set the image alignment
+/// - repeat : The repeat parameter is used to set the image repeat
+/// - fit : The fit parameter is used to set the image fit
+class DecorationImage {
+  final String src;
+  final TextAlign? align;
+  final bool? repeat;
+  final BoxFit? fit;
+
+  DecorationImage({
+    required this.src,
+    this.align = TextAlign.center,
+    this.repeat = false,
+    this.fit = BoxFit.cover,
+  });
+
+  @override
+  String toString() {
+    if (repeat!) {
+      return '${align?.value} / $fit url($src)';
+    }
+    return '${align?.value} / $fit no-repeat url($src)';
+  }
+}
+
+/// The TextAlign property aligns the text to the specified side in it's main axis
+///
+/// Example:
+/// ```dart
+/// Text(
+///  'Hello World',
+/// textAlign: TextAlign.center,
+/// )
+class TextAlign {
+  final String value;
+
+  const TextAlign._(this.value);
+
+  static const left = TextAlign._('left');
+  static const right = TextAlign._('right');
+  static const center = TextAlign._('center');
+  static const justify = TextAlign._('justify');
+  static const start = TextAlign._('start');
+  static const end = TextAlign._('end');
 }

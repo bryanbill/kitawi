@@ -86,8 +86,8 @@ class Theme {
       backgroundColor: Color(0xFFFFFFFF),
       textTheme: TextTheme(
         bodyText1: TextStyle(
-          color: Color(0xFF000000),
-          fontFamily: 'Roboto',
+          color: Colors.grey900,
+          fontFamily: 'Nunito',
           fontSize: 16.px,
           fontWeight: FontWeight.normal,
           fontStyle: FontStyle.normal,
@@ -99,11 +99,11 @@ class Theme {
 
   static ThemeData dark() {
     return ThemeData(
-      backgroundColor: Color(0xFF000000),
+      backgroundColor: Colors.grey900,
       textTheme: TextTheme(
         bodyText1: TextStyle(
-          color: Color(0xFFFFFFFF),
-          fontFamily: 'Roboto',
+          color: Colors.white,
+          fontFamily: 'Nunito',
           fontSize: 16.px,
           fontWeight: FontWeight.normal,
           fontStyle: FontStyle.normal,
