@@ -36,9 +36,9 @@ class Card extends Widget {
       var paddingTop = padding?.top ?? 0;
       var paddingBottom = padding?.bottom ?? 0;
       div.style.width =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of(paddingLeft + paddingRight))}';
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingLeft + paddingRight}px"))}';
       div.style.height =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of(paddingTop + paddingBottom))}';
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingTop + paddingBottom}px"))}';
     } else {
       div.style.width = '100%';
       div.style.height = '100%';

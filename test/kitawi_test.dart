@@ -7,8 +7,8 @@ void main() {
 
     test('tests for Container', () {
       var container = Container(
-        width: Dimensions.of(200),
-        height: Dimensions.of(200),
+        width: 200.px,
+        height: 200.px,
         child: Text('Hello World'),
       );
       expect(container.height.toString(), "200px");

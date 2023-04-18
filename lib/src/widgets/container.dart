@@ -59,10 +59,10 @@ class Container extends Widget {
     }
 
     div.style.width = width != null
-        ? '${Dimensions.calc(from: width!, inset: Dimensions.of(horizontalInset))}'
+        ? '${Dimensions.calc(from: width!, inset: Dimensions.of("${horizontalInset}px"))}'
         : div.style.width;
     div.style.height = height != null
-        ? '${Dimensions.calc(from: height!, inset: Dimensions.of(verticalInset))}'
+        ? '${Dimensions.calc(from: height!, inset: Dimensions.of("${verticalInset}px"))}'
         : div.style.height;
 
     if (decoration?.gradient != null) {

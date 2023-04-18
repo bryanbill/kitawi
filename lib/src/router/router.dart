@@ -55,7 +55,7 @@ class Router {
   /// This method pushes a named route to the route stacl
   ///
   /// See also:
-  /// - Router.init([], root) - Initializes named routes
+  /// - Router.init(List, root) - Initializes named routes
   static void pushNamed(String path, {bool replace = false, dynamic args}) {
     try {
       var route = _routes.firstWhere((r) => r.path == path);

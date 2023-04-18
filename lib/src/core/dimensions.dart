@@ -77,7 +77,7 @@ class Dimensions {
   /// See also:
   /// * [Dimensions.valueOf], which returns a string representation of this object.
   /// * [Dimensions.toString], which returns a string representation of this object.
-  static Dimensions of(num value) => Dimensions._("${value}px");
+  static Dimensions of(String value) => Dimensions._(value);
 
   /// Returns a [String] representation of this [Dimensions] object.
   /// If the value is null, returns "auto".
@@ -126,7 +126,20 @@ extension DimensionsUtils on Dimensions {
       Dimensions.calc(from: this, inset: other, operator: Operator.divide);
 }
 
-extension NumberDimensions on num {
-  Dimensions get px => Dimensions.of(this);
+extension DimensionsExt on Comparable {
+  Dimensions get px => Dimensions.of("${this}px");
   Dimensions get percent => Dimensions.percentageOf(this);
+  Dimensions get vw => Dimensions.of("${this}vw");
+  Dimensions get vh => Dimensions.of("${this}vh");
+  Dimensions get vmin => Dimensions.of("${this}vmin");
+  Dimensions get vmax => Dimensions.of("${this}vmax");
+  Dimensions get em => Dimensions.of("${this}em");
+  Dimensions get rem => Dimensions.of("${this}rem");
+  Dimensions get ch => Dimensions.of("${this}ch");
+  Dimensions get ex => Dimensions.of("${this}ex");
+  Dimensions get cm => Dimensions.of("${this}cm");
+  Dimensions get mm => Dimensions.of("${this}mm");
+  Dimensions get inx => Dimensions.of("${this}in");
+  Dimensions get pt => Dimensions.of("${this}pt");
+  Dimensions get pc => Dimensions.of("${this}pc");
 }

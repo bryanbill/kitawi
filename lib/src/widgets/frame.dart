@@ -31,7 +31,7 @@ class Frame extends Widget {
         height: Dimensions.full,
         width: Dimensions.full,
         constraints: BoxConstraints(
-          minHeight: Dimensions.of(Size().height),
+          minHeight: 100.vh,
         ),
         decoration: Decoration(
           color: backgroundColor,

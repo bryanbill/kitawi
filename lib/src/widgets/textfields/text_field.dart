@@ -179,9 +179,9 @@ class TextField extends Widget {
       var paddingTop = decoration?.contentPadding?.top ?? 0;
       var paddingBottom = decoration?.contentPadding?.bottom ?? 0;
       wrapperDiv.style.width =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of(paddingLeft + paddingRight))}';
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingLeft + paddingRight}px"))}';
       wrapperDiv.style.height =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of(paddingTop + paddingBottom))}';
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingTop + paddingBottom}px"))}';
     } else {
       wrapperDiv.style.width = 'calc(100% - 10px)';
       wrapperDiv.style.height = 'calc(100% - 10px)';
@@ -199,7 +199,7 @@ class TextField extends Widget {
 /// This class is a [ChangeNotifier], so it can be used to listen to changes in
 /// the text by calling [addListener] and supplying a callback function. When
 /// the text changes, the provided callback will be called.
-class TextEditingController  {
+class TextEditingController {
   TextEditingController({this.text = ''});
 
   String text;
@@ -211,8 +211,6 @@ class TextEditingController  {
   void clear() {
     text = '';
   }
-
-
 }
 
 /// This class is used to describe the visual properties of an input field, such as
