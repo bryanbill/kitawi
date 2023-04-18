@@ -57,3 +57,5 @@ export 'package:kitawi/src/widgets/icons/icon_data.dart';
 export 'package:kitawi/src/database/local_store.dart';
 export 'package:kitawi/src/core/permissions.dart';
 export 'package:kitawi/src/themes/theme_data.dart';
+export 'package:kitawi/src/widgets/circle_avatar.dart';
+export 'package:kitawi/src/widgets/divider.dart';

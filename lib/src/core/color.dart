@@ -55,4 +55,9 @@ class Color {
   String get rgba {
     return 'rgba($red, $green, $blue, ${alpha / 255})';
   }
+
+  /// Returns the color in the hex format.
+  String get hex {
+    return '#${_value.toRadixString(16).substring(2)}';
+  }
 }
