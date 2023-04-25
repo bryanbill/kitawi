@@ -54,7 +54,7 @@ class FutureBuilder<T> extends Widget {
       ..style.height = '100%';
 
     if (loadingWidget != null) {
-      container.children.add(loadingWidget!.render());
+      container.children.add(loadingWidget!.createElement());
     }
 
     future.then((data) {
@@ -64,15 +64,15 @@ class FutureBuilder<T> extends Widget {
         error: null,
         hasData: true,
         hasError: false,
-      )).render());
+      )).createElement());
     }).onError((error, stackTrace) {
       print(stackTrace);
       print(error);
       container.children.clear();
       if (errorWidgetBuilder != null) {
-        container.children.add(errorWidgetBuilder!(error).render());
+        container.children.add(errorWidgetBuilder!(error).createElement());
       } else {
-        container.children.add(Text(error.toString()).render());
+        container.children.add(Text(error.toString()).createElement());
       }
     });
 

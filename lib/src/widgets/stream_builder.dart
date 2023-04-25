@@ -75,7 +75,7 @@ class StreamBuilder<T> extends Widget {
         error: null,
         hasData: true,
         hasError: false,
-      )).render());
+      )).createElement());
     }
 
     /// listen to the stream and update the widget when a new event is added
@@ -89,12 +89,12 @@ class StreamBuilder<T> extends Widget {
           error: null,
           hasData: true,
           hasError: false,
-        )).render());
+        )).createElement());
       },
       onError: (error) {
         container.children.clear();
         if (errorWidgetBuilder != null) {
-          container.children.add(errorWidgetBuilder!(error).render());
+          container.children.add(errorWidgetBuilder!(error).createElement());
         }
       },
     );
@@ -109,9 +109,8 @@ class StreamBuilder<T> extends Widget {
 
   /// Cancels the subscription to the stream when the widget is removed from the
   /// tree.
-  @override
+
   void dispose() {
-    super.dispose();
     _subscription?.cancel();
   }
 }

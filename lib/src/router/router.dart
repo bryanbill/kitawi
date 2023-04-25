@@ -65,7 +65,7 @@ class Router {
       var previousRoute = _routes.firstWhere((r) => r.path == currentPath);
 
       if (previousRoute.builder(null) is Layout) {
-        previousRoute.builder(null).dispose();
+        (previousRoute.builder(null) as Layout).dispose();
       }
 
       render(route.builder(args), _root);

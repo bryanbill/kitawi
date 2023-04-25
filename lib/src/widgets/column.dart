@@ -34,7 +34,7 @@ class Column extends Widget {
     column.style.width = '100%';
     column.style.overflow = 'hidden';
     for (final child in children) {
-      column.children.add(child.render());
+      column.children.add(child.createElement());
     }
 
     return column;

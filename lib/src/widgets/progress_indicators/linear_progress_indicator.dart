@@ -1,5 +1,4 @@
 import 'dart:html';
-import 'dart:math';
 
 import 'package:kitawi/widgets.dart';
 
@@ -20,7 +19,7 @@ class LinearProgressIndicator extends Widget {
   });
   @override
   Element createElement() {
-    key ??= Key('progress-indicator-${Random.secure().nextInt(100)}');
+    // key ??= Key('progress-indicator-${Random.secure().nextInt(100)}');
     String css = """
   #$key::-webkit-progress-bar {
     background-color: ${backgroundColor?.rgba ?? 'transparent'};

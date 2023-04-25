@@ -28,12 +28,10 @@ class MediaQuery extends Widget {
     return StreamBuilder<MediaQueryData?>(
         stream: _valueStream.stream,
         initialData: _valueStream.value,
-        builder: (snapshot) => builder(snapshot)).render();
+        builder: (snapshot) => builder(snapshot)).createElement();
   }
 
-  @override
   void dispose() {
-    super.dispose();
     _valueStream.dispose();
     window.onResize.drain();
     window

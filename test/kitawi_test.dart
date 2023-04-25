@@ -13,7 +13,7 @@ void main() {
       );
       expect(container.height.toString(), "200px");
       expect(container.width.toString(), "200px");
-      expect(container.child?.render(), isNull);
+      expect(container.child?.createElement(), isNull);
     });
   });
 }

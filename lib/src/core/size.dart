@@ -44,4 +44,9 @@ class Size {
   String toString() {
     return 'Size(x: $_x, y: $_y)';
   }
+
+  Stream<Size> get onResize => window.onResize.map((event) {
+        updateSize();
+        return this;
+      });
 }

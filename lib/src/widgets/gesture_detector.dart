@@ -46,7 +46,7 @@ class GestureDetector extends Widget {
   Element createElement() {
     var element = DivElement();
     element.id = key?.value ?? '';
-    element.children.add(child.render());
+    element.children.add(child.createElement());
 
     element.onClick.listen((event) {
       event.preventDefault();

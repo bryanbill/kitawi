@@ -28,7 +28,7 @@ class Card extends Widget {
       ..style.boxShadow =
           '0 0 ${elevation ?? 0}px ${shadowColor?.rgba ?? 'transparent'}'
       ..style.backgroundColor = color?.rgba ?? 'transparent'
-      ..children.add(child.render());
+      ..children.add(child.createElement());
 
     if (padding != null) {
       var paddingLeft = padding?.left ?? 0;

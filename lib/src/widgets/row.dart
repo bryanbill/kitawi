@@ -36,7 +36,7 @@ class Row extends Widget {
     row.style.height = '100%';
     row.style.overflow = 'hidden';
     for (final child in children) {
-      row.children.add(child.render());
+      row.children.add(child.createElement());
     }
 
     return row;

@@ -10,9 +10,9 @@ class PreferredSizeWidget extends Widget {
   @override
   Element createElement() {
     var div = Element.nav()
-      ..style.height = '40px'
-      ..style.maxHeight = '40px'
-      ..style.minHeight = '40px'
+      ..style.height = '48px'
+      ..style.maxHeight = '48px'
+      ..style.minHeight = '48px'
       ..style.display = "flex"
       ..style.alignItems = "center"
       ..style.justifyContent = "space-between";

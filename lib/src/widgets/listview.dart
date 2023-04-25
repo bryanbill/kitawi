@@ -67,7 +67,7 @@ class Listview extends Widget {
       ..style.alignItems = 'flex-start'
       ..children.addAll(
         children.map(
-          (child) => child.render(),
+          (child) => child.createElement(),
         ),
       )
       ..classes.add('scrollable');

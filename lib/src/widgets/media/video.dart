@@ -16,8 +16,8 @@ class Video extends Widget {
 
   @override
   Element createElement() {
-    var safeHash = src.hashCode.toString().replaceAll('-', 'n');
-    key = key ?? Key(safeHash);
+    //var safeHash = src.hashCode.toString().replaceAll('-', 'n');
+    //key = key ?? Key(safeHash);
     var video = VideoElement();
     controller?.element = video;
     controller?.key = key;

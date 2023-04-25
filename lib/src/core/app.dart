@@ -69,6 +69,6 @@ void render(Widget widget, Element? element) {
   if (element != null) {
     // Clear the element's children and add the widget's rendered element.
     element.children.clear();
-    element.children.add(widget.render());
+    element.children.add(widget.createElement());
   }
 }

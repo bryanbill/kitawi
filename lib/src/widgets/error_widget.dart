@@ -34,6 +34,6 @@ class ErrorWidget extends Widget {
             Text(details!, style: TextStyle(color: Colors.white)),
         ],
       ),
-    ).render();
+    ).createElement();
   }
 }

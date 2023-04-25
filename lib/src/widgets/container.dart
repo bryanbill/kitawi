@@ -36,6 +36,7 @@ class Container extends Widget {
       ..style.padding = "$padding"
       ..style.margin = "$margin"
       ..style.backgroundColor = decoration?.color?.rgba
+      ..style.backgroundBlendMode = decoration?.blendMode?.value ?? ""
       ..style.borderRadius = decoration?.borderRadius?.toString() ?? '0'
       ..style.borderColor = decoration?.border?.color?.rgba
       ..style.borderWidth = '${decoration?.border?.side}'

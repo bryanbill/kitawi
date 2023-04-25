@@ -21,6 +21,6 @@ class SizedBox extends Widget {
         maxWidth: width,
       ),
       child: child,
-    ).render();
+    ).createElement();
   }
 }

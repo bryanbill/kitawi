@@ -11,6 +11,7 @@ class TextStyle {
     this.fontWeight,
     this.fontStyle,
     this.textDecoration,
+    this.letterSpacing,
   });
 
   /// The color of the text.
@@ -38,6 +39,11 @@ class TextStyle {
   /// The decoration to paint near the text.
   final TextDecoration? textDecoration;
 
+  /// The amount of space between each letter.
+  ///
+  /// The default value is `0`.
+  final Dimensions? letterSpacing;
+
   TextStyle copyWith({
     Color? color,
     Color? backgroundColor,
@@ -46,6 +52,7 @@ class TextStyle {
     FontWeight? fontWeight,
     FontStyle? fontStyle,
     TextDecoration? textDecoration,
+    Dimensions? letterSpacing,
   }) {
     return TextStyle(
       color: color ?? this.color,
@@ -55,12 +62,13 @@ class TextStyle {
       fontWeight: fontWeight ?? this.fontWeight,
       fontStyle: fontStyle ?? this.fontStyle,
       textDecoration: textDecoration ?? this.textDecoration,
+      letterSpacing: letterSpacing ?? this.letterSpacing,
     );
   }
 
   @override
   String toString() {
-    return 'TextStyle(color: $color, backgroundColor: $backgroundColor, fontFamily: $fontFamily, fontSize: $fontSize, fontWeight: $fontWeight, fontStyle: $fontStyle, textDecoration: $textDecoration)';
+    return 'TextStyle(color: $color, backgroundColor: $backgroundColor, fontFamily: $fontFamily, fontSize: $fontSize, fontWeight: $fontWeight, fontStyle: $fontStyle, textDecoration: $textDecoration, letterSpacing: $letterSpacing)';
   }
 }
 

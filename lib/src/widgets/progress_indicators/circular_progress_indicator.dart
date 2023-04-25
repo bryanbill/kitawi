@@ -65,7 +65,7 @@ class CircularProgressIndicator extends Widget {
           'easing': 'linear',
         });
     } else {
-      var childElement = child?.render();
+      var childElement = child?.createElement();
       var css = """
 .radial-wrap {
   width: $radius;
@@ -153,7 +153,7 @@ class CircularProgressIndicator extends Widget {
             DivElement()
               ..classes.add('inside-circle')
               ..children.add((childElement?..style.borderRadius = "50%") ??
-                  Text('${value ?? 0}').render()),
+                  Text('${value ?? 0}').createElement()),
           ]));
 
       return div;

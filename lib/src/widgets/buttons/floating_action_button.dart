@@ -52,7 +52,7 @@ class FloatingActionButton extends Button {
     element.style.position = 'fixed';
     element.style.zIndex = '9999';
 
-    var sizeFromTheEdge = "66";
+    var sizeFromTheEdge = "64";
 
     // add elevation
     element.style.boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.2)';
@@ -65,11 +65,11 @@ class FloatingActionButton extends Button {
         break;
       case Alignment.bottomRight:
         element.style.bottom = '${sizeFromTheEdge}px';
-        element.style.right = '20px';
+        element.style.right = '16px';
         break;
       case Alignment.bottomLeft:
         element.style.bottom = '${sizeFromTheEdge}px';
-        element.style.left = '20px';
+        element.style.left = '16px';
         break;
       case Alignment.topCenter:
         element.style.top = '${sizeFromTheEdge}px';
@@ -78,15 +78,15 @@ class FloatingActionButton extends Button {
         break;
       case Alignment.topRight:
         element.style.top = '${sizeFromTheEdge}px';
-        element.style.right = '20px';
+        element.style.right = '16px';
         break;
       case Alignment.topLeft:
         element.style.top = '${sizeFromTheEdge}px';
-        element.style.left = '20px';
+        element.style.left = '16px';
         break;
       default:
         element.style.bottom = '${sizeFromTheEdge}px';
-        element.style.right = '20px';
+        element.style.right = '16px';
         break;
     }
 

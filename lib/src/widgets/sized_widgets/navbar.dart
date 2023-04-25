@@ -58,20 +58,22 @@ class Navbar extends PreferredSizeWidget {
     final elev = elevation! * 10;
     return super.createElement()
       ..style.backgroundColor = backgroundColor?.rgba
-      ..style.padding = '8px'
+      ..style.paddingLeft = '16px'
+      ..style.paddingRight = '16px'
+      ..style.paddingTop = '8px'
+      ..style.paddingBottom = '8px'
       ..style.display = 'flex'
       ..style.alignItems = 'center'
       ..style.justifyContent = 'space-between'
       ..style.position = '$position'
       ..style.top = '0'
       ..style.left = '0'
-      ..style.width = 'calc(100% - 16px)'
+      ..style.width = 'calc(100% - 32px)'
       ..style.zIndex = '999'
       ..style.boxShadow = '0px 0px ${elev}px 0px ${shadowColor?.rgba}'
       ..children = [
         Container(
                 height: 100.percent,
-                constraints: BoxConstraints(maxWidth: 30.percent),
                 alignment: Alignment.centerLeft,
                 child: leading)
             .createElement(),
@@ -82,6 +84,7 @@ class Navbar extends PreferredSizeWidget {
           alignment: Alignment.centerRight,
           child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: actions ?? []),
         ).createElement()
       ];

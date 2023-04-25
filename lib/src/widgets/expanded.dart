@@ -22,7 +22,7 @@ class Expanded extends Widget {
     element.id = key?.value ?? '';
     element.style.flex = flex.toString();
     element.style.width = '100%';
-    element.children.add(child.render());
+    element.children.add(child.createElement());
     return element;
   }
 }

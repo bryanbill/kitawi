@@ -17,7 +17,7 @@ class Padding extends Widget {
     element.style.height = 'auto';
     element.style.boxSizing = 'border-box !important';
     element.style.padding = padding.toString();
-    element.children.add(child.render());
+    element.children.add(child.createElement());
     return element;
   }
 }

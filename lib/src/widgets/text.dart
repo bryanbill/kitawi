@@ -90,6 +90,7 @@ class Text extends Widget {
       ..style.padding = '0'
       ..style.margin = '0'
       ..style.textAlign = textAlign?.value
+      ..style.letterSpacing = '${style?.letterSpacing}'
       ..style.textDecoration = style?.textDecoration?.toString();
   }
 

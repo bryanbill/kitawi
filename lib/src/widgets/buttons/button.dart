@@ -82,7 +82,7 @@ class Button extends Widget {
     }
 
     if (child != null) {
-      button.append(child!.render());
+      button.append(child!.createElement());
     }
 
     return button;

@@ -18,14 +18,16 @@ class Decoration {
   /// specifies the border radius of the widget.
   final BorderRadius? borderRadius;
 
-  Decoration({
-    this.color,
-    this.border,
-    this.boxShadow,
-    this.borderRadius,
-    this.gradient,
-    this.image,
-  });
+  final BlendMode? blendMode;
+
+  Decoration(
+      {this.color,
+      this.border,
+      this.boxShadow,
+      this.borderRadius,
+      this.gradient,
+      this.image,
+      this.blendMode});
 
   @override
   String toString() {
@@ -486,4 +488,27 @@ class TextAlign {
   static const justify = TextAlign._('justify');
   static const start = TextAlign._('start');
   static const end = TextAlign._('end');
+}
+
+class BlendMode {
+  final String value;
+
+  const BlendMode._(this.value);
+
+  static const normal = BlendMode._('normal');
+  static const multiply = BlendMode._('multiply');
+  static const screen = BlendMode._('screen');
+  static const overlay = BlendMode._('overlay');
+  static const darken = BlendMode._('darken');
+  static const lighten = BlendMode._('lighten');
+  static const colorDodge = BlendMode._('color-dodge');
+  static const colorBurn = BlendMode._('color-burn');
+  static const hardLight = BlendMode._('hard-light');
+  static const softLight = BlendMode._('soft-light');
+  static const difference = BlendMode._('difference');
+  static const exclusion = BlendMode._('exclusion');
+  static const hue = BlendMode._('hue');
+  static const saturation = BlendMode._('saturation');
+  static const color = BlendMode._('color');
+  static const luminosity = BlendMode._('luminosity');
 }

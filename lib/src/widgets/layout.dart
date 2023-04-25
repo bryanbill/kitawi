@@ -32,4 +32,8 @@ abstract class Layout extends Widget {
   }
 
   bool get mounted => _element != null;
+
+  Size get windowSize => Size()
+    ..x = window.innerWidth!
+    ..y = window.innerHeight!;
 }

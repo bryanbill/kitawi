@@ -14,6 +14,6 @@ class Center extends Widget {
       ..style.alignItems = 'center'
       ..style.height = '100%'
       ..style.width = '100%'
-      ..children.add(child.render());
+      ..children.add(child.createElement());
   }
 }

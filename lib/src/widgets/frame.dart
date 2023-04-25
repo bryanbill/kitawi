@@ -1,7 +1,6 @@
 import 'dart:html';
 
 import 'package:kitawi/widgets.dart';
-import 'package:kitawi/src/widgets/sized_widgets/preffered_size_widget.dart';
 
 /// NOTE: This is a work in progress.
 ///
@@ -11,8 +10,8 @@ import 'package:kitawi/src/widgets/sized_widgets/preffered_size_widget.dart';
 /// The [Frame] class is a [Widget] class.
 class Frame extends Widget {
   final Widget body;
-  final PreferredSizeWidget? appbar;
-  final PreferredSizeWidget? drawer;
+  final Widget? appbar;
+  final Widget? drawer;
   final Widget? bottomNavigationBar;
   final FloatingActionButton? floatingActionButton;
   final Color? backgroundColor;
@@ -28,10 +27,13 @@ class Frame extends Widget {
   @override
   Element createElement() {
     return Container(
-        height: Dimensions.full,
+        height: 100.percent,
         width: Dimensions.full,
         constraints: BoxConstraints(
           minHeight: 100.vh,
+          minWidth: 100.vw,
+          maxHeight: 100.vh,
+          maxWidth: 100.vw,
         ),
         decoration: Decoration(
           color: backgroundColor,
@@ -47,13 +49,18 @@ class Frame extends Widget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   appbar ?? Container(),
-                  body,
+                  SizedBox(
+                      height: 100.percent -
+                          64.px -
+                          (bottomNavigationBar != null ? 64.px : 0.px),
+                      width: 100.percent,
+                      child: body),
                   bottomNavigationBar ?? Container(),
                   floatingActionButton ?? Container(),
                 ],
               ),
             ),
           ],
-        )).render();
+        )).createElement();
   }
 }
