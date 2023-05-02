@@ -4,11 +4,12 @@ import 'package:kitawi/widgets.dart';
 
 class Card extends Widget {
   final Widget child;
-  final double? elevation;
-  final BorderRadius? borderRadius;
-  final Color? color;
-  final Color? shadowColor;
-  final EdgeInsets? padding;
+  Dimensions? elevation;
+  BorderRadius? borderRadius;
+  Color? color;
+  Color? shadowColor;
+  Color? focusColor;
+  EdgeInsets? padding;
 
   Card({
     required this.child,
@@ -16,33 +17,21 @@ class Card extends Widget {
     this.borderRadius,
     this.color,
     this.shadowColor,
-    this.padding = const EdgeInsets.all(5),
+    this.padding,
   });
 
   @override
   Element createElement() {
-    var div = DivElement()
-      ..style.position = 'relative'
-      ..style.padding = padding?.toString() ?? '0'
-      ..style.borderRadius = borderRadius?.toString() ?? '0'
-      ..style.boxShadow =
-          '0 0 ${elevation ?? 0}px ${shadowColor?.rgba ?? 'transparent'}'
-      ..style.backgroundColor = color?.rgba ?? 'transparent'
-      ..children.add(child.createElement());
+    padding ??= EdgeInsets.all(5.px);
 
-    if (padding != null) {
-      var paddingLeft = padding?.left ?? 0;
-      var paddingRight = padding?.right ?? 0;
-      var paddingTop = padding?.top ?? 0;
-      var paddingBottom = padding?.bottom ?? 0;
-      div.style.width =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingLeft + paddingRight}px"))}';
-      div.style.height =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingTop + paddingBottom}px"))}';
-    } else {
-      div.style.width = '100%';
-      div.style.height = '100%';
-    }
-    return div;
+    return DivElement()
+      ..classes.add('relative')
+      ..classes.add('shadow-[${elevation?.toString() ?? '0'}]')
+      ..classes.add('rounded-[${borderRadius?.toString() ?? '0'}]')
+      ..classes.add("w-full")
+      ..classes.add("h-full")
+      ..classes.add("bg-[${color?.hex}]")
+      ..classes.add('p-[${padding?.toString() ?? '0'}]')
+      ..children.add(child.createElement());
   }
 }

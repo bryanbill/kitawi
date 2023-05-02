@@ -2,6 +2,7 @@ library foundation;
 
 import 'package:kitawi/src/core/color.dart';
 import 'package:kitawi/src/core/dimensions.dart';
+import 'package:kitawi/src/core/offset.dart';
 
 /// The Decoration class is used to decorate a widget
 /// with a color, border, and box shadow e.t.c
@@ -92,22 +93,20 @@ class BorderSide {
 /// The color is the color of the shadow
 class BoxShadow {
   final Color color;
-  final double offsetX;
-  final double offsetY;
+  final Offset offset;
   final double blurRadius;
   final double spreadRadius;
 
   BoxShadow({
     required this.color,
-    required this.offsetX,
-    required this.offsetY,
+    required this.offset,
     required this.blurRadius,
     required this.spreadRadius,
   });
 
   @override
   String toString() {
-    return '${offsetX}px ${offsetY}px ${blurRadius}px ${spreadRadius}px ${color.rgba}';
+    return '${offset.dx}px ${offset.dy}px ${blurRadius}px ${spreadRadius}px ${color.rgba}';
   }
 }
 
@@ -294,10 +293,10 @@ class BoxConstraints {
 /// BorderRadius.all(10)
 /// ```
 class BorderRadius {
-  final double topLeft;
-  final double topRight;
-  final double bottomLeft;
-  final double bottomRight;
+  final Dimensions topLeft;
+  final Dimensions topRight;
+  final Dimensions bottomLeft;
+  final Dimensions bottomRight;
 
   BorderRadius({
     required this.topLeft,
@@ -311,7 +310,7 @@ class BorderRadius {
   /// ```dart
   /// BorderRadius.circular(10)
   /// ```
-  factory BorderRadius.circular(double radius) {
+  factory BorderRadius.circular(Dimensions radius) {
     return BorderRadius(
       topLeft: radius,
       topRight: radius,
@@ -326,31 +325,22 @@ class BorderRadius {
   /// BorderRadius.only(topLeft: 10, topRight: 10, bottomLeft: 10, bottomRight: 10)
   /// ```
   factory BorderRadius.only({
-    double topLeft = 0,
-    double topRight = 0,
-    double bottomLeft = 0,
-    double bottomRight = 0,
+    Dimensions? topLeft,
+    Dimensions? topRight,
+    Dimensions? bottomLeft,
+    Dimensions? bottomRight,
   }) {
     return BorderRadius(
-      topLeft: topLeft,
-      topRight: topRight,
-      bottomLeft: bottomLeft,
-      bottomRight: bottomRight,
+      topLeft: topLeft ?? Dimensions.zero,
+      topRight: topRight ?? Dimensions.zero,
+      bottomLeft: bottomLeft ?? Dimensions.zero,
+      bottomRight: bottomRight ?? Dimensions.zero,
     );
-  }
-
-  /// The [BorderRadius.all] constructor is used to set the same border radius for all corners
-  /// Example:
-  /// ```dart
-  /// BorderRadius.all(10)
-  /// ```
-  factory BorderRadius.all(double radius) {
-    return BorderRadius.circular(radius);
   }
 
   @override
   String toString() {
-    return '${topLeft}px ${topRight}px ${bottomRight}px ${bottomLeft}px';
+    return '${topLeft}_${topRight}_${bottomRight}_$bottomLeft';
   }
 }
 

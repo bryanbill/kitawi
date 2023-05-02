@@ -1,4 +1,4 @@
-import 'dart:html' as html;
+import 'dart:html';
 
 import 'package:kitawi/src/core/action.dart';
 import 'package:kitawi/src/core/color.dart';
@@ -56,8 +56,8 @@ class Button extends Widget {
   final Color? splashColor;
 
   @override
-  html.Element createElement() {
-    var button = html.ButtonElement()
+  Element createElement() {
+    var button = ButtonElement()
       ..id = key?.value ?? ''
       ..setAttribute('aria-label', "Button")
       ..style.width = '100%'
@@ -78,7 +78,8 @@ class Button extends Widget {
       ..style.textAlign = 'center';
 
     for (var action in actions) {
-      button.on[action.type].listen(action.callback);
+      print(action.type.name);
+      button.on['click'].listen(action.callback);
     }
 
     if (child != null) {

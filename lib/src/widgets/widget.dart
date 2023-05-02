@@ -15,8 +15,8 @@ abstract class Widget {
   /// Creates an element that represents this widget in the render tree.
   Element createElement();
 
-  /// Returns true if this widget can be updated with the oldWidget.
-  bool canUpdate(Widget oldWidget) {
-    return oldWidget.key == key;
+  /// Verifies if this can be updated to another widget.
+  bool canUpdate(Widget other) {
+    return key == other.key;
   }
 }

@@ -51,7 +51,7 @@ class Frame extends Widget {
                   appbar ?? Container(),
                   SizedBox(
                       height: 100.percent -
-                          64.px -
+                          (appbar != null ? 64.px : 0.px) -
                           (bottomNavigationBar != null ? 64.px : 0.px),
                       width: 100.percent,
                       child: body),

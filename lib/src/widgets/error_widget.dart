@@ -18,7 +18,7 @@ class ErrorWidget extends Widget {
       decoration: Decoration(
         color: Colors.red,
       ),
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.all(10.px),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,

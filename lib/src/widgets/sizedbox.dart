@@ -13,14 +13,10 @@ class SizedBox extends Widget {
 
   @override
   Element createElement() {
-    return Container(
-      width: width,
-      height: height,
-      constraints: BoxConstraints(
-        maxHeight: height,
-        maxWidth: width,
-      ),
-      child: child,
-    ).createElement();
+    return DivElement()
+      ..id = key.toString()
+      ..style.width = width?.toString()
+      ..style.height = height?.toString()
+      ..append(child?.createElement() ?? DivElement());
   }
 }

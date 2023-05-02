@@ -1,39 +1,40 @@
+import 'package:kitawi/widgets.dart';
+
 /// A set of offsets in each of the cardinal directions.
 ///
 /// Used to represent padding or margin.
 
 class EdgeInsets {
   /// [EdgeInsets] with [value] offsets in all direction.
-  const EdgeInsets.all(double value)
+  const EdgeInsets.all(Dimensions value)
       : left = value,
         top = value,
         right = value,
         bottom = value;
 
   /// [EdgeInsets] with value offset only on the specified side.
-  const EdgeInsets.only(
-      {this.left = 0.0, this.top = 0.0, this.right = 0.0, this.bottom = 0.0});
+  const EdgeInsets.only({this.left, this.top, this.right, this.bottom});
 
   /// [EdgeInsets] with [value] offset on the left and right `horizontal`, and value offset
   /// on the top and bottom `vertical`.
-  const EdgeInsets.symmetric({double vertical = 0.0, double horizontal = 0.0})
-      : left = horizontal,
-        top = vertical,
-        right = horizontal,
-        bottom = vertical;
+  const EdgeInsets.symmetric({Dimensions? vertical, Dimensions? horizontal})
+      : left = horizontal ?? Dimensions.zero,
+        top = vertical ?? Dimensions.zero,
+        right = horizontal ?? Dimensions.zero,
+        bottom = vertical ?? Dimensions.zero;
 
   /// [EdgeInsets] with value offset on from left -> top -> right -> bottom.
   const EdgeInsets.fromLTRB(this.left, this.top, this.right, this.bottom);
 
-  static EdgeInsets get zero => EdgeInsets.all(0.0);
+  static EdgeInsets get zero => EdgeInsets.all(Dimensions.zero);
 
-  final double left;
-  final double top;
-  final double right;
-  final double bottom;
+  final Dimensions? left;
+  final Dimensions? top;
+  final Dimensions? right;
+  final Dimensions? bottom;
 
   @override
   String toString() {
-    return '${top}px ${right}px ${bottom}px ${left}px';
+    return '${top}_${right}_${bottom}_$left';
   }
 }

@@ -174,14 +174,14 @@ class TextField extends Widget {
     ];
 
     if (decoration?.contentPadding != null) {
-      var paddingLeft = decoration?.contentPadding?.left ?? 0;
-      var paddingRight = decoration?.contentPadding?.right ?? 0;
-      var paddingTop = decoration?.contentPadding?.top ?? 0;
-      var paddingBottom = decoration?.contentPadding?.bottom ?? 0;
+      Dimensions? paddingLeft = decoration?.contentPadding?.left ?? 0.px;
+      var paddingRight = decoration?.contentPadding?.right ?? 0.px;
+      var paddingTop = decoration?.contentPadding?.top ?? 0.px;
+      var paddingBottom = decoration?.contentPadding?.bottom ?? 0.px;
       wrapperDiv.style.width =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingLeft + paddingRight}px"))}';
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingLeft + paddingRight}"))}';
       wrapperDiv.style.height =
-          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingTop + paddingBottom}px"))}';
+          '${Dimensions.calc(from: 100.percent, inset: Dimensions.of("${paddingTop + paddingBottom}"))}';
     } else {
       wrapperDiv.style.width = 'calc(100% - 10px)';
       wrapperDiv.style.height = 'calc(100% - 10px)';

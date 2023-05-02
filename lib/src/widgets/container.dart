@@ -48,22 +48,22 @@ class Container extends Widget {
       ..style.alignItems = alignment?.y ?? 'auto'
       ..children.add(child?.createElement() ?? DivElement());
 
-    var horizontalInset = 0.0;
-    var verticalInset = 0.0;
+    var horizontalInset = 0.0.px;
+    var verticalInset = 0.0.px;
     if (padding != null) {
-      horizontalInset += (padding?.left ?? 0) + (padding?.right ?? 0);
-      verticalInset += (padding?.top ?? 0) + (padding?.bottom ?? 0);
+      horizontalInset += (padding?.left ?? 0.px) + (padding?.right ?? 0.px);
+      verticalInset += (padding?.top ?? 0.px) + (padding?.bottom ?? 0.px);
     }
     if (margin != null) {
-      horizontalInset += (margin?.left ?? 0) + (margin?.right ?? 0);
-      verticalInset += (margin?.top ?? 0) + (margin?.bottom ?? 0);
+      horizontalInset += (margin?.left ?? 0.px) + (margin?.right ?? 0.px);
+      verticalInset += (margin?.top ?? 0.px) + (margin?.bottom ?? 0.px);
     }
 
     div.style.width = width != null
-        ? '${Dimensions.calc(from: width!, inset: Dimensions.of("${horizontalInset}px"))}'
+        ? '${Dimensions.calc(from: width!, inset: Dimensions.of("$horizontalInset"))}'
         : div.style.width;
     div.style.height = height != null
-        ? '${Dimensions.calc(from: height!, inset: Dimensions.of("${verticalInset}px"))}'
+        ? '${Dimensions.calc(from: height!, inset: Dimensions.of("$verticalInset"))}'
         : div.style.height;
 
     if (decoration?.gradient != null) {

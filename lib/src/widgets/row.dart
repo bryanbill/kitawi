@@ -19,7 +19,7 @@ class Row extends Widget {
 
   Row({
     required this.children,
-    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.center,
     this.crossAxisAlignment = CrossAxisAlignment.center,
   });
 

@@ -108,6 +108,20 @@ void _handleCreateCommand(ArgResults args) async {
   });
 
   await rm.exitCode;
+
+  Directory.current = appName;
+
+  final pub = await Process.start('dart', ['pub', 'get']);
+
+  pub.stdout.listen((event) {
+    stdout.add(event);
+  });
+
+  pub.stderr.listen((event) {
+    stderr.add(event);
+  });
+
+  await pub.exitCode;
 }
 
 ArgParser _buildCommandParser() {

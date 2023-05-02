@@ -4,7 +4,7 @@ import 'package:kitawi/widgets.dart';
 
 /// An enum representing the environment of the application.
 enum Environment {
-  /// The development environment.
+  /// The development environment. Debug tools enabled.
   dev,
 
   /// The production environment.
@@ -32,13 +32,6 @@ void run(
   ThemeData? darkTheme,
   ThemeMode? themeMode = ThemeMode.system,
 }) {
-  // Set the height, padding, margin, and box sizing of the HTML and body elements.
-  document.documentElement?.style.height = '100%';
-  document.body?.style.height = '100%';
-  document.body?.style.padding = '0';
-  document.body?.style.margin = '0';
-  document.body?.style.boxSizing = 'border-box';
-
   // Set up the root element.
   var root = document.getElementById(id ?? 'root')
     ?..style.height = '100%'
