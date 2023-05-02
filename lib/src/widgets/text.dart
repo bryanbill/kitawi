@@ -51,12 +51,17 @@ class Text extends Widget {
   ///
   TextTag tag;
 
+  /// Defines how overflowing text should be handled.
+  /// The default value is [TextOverflow.ellipsis].
+  final TextOverflow? overflow;
+
   Text(
     this.text, {
     Key? key,
     this.style,
     this.textAlign = TextAlign.left,
     this.tag = TextTag.p,
+    this.overflow = TextOverflow.ellipsis,
   }) : super(key: key);
 
   /// The [createElement] method creates the [ParagraphElement] for the widget.
@@ -81,6 +86,8 @@ class Text extends Widget {
                                 : SpanElement();
     return element
       ..text = text
+      ..style.width = "fit-content"
+      ..style.overflow = overflow?.value
       ..style.color = style?.color?.rgba
       ..style.backgroundColor = style?.backgroundColor?.rgba
       ..style.fontFamily = style?.fontFamily
@@ -196,4 +203,15 @@ class Text extends Widget {
       tag: TextTag.span,
     );
   }
+}
+
+class TextOverflow {
+  final String value;
+
+  const TextOverflow._(this.value);
+
+  static const TextOverflow clip = TextOverflow._('clip');
+  static const TextOverflow ellipsis = TextOverflow._('ellipsis');
+  static const TextOverflow fade = TextOverflow._('fade');
+  static const TextOverflow visible = TextOverflow._('visible');
 }
