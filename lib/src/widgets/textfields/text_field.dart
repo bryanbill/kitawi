@@ -38,6 +38,11 @@ class TextField extends Widget {
   final int? maxLines;
   // The maximum number of lines that the text field can have
 
+  /// Maxmimum characters that can be entered in the text field
+  ///
+  /// If this is null, then there is no limit
+  final int? maxLength;
+
   TextField(
       {Key? key,
       this.controller,
@@ -46,6 +51,7 @@ class TextField extends Widget {
       this.onChanged,
       this.onSubmitted,
       this.maxLines = 1,
+      this.maxLength,
       this.textAlign = TextAlign.start,
       this.textAlignVertical = TextAlign.center,
       this.style,
@@ -105,6 +111,7 @@ class TextField extends Widget {
     }
 
     if (keyboardType != null && maxLines == 1) {
+      input = input as InputElement;
       switch (keyboardType) {
         case TextInputType.emailAddress:
           input.type = 'email';
@@ -118,9 +125,7 @@ class TextField extends Widget {
         case TextInputType.url:
           input.type = 'url';
           break;
-        case TextInputType.visiblePassword:
-          input.type = 'text';
-          break;
+    
         default:
           input.type = 'text';
           break;
@@ -132,7 +137,7 @@ class TextField extends Widget {
     }
 
     if (obscureText != null && maxLines == 1) {
-      input.type = obscureText! ? 'password' : 'text';
+      input.type = obscureText! ? 'password' : input.type;
     }
 
     if (validator != null) {
@@ -140,6 +145,10 @@ class TextField extends Widget {
     }
 
     input.placeholder = decoration?.hintText ?? '';
+
+    if (maxLength != null && maxLines == 1) {
+      input.maxLength = maxLength!;
+    }
 
     var wrapperDiv = DivElement()
       ..id = key?.value ?? Random.secure().toString()
@@ -207,6 +216,10 @@ class TextEditingController {
 
   void clear() {
     text = '';
+  }
+
+  void addListener(Function() listener) {
+    listener();
   }
 }
 
