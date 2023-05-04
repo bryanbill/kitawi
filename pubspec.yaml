@@ -1,6 +1,6 @@
 name: kitawi
 description: Kitawi is a UI library for Dart web apps.
-version: 0.0.9
+version: 0.1.10
 repository: https://github.com/bryanbill/kitawi
 
 executables:
