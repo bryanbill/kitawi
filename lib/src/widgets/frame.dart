@@ -18,15 +18,18 @@ class Frame extends Widget {
 
   Frame(
       {required this.body,
+      Key? key,
       this.appbar,
       this.drawer,
       this.bottomNavigationBar,
       this.floatingActionButton,
-      this.backgroundColor});
+      this.backgroundColor})
+      : super(key: key);
 
   @override
   Element createElement() {
     return Container(
+        key: key,
         height: 100.percent,
         width: Dimensions.full,
         constraints: BoxConstraints(

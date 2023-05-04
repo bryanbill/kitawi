@@ -28,7 +28,7 @@ class Container extends Widget {
   @override
   Element createElement() {
     final div = DivElement()
-      ..id = key?.value ?? ''
+      ..id = key?.toString() ?? ''
       ..style.maxHeight = '${constraints?.maxHeight}'
       ..style.maxWidth = '${constraints?.maxWidth}'
       ..style.minHeight = '${constraints?.minHeight}'
