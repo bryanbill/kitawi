@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// A 2D floating-point offset.
 ///
 /// An offset is a point in a 2D coordinate system, with a [dx] horizontal
@@ -9,9 +11,6 @@
 /// Offsets can be negated using the unary negation `-` operator, and subtracted
 /// from [Offset.zero] using the `-` operator.
 ///
-/// The [distance] and [distanceSquared] methods compute the distance between
-/// two offsets.
-///
 /// The [withinDistance] method compares the distance between two offsets to a
 
 class Offset {
@@ -19,6 +18,12 @@ class Offset {
   final double dy;
 
   const Offset(this.dx, this.dy);
+
+  factory Offset.fromDirection(double direction, [double distance = 1.0]) {
+    return Offset(distance * cos(direction), distance * sin(direction));
+  }
+
+  factory Offset.zero() => Offset(0.0, 0.0);
 
   /// The x component of the offset.
   double get x => dx;
