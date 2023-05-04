@@ -2,7 +2,6 @@ import 'dart:html';
 
 import 'package:kitawi/src/core/action.dart';
 import 'package:kitawi/src/core/color.dart';
-import 'package:kitawi/src/core/dimensions.dart';
 import 'package:kitawi/src/core/edge_insets.dart';
 import 'package:kitawi/src/core/foundation.dart';
 import 'package:kitawi/src/widgets/buttons/button.dart';
@@ -22,15 +21,11 @@ import 'package:kitawi/src/widgets/widget.dart';
 class FloatingActionButton extends Button {
   final EdgeInsets? padding;
   final EdgeInsets? margin;
-  final Dimensions? width;
-  final Dimensions? height;
   FloatingActionButton(
       {Widget? child,
       Decoration? decoration,
       this.padding,
       this.margin,
-      this.width,
-      this.height,
       Color? splashColor,
       this.position,
       required List<Action> actions})
@@ -45,8 +40,6 @@ class FloatingActionButton extends Button {
   @override
   Element createElement() {
     var element = super.createElement()
-      ..style.width = '$width'
-      ..style.height = '$height'
       ..style.padding = '$padding'
       ..style.margin = '$margin';
     element.style.position = 'fixed';

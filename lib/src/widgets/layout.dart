@@ -7,7 +7,7 @@ import 'package:kitawi/widgets.dart';
 abstract class Layout extends Widget {
   Element? _element;
 
-  Layout({Key? key}) : super(key: key) {
+  Layout() : super() {
     init();
   }
 
@@ -17,7 +17,7 @@ abstract class Layout extends Widget {
 
   @override
   Element createElement() {
-    _element = build().createElement()..id = key.toString();
+    _element = build().createElement();
     return _element!;
   }
 

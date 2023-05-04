@@ -86,8 +86,9 @@ class Text extends Widget {
                                 : SpanElement();
     return element
       ..text = text
-      ..style.width = "fit-content"
-      ..style.overflow = overflow?.value
+      ..style.textOverflow = "ellipsis"
+      ..style.maxHeight = "100%"
+      ..style.overflow = "cli"
       ..style.color = style?.color?.rgba
       ..style.backgroundColor = style?.backgroundColor?.rgba
       ..style.fontFamily = style?.fontFamily
@@ -210,6 +211,7 @@ class TextOverflow {
 
   const TextOverflow._(this.value);
 
+  static const TextOverflow hidden = TextOverflow._('hidden');
   static const TextOverflow clip = TextOverflow._('clip');
   static const TextOverflow ellipsis = TextOverflow._('ellipsis');
   static const TextOverflow fade = TextOverflow._('fade');

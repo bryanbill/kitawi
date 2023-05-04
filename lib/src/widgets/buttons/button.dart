@@ -60,8 +60,6 @@ class Button extends Widget {
     var button = ButtonElement()
       ..id = key?.value ?? ''
       ..setAttribute('aria-label', "Button")
-      ..style.width = '100%'
-      ..style.height = '100%'
       ..style.overflow = 'hidden'
       ..style.backgroundColor =
           decoration?.color?.rgba ?? Theme.themeData?.primaryColor?.rgba
@@ -78,7 +76,6 @@ class Button extends Widget {
       ..style.textAlign = 'center';
 
     for (var action in actions) {
-      print(action.type.name);
       button.on['click'].listen(action.callback);
     }
 
