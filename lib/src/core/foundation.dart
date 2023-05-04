@@ -340,7 +340,7 @@ class BorderRadius {
 
   @override
   String toString() {
-    return '${topLeft}_${topRight}_${bottomRight}_$bottomLeft';
+    return '$topLeft $topRight $bottomRight $bottomLeft';
   }
 }
 

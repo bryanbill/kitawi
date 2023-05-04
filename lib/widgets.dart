@@ -58,3 +58,4 @@ export 'package:kitawi/src/themes/theme_data.dart';
 export 'package:kitawi/src/widgets/circle_avatar.dart';
 export 'package:kitawi/src/widgets/divider.dart';
 export 'package:kitawi/src/core/offset.dart';
+export 'package:kitawi/src/widgets/buttons/elevated_button.dart';
