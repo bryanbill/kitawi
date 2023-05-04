@@ -25,8 +25,9 @@ class Column extends Widget {
 
   @override
   Element createElement() {
-    final column = DivElement();
+    final column = DivElement()..style.position = 'relative';
     column.style.display = 'flex';
+
     column.style.flexDirection = 'column';
     column.style.justifyContent = mainAxisAlignment.toString();
     column.style.alignItems = crossAxisAlignment.toString();
