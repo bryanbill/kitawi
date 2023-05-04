@@ -35,6 +35,6 @@ class EdgeInsets {
 
   @override
   String toString() {
-    return '${top}_${right}_${bottom}_$left';
+    return '$top $right $bottom $left';
   }
 }
