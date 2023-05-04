@@ -1,13 +1,15 @@
+/// Utils library - contains all the utilities to build beautiful PWAs.
+/// The library contains the following:
+/// - SEO
+/// - Fetch
+/// - File Picker
+/// - Local Store
+/// - Value Stream
 library utils;
-
 
 export 'package:kitawi/src/utils/seo.dart';
 export 'package:kitawi/src/utils/fetch.dart';
 export 'package:kitawi/src/utils/file_picker.dart';
-
-// Theme
-export 'package:kitawi/src/themes/theme.dart';
-export 'package:kitawi/src/themes/theme_data.dart';
 
 // Database
 export 'package:kitawi/src/database/local_store.dart';

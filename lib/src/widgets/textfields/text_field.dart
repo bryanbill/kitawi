@@ -192,12 +192,9 @@ class TextField extends Widget {
 }
 
 /// A text editing controller maintains the current state of editing a text
-/// input. It can be used to [addListener] to changes in the text and to
 /// [text] to set the current value of the editing. It can also be used to
 /// [clear] the text.
-///
-/// This class is a [ChangeNotifier], so it can be used to listen to changes in
-/// the text by calling [addListener] and supplying a callback function. When
+
 /// the text changes, the provided callback will be called.
 class TextEditingController {
   TextEditingController({this.text = ''});

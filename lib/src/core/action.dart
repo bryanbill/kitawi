@@ -12,9 +12,10 @@ class Action {
   /// The [callback] function is called when the event is triggered.
   final void Function(Event) callback;
 
-  
-
-  Action(this.callback, {required this.type, });
+  Action(
+    this.callback, {
+    required this.type,
+  });
 }
 
 enum Actions {

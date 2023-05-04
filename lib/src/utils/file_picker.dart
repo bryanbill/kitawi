@@ -33,7 +33,6 @@ class FilePicker {
         }
       });
 
-
       //trigger file selector
       input.click();
       return completer.future;

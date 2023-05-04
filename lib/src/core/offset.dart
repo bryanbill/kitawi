@@ -10,8 +10,6 @@ import 'dart:math';
 ///
 /// Offsets can be negated using the unary negation `-` operator, and subtracted
 /// from [Offset.zero] using the `-` operator.
-///
-/// The [withinDistance] method compares the distance between two offsets to a
 
 class Offset {
   final double dx;

@@ -28,7 +28,7 @@ abstract class Layout extends Widget {
 
   void setState(void Function() fn) {
     fn();
-    // TODO!: Fix this - canUpdate not implemented 
+    // TODO!: Fix this - canUpdate not implemented
     if (build().canUpdate(this)) render(build(), _element);
   }
 

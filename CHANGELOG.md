@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.9 (2023-05-04)
+
+- Adds a comprehensive Theme utility
+- Improved CLI - Help, run, build commands are now available
+- Improved performance
+
 ## 0.0.8 (2023-04-05)
 
 - Adds a comprehensive Theme utility
