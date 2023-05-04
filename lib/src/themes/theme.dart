@@ -84,6 +84,7 @@ class Theme {
   static ThemeData light() {
     return ThemeData(
       backgroundColor: Color(0xFFFFFFFF),
+      primaryColor: Colors.teal900,
       textTheme: TextTheme(
         bodyText1: TextStyle(
           color: Colors.grey900,
@@ -100,6 +101,7 @@ class Theme {
   static ThemeData dark() {
     return ThemeData(
       backgroundColor: Colors.grey900,
+      primaryColor: Colors.teal900,
       textTheme: TextTheme(
         bodyText1: TextStyle(
           color: Colors.white,
