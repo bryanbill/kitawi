@@ -59,14 +59,8 @@ class Router {
   static void pushNamed(String path, {bool replace = false, dynamic args}) {
     try {
       var route = _routes.firstWhere((r) => r.path == path);
+      print(route);
       _history.add(route.path);
-
-      // get the previous route builder
-      var previousRoute = _routes.firstWhere((r) => r.path == currentPath);
-
-      if (previousRoute.builder(null) is Layout) {
-        (previousRoute.builder(null) as Layout).dispose();
-      }
 
       render(route.builder(args), _root);
 
