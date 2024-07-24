@@ -1,39 +1,60 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Kitawi - A Dart Web Library
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+Kitawi is a Dart web library for building web user interfaces.
+It's highly customizable and can be used with any Dart package that can run on the web.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+The project can be compiled to wasm for Chromium-based browsers, others use the dart2js compiler.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Installation
 
-## Features
+1. Using the kitawi CLI:
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```bash
+dart pub global activate kitawi
 ```
 
-## Additional information
+The run the following command to create a new project:
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```bash
+kitawi new my_project
+```
+
+Get the dependencies:
+
+```bash
+cd my_project
+kitawi get
+```
+
+Add dependencies:
+
+```bash
+kitawi get http
+```
+
+Run the project:
+
+```bash
+kitawi run
+```
+
+Build the project:
+
+```bash
+kitawi build
+```
+
+2. As a dependency in your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  kitawi: 0.1.1
+```
+
+## Contributing
+
+We welcome contributions to kitawi
+
+## License
+
+kitawi is licensed under the MIT License.

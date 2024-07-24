@@ -1,0 +1,5 @@
+{
+  "buildDir": "build",
+  "sourceDir": "web",
+  "include": ["web/styles.css", "web/index.html", "web/bootstrap.js"]
+}

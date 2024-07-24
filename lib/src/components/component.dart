@@ -1,31 +1,29 @@
-import "package:kitawi/src/tailwind/tailwind.dart";
+import "dart:js_interop";
+
+import "package:kitawi/src/utils/ref.dart";
 import "package:web/web.dart";
 
-/// This is the base building block for all components.
-///
-/// It inherits the behavior of [Element] and adds additional functionality
-/// such as rendering and updating the component.
-///
-/// Components are the building blocks of a UI. They can be composed together
-/// to create complex UIs.
-class Component {
+abstract class Component {
   /// The tag name of the element.
   final String tag;
 
+  /// The ref of the element.
+  Ref? ref;
+
+  /// The id of the element.
+  final String? id;
+
   /// The attributes of the element.
-  final Map<String, String> attributes;
+  final Map<String, String>? attributes;
 
   /// The style of the element.
-  final String? style;
+  final Map<String, dynamic>? style;
 
   /// Css class name of the element.
   final String? className;
 
   /// The children of the element.
-  final List<Component> children;
-
-  /// The class name of the element.
-  final Tailwind? tailwind;
+  final List<Component>? children;
 
   /// Callback for the `click` event.
   final void Function(Event)? onClick;
@@ -62,14 +60,23 @@ class Component {
   final void Function(Event)? onBlur;
 
   final void Function(Event)? onScroll;
+  final void Function(Event)? onWheel;
 
+  /// This is the base building block for all components.
+  ///
+  /// It inherits the behavior of [Element] and adds additional functionality
+  /// such as rendering and updating the component.
+  ///
+  /// Components are the building blocks of a UI. They can be composed together
+  /// to create complex UIs.
   Component({
+    this.id,
     this.tag = "div",
-    this.attributes = const {},
-    this.children = const [],
+    this.ref,
+    this.attributes,
+    this.children,
     this.className,
     this.style,
-    this.tailwind,
     this.onClick,
     this.onDoubleClick,
     this.onContextMenu,
@@ -94,13 +101,16 @@ class Component {
     this.onFocus,
     this.onBlur,
     this.onScroll,
+    this.onWheel,
   });
 
   Element? element;
 
   /// Appends an attribute to the element.
   void _renderAttributes(Element element) {
-    for (final entry in attributes.entries) {
+    if (attributes == null) return;
+
+    for (final entry in attributes!.entries) {
       if (entry.value.isEmpty) continue;
       element.setAttribute(entry.key, entry.value);
     }
@@ -108,101 +118,31 @@ class Component {
 
   /// Set event listeners for the element.
   void _registerEventListeners(Element element) {
-    if (onClick != null) {
-      element.onClick.listen(onClick!);
-    }
-
-    if (onDoubleClick != null) {
-      element.onDoubleClick.listen(onDoubleClick!);
-    }
-
-    if (onContextMenu != null) {
-      element.onContextMenu.listen(onContextMenu!);
-    }
-
-    if (onDragStart != null) {
-      element.onDragStart.listen(onDragStart!);
-    }
-
-    if (onDrag != null) {
-      element.onDrag.listen(onDrag!);
-    }
-
-    if (onDragEnd != null) {
-      element.onDragEnd.listen(onDragEnd!);
-    }
-
-    if (onDragEnter != null) {
-      element.onDragEnter.listen(onDragEnter!);
-    }
-
-    if (onDragOver != null) {
-      element.onDragOver.listen(onDragOver!);
-    }
-
-    if (onDragLeave != null) {
-      element.onDragLeave.listen(onDragLeave!);
-    }
-
-    if (onDrop != null) {
-      element.onDrop.listen(onDrop!);
-    }
-
-    if (onKeyDown != null) {
-      element.onKeyDown.listen(onKeyDown!);
-    }
-
-    if (onKeyPress != null) {
-      element.onKeyPress.listen(onKeyPress!);
-    }
-
-    if (onKeyUp != null) {
-      element.onKeyUp.listen(onKeyUp!);
-    }
-
-    if (onMouseOver != null) {
-      element.onMouseOver.listen(onMouseOver!);
-    }
-
-    if (onMouseOut != null) {
-      element.onMouseOut.listen(onMouseOut!);
-    }
-
-    if (onMouseDown != null) {
-      element.onMouseDown.listen(onMouseDown!);
-    }
-
-    if (onMouseUp != null) {
-      element.onMouseUp.listen(onMouseUp!);
-    }
-
-    if (onMouseMove != null) {
-      element.onMouseMove.listen(onMouseMove!);
-    }
-
-    if (onInput != null) {
-      element.onInput.listen(onInput!);
-    }
-
-    if (onChange != null) {
-      element.onChange.listen(onChange!);
-    }
-
-    if (onSubmit != null) {
-      element.onSubmit.listen(onSubmit!);
-    }
-
-    if (onFocus != null) {
-      element.onFocus.listen(onFocus!);
-    }
-
-    if (onBlur != null) {
-      element.onBlur.listen(onBlur!);
-    }
-
-    if (onScroll != null) {
-      element.onScroll.listen(onScroll!);
-    }
+    element.onClick.listen(onClick);
+    element.onDoubleClick.listen(onDoubleClick);
+    element.onContextMenu.listen(onContextMenu);
+    element.onDragStart.listen(onDragStart);
+    element.onDrag.listen(onDrag);
+    element.onDragEnd.listen(onDragEnd);
+    element.onDragEnter.listen(onDragEnter);
+    element.onDragOver.listen(onDragOver);
+    element.onDragLeave.listen(onDragLeave);
+    element.onDrop.listen(onDrop);
+    element.onKeyDown.listen(onKeyDown);
+    element.onKeyPress.listen(onKeyPress);
+    element.onKeyUp.listen(onKeyUp);
+    element.onMouseOver.listen(onMouseOver);
+    element.onMouseOut.listen(onMouseOut);
+    element.onMouseDown.listen(onMouseDown);
+    element.onMouseUp.listen(onMouseUp);
+    element.onMouseMove.listen(onMouseMove);
+    element.onInput.listen(onInput);
+    element.onChange.listen(onChange);
+    element.onSubmit.listen(onSubmit);
+    element.onFocus.listen(onFocus);
+    element.onBlur.listen(onBlur);
+    element.onScroll.listen(onScroll);
+    element.onWheel.listen(onWheel);
   }
 
   /// Creates an HTML Element represention of [Component].
@@ -214,21 +154,35 @@ class Component {
       throw Exception("Could not create element with tag name: $tag");
     }
 
+    if (id != null) {
+      element?.id = id!;
+    }
+
     if (className != null) {
       element?.className = className!;
     }
 
-    if (style != null) {
-      element!.setAttribute('style', style!);
+    if (children != null) {
+      for (final child in children!) {
+        element!.append(child.render());
+      }
     }
 
-    if (tailwind != null) {
-      element?.className = tailwind!.className;
+    if (style != null) {
+      final styleString = style!.entries
+          .map((entry) => "${entry.key}: ${entry.value};")
+          .join(" ");
+
+      element!.setAttribute('style', styleString);
     }
 
     _renderAttributes(element!);
 
     _registerEventListeners(element!);
+
+    if (ref != null) {
+      ref!.set(element);
+    }
 
     return element!;
   }
@@ -238,5 +192,31 @@ class Component {
     final oldElement = element;
     element = null;
     oldElement?.replaceWith(render());
+  }
+
+  void addEventListener(String event, void Function(Event) callback,
+      {Map<String, String>? options}) {
+    element?.addEventListener(
+      event,
+      callback as JSFunction,
+      options as JSAny,
+    );
+  }
+
+  void removeEventListener(String event, void Function(Event) callback,
+      {Map<String, String>? options}) {
+    element?.removeEventListener(
+      event,
+      callback as JSFunction,
+      options as JSAny,
+    );
+  }
+
+  void append(Component child) {
+    element?.append(child.render());
+  }
+
+  void remove() {
+    element?.remove();
   }
 }

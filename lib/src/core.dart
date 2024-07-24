@@ -7,16 +7,30 @@ bool DEBUG = false;
 
 class App {
   final bool? debug;
+
   final String? target;
+
+  final String? title;
+
   final List<Component>? children;
 
+  final Function(Document)? onRender;
+
+  /// Creates a new instance of [App].
+  ///
+  /// The [debug] parameter is used to determine the debug mode of the library.
+  /// The [target] parameter is used to determine the target element where the
+  /// components will be rendered.
+  /// The [children] parameter is used to determine the children components that
   App({
     this.debug,
-    this.target = "#output",
+    this.target = "#app",
+    this.title = "Kitawi",
     this.children,
+    this.onRender,
   });
 
-  void render() {
+  void run() {
     if (debug != null) {
       DEBUG = debug!;
     }
@@ -31,6 +45,14 @@ class App {
         for (final child in children!) {
           element.append(child.render());
         }
+      }
+
+      if (title != null) {
+        document.title = title!;
+      }
+
+      if (onRender != null) {
+        onRender!(document);
       }
     }
   }

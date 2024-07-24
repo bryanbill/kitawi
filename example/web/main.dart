@@ -1,21 +1,27 @@
-import 'package:kitawi/ui.dart';
-import 'package:kitawi/tailwind.dart';
+import 'package:kitawi/kitawi.dart';
 
 void main() {
-  Tailwind.init();
-
-  App(
+  final app = App(
+    title: 'Kitawi',
     children: [
-      Component(
-        style: "width: 100px; height: 100px;",
-        tailwind: Tailwind()
-            .bg(
-              Color.red[500],
-            )
-            .rounded(
-              100.px,
-            ),
+      Div(
+        style: {
+          'display': 'flex',
+          'justify-content': 'center',
+          'align-items': 'center',
+          'height': '100vh',
+        },
+        children: [
+          P(
+            'Welcome to Kitawi!',
+            style: {
+              'font-size': '2rem',
+            },
+          ),
+        ],
       ),
     ],
-  ).render();
+  );
+
+  app.run();
 }
