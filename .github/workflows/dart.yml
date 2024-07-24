@@ -47,8 +47,8 @@ jobs:
       - name: Create new tag
         id: create_tag
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+          git config --global user.email "emobrya@gmail.com"
+          git config --global user.name "bryanbill"
           git tag $VERSION
           git push origin $VERSION
         env:
