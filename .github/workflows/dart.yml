@@ -2,7 +2,7 @@ name: Publish to pub.dev
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -30,8 +30,13 @@ jobs:
       # Your project will need to have tests in test/ and a dependency on
       # package:test for this step to succeed. Note that Flutter projects will
       # want to change this to 'flutter test'.
-      - name: Run tests
-        run: dart test
+      - name: Run JS tests on Chrome
+        run: |
+          find test/ -name "*.dart" | xargs -n 1 dart test -p chrome --compiler dart2js
+
+      - name: Run WASM tests on Chrome
+        run: |
+          find test/ -name "*.dart" | xargs -n 1 dart test -p chrome --compiler dart2wasm
 
       - name: Get version from pubspec.yaml
         id: get_version

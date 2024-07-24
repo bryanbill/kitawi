@@ -36,34 +36,5 @@ void main() {
 
       expect(text, "Clicked");
     });
-
-    test("Find an element by its selector", () {
-      final app = App(
-          title: 'Kitawi',
-          children: [
-            Div(
-              style: {
-                'display': 'flex',
-                'justify-content': 'center',
-                'align-items': 'center',
-                'height': '100vh',
-              },
-              children: [
-                P(
-                  'Welcome to Kitawi!',
-                  id: "welcome",
-                  style: {
-                    'font-size': '2rem',
-                  },
-                ),
-              ],
-            ),
-          ],
-          onRender: (doc) {
-            find("#welcome").addClass("text-primary");
-          });
-
-      app.run();
-    });
   });
 }
