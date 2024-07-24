@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 (2024-07-24)
+## 0.1.1 (2024-07-24)
 
 - Breaking: Removed Flutter like Syntax
 - Added support for WebAssembly
