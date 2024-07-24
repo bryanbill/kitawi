@@ -3,7 +3,7 @@ import 'package:web/web.dart';
 import 'components/component.dart';
 
 /// Determines the debug mode of the library.
-bool DEBUG = false;
+bool kDEBUG = false;
 
 class App {
   final bool? debug;
@@ -32,7 +32,7 @@ class App {
 
   void run() {
     if (debug != null) {
-      DEBUG = debug!;
+      kDEBUG = debug!;
     }
 
     if (target != null) {
