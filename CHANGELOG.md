@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.0 (2024-07-24)
+
+- Breaking: Removed Flutter like Syntax
+- Added support for WebAssembly
+
 ## 0.0.8 (2023-04-05)
 
 - Adds a comprehensive Theme utility

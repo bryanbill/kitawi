@@ -19,6 +19,6 @@ Kitawi community members asked to stop any harassing behavior are expected to co
 
 If a community member engages in harassing behavior, the Kitawi project maintainers may take any action they deem appropriate, including warning the offender or expulsion from the project.
 
-If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact the Kitawi project maintainers at [brian@namani.co](mailto://oss@namani.co). We will respond as promptly as we can.
+If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact the Kitawi project maintainers at [kitawi.dev@gmail.com](mailto:kitawi.dev@gmail.com). We will respond as promptly as we can.
 
 We expect everyone in the Kitawi community to follow these guidelines at all times when participating in the project or its community.

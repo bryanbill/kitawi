@@ -6,10 +6,10 @@ This file contains guidelines for contributing to the project.
 
 # -----------------
 
-1.  [Code of Conduct](#code-of-conduct)
-2.  [Contributing](#contributing)
-3.  [Getting Started](#pull-requests)
-4.  [Style Guide](#style-guide)
+1. [Code of Conduct](#code-of-conduct)
+2. [Contributing](#contributing)
+3. [Getting Started](#pull-requests)
+4. [Style Guide](#style-guide)
 
 # Code of Conduct
 

@@ -1,104 +1,60 @@
-# Kitawi - Declarative UI for the web
+# Kitawi - A Dart Web Library
 
-Kitawi is a declarative UI library for the web. It is inspired by [Flutter](https://flutter.dev) and [Vue](https://vuejs.org).
-With Kitawi, you can say goodbye to the tedious process of writing complex CSS and HTML code from scratch. Instead, you can focus on what really matters - creating engaging and interactive user experiences. Plus, our framework is designed with responsiveness in mind, so your web app will look great on any device.
+Kitawi is a Dart web library for building web user interfaces.
+It's highly customizable and can be used with any Dart package that can run on the web.
 
-<p style="color:red">Kitawi is still in early evelopment and is not ready for production use.</p>
+The project can be compiled to wasm for Chromium-based browsers, others use the dart2js compiler.
 
-## Getting Started
+## Installation
 
-### Prerequisites
-
-Kitawi is written in Dart and compiled to JavaScript. To use Kitawi, you need to install the Dart SDK. You can find the installation instructions [here](https://www.dartlang.org/tools/sdk#install).
-
-Once you have Dart installed, you can install Kitawi by running the following command:
+1. Using the kitawi CLI:
 
 ```bash
 dart pub global activate kitawi
 ```
 
-### Usage
-
-To create a new Kitawi project, run the following command:
+The run the following command to create a new project:
 
 ```bash
-kitawi create -n <project_name>
-
+kitawi new my_project
 ```
 
-This will create a new directory called `<project_name>` in your current directory. Inside this directory, you will find a `pubspec.yaml` file and a `web` directory. The `pubspec.yaml` file contains the dependencies and the PWA configurations for your project. The `web` directory contains the source code for your project.
+Get the dependencies:
 
-To run your project, run the following command:
+```bash
+cd my_project
+kitawi get
+```
+
+Add dependencies:
+
+```bash
+kitawi get http
+```
+
+Run the project:
 
 ```bash
 kitawi run
 ```
 
-This will start a local server on port `8080`. If the port is in use, you can specify a different port by running the following command:
+Build the project:
 
 ```bash
-kitawi run -p <port_number>
+kitawi build
 ```
 
-You can now access your project by navigating to `http://localhost:<port_number>` in your browser.
+2. As a dependency in your `pubspec.yaml` file:
 
-To build your project, run the following command:
-
-```bash
- kitawi build
+```yaml
+dependencies:
+  kitawi: 0.1.1
 ```
-
-This will create a `build` directory in your project directory. This directory contains the compiled JavaScript and CSS files for your project. You can now deploy your project to any web server. [See this Vercel guide for more information](https://vercel.com/docs/concepts/deployments/overview#vercel-cli)
-
-Kitawi is a PWA first framework. This means that your Kitawi project will be a PWA by default. To learn more about PWA, check out [this](https://web.dev/progressive-web-apps/) article.
-
-To build the app without the PWA configurations, run the following command:
-
-```bash
-kitawi build --no-pwa
-```
-
-### Example
-
-Here is a simple example of a Kitawi project:
-
-```dart
-import 'package:kitawi/kitawi.dart';
-
-void main() {
-  run(
-    [
-      Route(
-        builder: (args) => App(),
-        path: "/app",
-        name: "App"
-      ),
-    ],
-    id: <app_id>, // This is the id of element that will contain your app
-    env: Environment.dev,
-  );
-}
-
-class App extends Layout {
-
-  @override
-  Widget build() {
-    return Container(
-      color: Colors.green,
-      child: Text("Hello, world!"),
-    );
-  }
-}
-```
-
-## Documentation
-
-You can find the documentation for Kitawi [here](https://pub.dev/documentation/kitawi/latest/).
 
 ## Contributing
 
-We welcome contributions to Kitawi! If you would like to contribute, please read our [contribution guidelines](CONTRIBUTE.md).
+We welcome contributions to kitawi
 
 ## License
 
-Kitawi is licensed under the [MIT License](LICENSE).
+kitawi is licensed under the MIT License.
