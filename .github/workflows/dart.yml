@@ -1,35 +1,26 @@
-name: Publish to pub.dev
+name: Kitawi CI
 
 on:
   push:
     branches: ["main"]
 
 jobs:
-  build:
+  publishing:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
 
       - name: Install dependencies
         run: dart pub get
 
-      # Uncomment this step to verify the use of 'dart format' on each commit.
-      # - name: Verify formatting
-      #   run: dart format --output=none --set-exit-if-changed .
+      - name: Format code
+        run: dart format --output=none --set-exit-if-changed .
 
-      # Consider passing '--fatal-infos' for slightly stricter analysis.
       - name: Analyze project source
         run: dart analyze
 
-      # Your project will need to have tests in test/ and a dependency on
-      # package:test for this step to succeed. Note that Flutter projects will
-      # want to change this to 'flutter test'.
       - name: Run JS tests on Chrome
         run: |
           find test/ -name "*.dart" | xargs -n 1 dart test -p chrome --compiler dart2js
@@ -38,18 +29,8 @@ jobs:
         run: |
           find test/ -name "*.dart" | xargs -n 1 dart test -p chrome --compiler dart2wasm
 
-      - name: Get version from pubspec.yaml
-        id: get_version
-        run: |
-          VERSION=$(grep '^version:' pubspec.yaml | sed 's/version: //')
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
-      - name: Create new tag
-        id: create_tag
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
-          git tag $VERSION
-          git push origin $VERSION
-        env:
-          VERSION: ${{ env.VERSION }}
+      - name: "Publish package"
+        uses: k-paxian/dart-package-publisher@master
+        with:
+          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
