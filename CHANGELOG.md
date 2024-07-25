@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 (2024-07-25)
+
+- Added utility for finding elements by querySelector
+- Improved CLI
+
 ## 0.1.1 (2024-07-24)
 
 - Breaking: Removed Flutter like Syntax

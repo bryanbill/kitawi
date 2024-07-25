@@ -29,6 +29,9 @@ jobs:
         run: |
           find test/ -name "*.dart" | xargs -n 1 dart test -p chrome --compiler dart2wasm
 
+      - name: Generate API documentation
+        run: dart doc
+
       - name: "Publish package"
         uses: k-paxian/dart-package-publisher@master
         with:
