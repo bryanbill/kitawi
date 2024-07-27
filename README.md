@@ -48,7 +48,7 @@ kitawi build
 
 ```yaml
 dependencies:
-  kitawi: 0.1.1
+  kitawi: 0.1.3
 ```
 
 ## Contributing

@@ -1,48 +1,67 @@
 import 'package:kitawi/kitawi.dart';
 
-extension Find on HTMLElement {
-  void show() {
-    style.display = 'block';
+extension Find on Component {
+  void show([String? display]) {
+    element?.style.display = display ?? 'block';
   }
 
   void hide() {
-    style.display = 'none';
+    element?.style.display = 'none';
   }
 
-  void toggle() {
-    style.display = style.display == 'none' ? 'block' : 'none';
+  void toggle([String? display]) {
+    element?.style.display =
+        element?.style.display == 'none' ? display ?? 'block' : 'none';
   }
 
   void addClass(String className) {
-    classList.add(className);
+    element?.classList.add(className);
   }
 
   void removeClass(String className) {
-    classList.remove(className);
+    element?.classList.remove(className);
   }
 
   void toggleClass(String className) {
-    classList.toggle(className);
+    element?.classList.toggle(className);
   }
 
   void hasClass(String className) {
-    classList.contains(className);
+    element?.classList.contains(className);
   }
 
   String? attr(String name, [String? value]) {
     if (value == null) {
-      return getAttribute(name);
+      return element?.getAttribute(name);
     }
-    setAttribute(name, value);
+    element?.setAttribute(name, value);
     return value;
+  }
+
+  void removeAtptr(String name) {
+    element?.removeAttribute(name);
   }
 }
 
 /// Find an element by its selector
-HTMLElement find(String selector) {
+Component find(String selector) {
   try {
-    return document.querySelector(selector)! as HTMLElement;
+    return stack.where((c) {
+      if (c.element == null) {
+        return false;
+      }
+
+      if (selector.startsWith("#")) {
+        return c.element!.id == selector.substring(1);
+      }
+
+      if (selector.startsWith(".")) {
+        return c.element!.classList.contains(selector.substring(1));
+      }
+
+      return c.element!.tagName.toLowerCase() == selector.toLowerCase();
+    }).first;
   } catch (err) {
-    throw Exception('Element not found');
+    throw Exception('Component with selector $selector not found');
   }
 }

@@ -2,7 +2,7 @@ import 'package:kitawi/src/utils/ref.dart';
 import 'package:kitawi/kitawi.dart';
 
 /// Input type enumeration.
-/// 
+///
 /// See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 enum InputType {
   text,
@@ -24,8 +24,8 @@ class Input extends Component {
   /// Text input component.
   ///
   /// The [type] parameter is used to determine the type of the input.
-  /// 
-  /// The [ref] parameter is used to determine the reference of the input.  
+  ///
+  /// The [ref] parameter is used to determine the reference of the input.
   Input({
     this.type = InputType.text,
     super.id,

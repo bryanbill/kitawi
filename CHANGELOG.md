@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.3 (2024-07-27)
+
+- Added `Audio`, `Video` components
+
 ## 0.1.2 (2024-07-25)
 
 - Added utility for finding elements by querySelector

@@ -1,4 +1,5 @@
 import 'package:kitawi/kitawi.dart';
+import 'package:kitawi/utils.dart';
 import 'package:test/test.dart';
 
 class CustomComponent extends Component {

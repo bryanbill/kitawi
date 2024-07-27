@@ -104,7 +104,7 @@ abstract class Component {
     this.onWheel,
   });
 
-  Element? element;
+  HTMLElement? element;
 
   /// Appends an attribute to the element.
   void _renderAttributes(Element element) {
@@ -148,7 +148,7 @@ abstract class Component {
   /// Creates an HTML Element represention of [Component].
   Element render() {
     // Create the element with the tag name.
-    element ??= document.createElement(tag);
+    element ??= document.createElement(tag) as HTMLElement;
 
     if (element == null) {
       throw Exception("Could not create element with tag name: $tag");
@@ -184,6 +184,8 @@ abstract class Component {
       ref!.set(element);
     }
 
+    stack.add(this);
+
     return element!;
   }
 
@@ -191,7 +193,9 @@ abstract class Component {
   void update() {
     final oldElement = element;
     element = null;
-    oldElement?.replaceWith(render());
+    final newElement = render();
+    oldElement?.replaceWith(newElement);
+    stack.where((c) => c == this).first.element = element;
   }
 
   void addEventListener(String event, void Function(Event) callback,
@@ -214,9 +218,14 @@ abstract class Component {
 
   void append(Component child) {
     element?.append(child.render());
+    stack.add(child);
   }
 
   void remove() {
     element?.remove();
+
+    stack.remove(this);
   }
 }
+
+List<Component> stack = [];
