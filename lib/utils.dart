@@ -2,6 +2,5 @@
 
 library utils;
 
-export 'src/utils/ref.dart';
 export 'src/utils/find.dart';
 export 'src/utils/query.dart';

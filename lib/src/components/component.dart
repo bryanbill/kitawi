@@ -1,14 +1,11 @@
 import "dart:js_interop";
 
-import "package:kitawi/src/utils/ref.dart";
 import "package:web/web.dart";
 
 abstract class Component {
   /// The tag name of the element.
   final String tag;
 
-  /// The ref of the element.
-  Ref? ref;
 
   /// The id of the element.
   final String? id;
@@ -72,7 +69,6 @@ abstract class Component {
   Component({
     this.id,
     this.tag = "div",
-    this.ref,
     this.attributes,
     this.children,
     this.className,
@@ -180,9 +176,6 @@ abstract class Component {
 
     _registerEventListeners(element!);
 
-    if (ref != null) {
-      ref!.set(element);
-    }
 
     stack.add(this);
 

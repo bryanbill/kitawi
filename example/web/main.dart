@@ -8,6 +8,7 @@ void main() {
         Div(
           style: {
             'display': 'flex',
+            "flex-direction": 'column',
             'justify-content': 'center',
             'align-items': 'center',
             'height': '100vh',
@@ -20,11 +21,44 @@ void main() {
                 'font-size': '2rem',
               },
             ),
+            Input(
+              type: InputType.password,
+              children: [
+                Button(
+                  children: [P('Click me')],
+                ),
+              ],
+            ),
+            Select(
+              onSelect: (p0) => print(p0),
+              options: [
+                Option(
+                  value: '1',
+                  child: P('One'),
+                ),
+                Option(
+                  value: '2',
+                  child: P('Two'),
+                ),
+              ],
+            ),
+            Checkbox(
+              onChanged: (value) => print(value),
+            ),
+            Radio(
+              onChanged: (value) => print(value),
+            ),
+            Radio(
+              onChanged: (value) => print(value),
+            ),
           ],
         ),
       ],
       onRender: (doc) {
-        find("#welcome").addClass("text-primary");
+        final textController = InputController.of(find("input"));
+        textController.onTextChange((text) {
+          print(text);
+        });
       });
 
   app.run();
