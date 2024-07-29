@@ -63,6 +63,7 @@ class Input extends Component {
 
   InputType type = InputType.text;
 
+  String get value => (element as HTMLInputElement).value;
   @override
   Element render() {
     final element = super.render() as HTMLInputElement;
