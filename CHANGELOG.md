@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5 (2024-07-29)
+
+- Added input components: `Select`, `Input`, `Button`, `Checkbox`, `Radio`
+
 ## 0.1.3 (2024-07-27)
 
 - Added `Audio`, `Video` components

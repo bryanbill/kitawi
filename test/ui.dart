@@ -7,6 +7,9 @@ class CustomComponent extends Component {
 
 void main() {
   group('UI components test:', () {
+    setUpAll(() {
+      document.body!.appendChild(Div(id: "app").render());
+    });
     test('Create a custom component', () {
       final custom = CustomComponent();
       custom.render();
