@@ -2,7 +2,6 @@
     const dev = window.ENV;
 
     if (dev === 'dev') {
-        // add script tag for main.dart.js
         const script = document.createElement('script');
         script.src = 'main.dart.js';
         script.defer = true;
@@ -22,8 +21,9 @@
         console.error(`Failed to fetch and instantiate wasm module: ${exception}`);
         console.error('See https://dart.dev/web/wasm for more information.');
         console.warn('Running Dart code in JavaScript');
-
-        runDartJs();
+        import('./main.js').then(module => {
+            console.log('---- JS ----');
+        });
         return;
     }
 
@@ -35,9 +35,3 @@
         }
     }
 })();
-
-function runDartJs() {
-    import('./main.js').then(module => {
-        console.log('Running Dart code in JavaScript on iOS');
-    });
-}
