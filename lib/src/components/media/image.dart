@@ -8,6 +8,10 @@ class Image extends Media {
 
   Image({
     required super.src,
+    super.className,
+    super.id,
+    super.style,
+    super.attributes,
     super.alt,
     super.width,
     super.height,
