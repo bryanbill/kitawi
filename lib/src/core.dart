@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:js_interop';
+
 import 'package:web/web.dart';
 
 import 'components/component.dart';
@@ -57,3 +60,62 @@ class App {
     }
   }
 }
+
+class Router {
+  Stream<String> pathStream = Stream.empty();
+
+  final StreamController<String> _controller = StreamController<String>();
+  Router() {
+    pathStream = _controller.stream;
+
+    window.onPopState.listen(
+      (event) {
+        init();
+      },
+    );
+
+    init();
+  }
+
+  void init() {
+    var path = window.location.hash;
+
+    if (path.contains("?")) {
+      path = path.substring(0, path.indexOf("?"));
+    }
+
+    if (path.contains("?")) {
+      path = path.substring(0, path.indexOf("?"));
+    }
+
+    if (path.startsWith("#")) {
+      _controller.add(path.substring(1));
+    }
+  }
+
+  final Set<String> _history = {};
+
+  void push(String path) {
+    if (_history.isNotEmpty && path == _history.last) {
+      return;
+    }
+
+    _history.add(path);
+    window.location.hash = path;
+  }
+
+  void pop() {
+    if (_history.length > 1) {
+      _history.remove(_history.last);
+      final path = _history.last;
+      _controller.add(path);
+      window.history.pushState({}.toJSBox, '', path);
+    }
+  }
+
+  void listen(void Function(String) callback) {
+    pathStream.listen(callback);
+  }
+}
+
+var router = Router();

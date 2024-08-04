@@ -36,7 +36,5 @@ class Div extends Component {
       super.onBlur,
       super.onScroll,
       super.onWheel})
-      : super(
-          tag: "div",
-        );
+      : super(tag: "div");
 }

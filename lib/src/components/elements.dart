@@ -3,6 +3,7 @@ export 'layout/div.dart';
 export 'media/image.dart';
 export 'text/span.dart';
 export 'text/p.dart';
+export 'text/i.dart';
 
 export 'misc/hr.dart';
 export 'modals/modal.dart';
@@ -19,3 +20,7 @@ export 'input/select.dart';
 export 'input/checkbox.dart';
 export 'input/radio.dart';
 export 'input/label.dart';
+
+export 'layout/page.dart';
+export 'layout/promise.dart';
+export 'layout/builder.dart';

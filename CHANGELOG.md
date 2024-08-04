@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5 (2024-08-04)
+
+- Added `Router` and `PageView` functionality
+- Added new `Promise`, `Reactive` components
+
 ## 0.1.4 (2024-07-29)
 
 - Added input components: `Select`, `Input`, `Button`, `Checkbox`, `Radio`
