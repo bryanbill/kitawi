@@ -11,12 +11,15 @@ class Select extends Component {
   final List<Option> options;
 
   final void Function(String)? onSelect;
+
+  final String? defaultValue;
   Select({
     super.id,
     super.attributes,
     super.style,
     super.className,
     this.onSelect,
+    this.defaultValue,
     this.options = const [],
   }) : super(tag: 'select');
 
@@ -28,6 +31,10 @@ class Select extends Component {
       final optionElement = HTMLOptionElement()
         ..value = option.value
         ..appendChild(option.child.render());
+
+      if (option.value == defaultValue) {
+        optionElement.selected = true;
+      }
 
       element.append(optionElement);
     }
