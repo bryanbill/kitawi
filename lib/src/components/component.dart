@@ -6,7 +6,6 @@ abstract class Component {
   /// The tag name of the element.
   final String tag;
 
-
   /// The id of the element.
   final String? id;
 
@@ -176,7 +175,6 @@ abstract class Component {
 
     _registerEventListeners(element!);
 
-
     stack.add(this);
 
     return element!;
@@ -187,6 +185,7 @@ abstract class Component {
     final oldElement = element;
     element = null;
     final newElement = render();
+
     oldElement?.replaceWith(newElement);
     stack.where((c) => c == this).first.element = element;
   }
@@ -204,7 +203,7 @@ abstract class Component {
       {Map<String, String>? options}) {
     element?.removeEventListener(
       event,
-      callback as JSFunction,
+      callback.toJS,
       options as JSAny,
     );
   }
@@ -218,6 +217,12 @@ abstract class Component {
     element?.remove();
 
     stack.remove(this);
+  }
+
+  void clear() {
+    for (var i = 0; i < element!.children.length; i++) {
+      element!.children.item(i)?.remove();
+    }
   }
 }
 
