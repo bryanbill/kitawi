@@ -25,5 +25,6 @@ export 'input/label.dart';
 
 export 'layout/page.dart';
 export 'layout/promise.dart';
+export 'layout/reactive.dart';
 export 'layout/builder.dart';
 export 'layout/html.dart';
