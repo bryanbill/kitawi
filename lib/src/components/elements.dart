@@ -6,6 +6,8 @@ export 'text/p.dart';
 export 'text/i.dart';
 
 export 'misc/hr.dart';
+export 'misc/code.dart';
+
 export 'modals/modal.dart';
 
 export 'media/media.dart';
@@ -23,4 +25,6 @@ export 'input/label.dart';
 
 export 'layout/page.dart';
 export 'layout/promise.dart';
+export 'layout/reactive.dart';
 export 'layout/builder.dart';
+export 'layout/html.dart';

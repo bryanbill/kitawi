@@ -5,6 +5,8 @@ class Reactive<T> extends Component {
   final T? initial;
   final Component Function(T) builder;
 
+  /// Reactive is a component that is used with [Stream] to render components
+  /// based on the data emitted by the stream.
   Reactive({
     required this.stream,
     required this.builder,

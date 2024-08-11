@@ -62,18 +62,22 @@ class App {
 }
 
 class Router {
-  Stream<String> pathStream = Stream.empty();
+  final StreamController<String> _controller =
+      StreamController<String>.broadcast();
 
-  final StreamController<String> _controller = StreamController<String>();
-  Router() {
-    pathStream = _controller.stream;
+  final bool? hasInitialPage;
+  Router({
+    this.hasInitialPage = false,
+  });
 
+  void create() {
     window.onPopState.listen(
       (event) {
         init();
       },
     );
 
+    if (hasInitialPage == true) return;
     init();
   }
 
@@ -89,33 +93,33 @@ class Router {
     }
 
     if (path.startsWith("#")) {
-      _controller.add(path.substring(1));
+      _controller.sink.add(path.substring(1));
+    }
+
+    if (path.isEmpty) {
+      _controller.sink.add('/');
     }
   }
 
   final Set<String> _history = {};
 
   void push(String path) {
-    if (_history.isNotEmpty && path == _history.last) {
-      return;
-    }
-
     _history.add(path);
     window.location.hash = path;
+
+    window.scrollTo(0.toJS, 0);
   }
 
   void pop() {
     if (_history.length > 1) {
       _history.remove(_history.last);
       final path = _history.last;
-      _controller.add(path);
+      _controller.sink.add(path);
       window.history.pushState({}.toJSBox, '', path);
     }
   }
 
   void listen(void Function(String) callback) {
-    pathStream.listen(callback);
+    _controller.stream.listen(callback);
   }
 }
-
-var router = Router();
