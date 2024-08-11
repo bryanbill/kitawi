@@ -3,7 +3,7 @@ import 'package:kitawi/kitawi.dart';
 /// `router` is a global instance of the [Router] class. It's only available
 /// when [PageView] is used as they work together to provide routing in the
 /// application.
-Router? router;
+late Router router;
 
 class PageView extends Component {
   final List<Page> pages;
@@ -19,7 +19,6 @@ class PageView extends Component {
     this.onPageChange,
     required this.pages,
   }) : super(tag: 'div') {
-    
     router = Router(
       hasInitialPage: initialPage != null,
     );
@@ -33,10 +32,10 @@ class PageView extends Component {
 
   @override
   HTMLElement render() {
-    router?.listen(_matchRoute);
+    router.listen(_matchRoute);
     _element = super.render() as HTMLElement;
-    router?.create();
-    
+    router.create();
+
     return _element!;
   }
 

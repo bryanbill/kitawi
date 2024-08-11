@@ -104,12 +104,10 @@ class Router {
   final Set<String> _history = {};
 
   void push(String path) {
-    if (_history.isNotEmpty && path == _history.last) {
-      return;
-    }
-
     _history.add(path);
     window.location.hash = path;
+
+    window.scrollTo(0.toJS, 0);
   }
 
   void pop() {
