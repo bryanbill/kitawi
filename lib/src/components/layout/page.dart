@@ -1,5 +1,10 @@
 import 'package:kitawi/kitawi.dart';
 
+/// `router` is a global instance of the [Router] class. It's only available
+/// when [PageView] is used as they work together to provide routing in the
+/// application.
+Router? router;
+
 class PageView extends Component {
   final List<Page> pages;
   final String? initialPage;
@@ -13,35 +18,35 @@ class PageView extends Component {
     this.initialPage,
     this.onPageChange,
     required this.pages,
-  }) : super(tag: 'div');
+  }) : super(tag: 'div') {
+    
+    router = Router(
+      hasInitialPage: initialPage != null,
+    );
+
+    if (initialPage != null) {
+      _matchRoute(initialPage!);
+    }
+  }
 
   HTMLElement? _element;
 
   @override
   HTMLElement render() {
-    _registerPathChangeListener();
+    router?.listen(_matchRoute);
     _element = super.render() as HTMLElement;
-
+    router?.create();
+    
     return _element!;
   }
 
-  void _registerPathChangeListener() {
-    router.listen((path) {
-      var page = _matchRoute(path);
-      if (page == null) {
-        // TODO: Show 404 page
-      } else {
-        clear();
-        _element!.append(page.$1.builder(page.$2).render());
-        onPageChange?.call(pages.indexOf(page.$1), page.$2);
-      }
-    });
-  }
-
-  (Page page, Map<String, String> params)? _matchRoute(String path) {
+  void _matchRoute(String path) {
     for (final page in pages) {
       if (page.path == path) {
-        return (page, {});
+        clear();
+        _element!.append(page.builder({}).render());
+        onPageChange?.call(pages.indexOf(page), {});
+        return;
       }
 
       final pagePaths = page.path.split('/');
@@ -63,12 +68,11 @@ class PageView extends Component {
       }
 
       if (match) {
-        return (page, params);
+        clear();
+        _element!.append(page.builder(params).render());
+        onPageChange?.call(pages.indexOf(page), params);
       }
-
-      return null;
     }
-    return null;
   }
 }
 

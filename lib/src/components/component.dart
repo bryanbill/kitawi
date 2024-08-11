@@ -1,5 +1,6 @@
 import "dart:js_interop";
 
+import "package:kitawi/kitawi.dart";
 import "package:web/web.dart";
 
 abstract class Component {
@@ -182,12 +183,17 @@ abstract class Component {
 
   /// Re-renders the component.
   void update() {
-    final oldElement = element;
-    element = null;
-    final newElement = render();
+    try {
+      final oldElement = element;
+      element = null;
+      final newElement = render();
 
-    oldElement?.replaceWith(newElement);
-    stack.where((c) => c == this).first.element = element;
+      oldElement?.replaceWith(newElement);
+      stack.where((c) => c == this).first.element = element;
+    } catch (err, s) {
+      print(err);
+      print(s);
+    }
   }
 
   void addEventListener(String event, void Function(Event) callback,

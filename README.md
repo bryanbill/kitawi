@@ -5,6 +5,10 @@ It's highly customizable and can be used with any Dart package that can run on t
 
 The project can be compiled to wasm for Chromium-based browsers, others use the dart2js compiler.
 
+## Disclaimer
+
+This project is still in development and is not yet ready for production use. The API is subject to change. Use at your own risk.
+
 ## Installation
 
 1. Using the kitawi CLI:

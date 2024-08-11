@@ -28,8 +28,11 @@ class Input extends Component {
   final InputController? controller;
 
   final String? name;
+
+  final String? placeholder;
   Input({
     this.name,
+    this.placeholder,
     this.type = InputType.text,
     super.id,
     this.controller,
@@ -75,6 +78,10 @@ class Input extends Component {
 
     if (name != null) {
       element.name = name!;
+    }
+
+    if (placeholder != null) {
+      element.placeholder = placeholder!;
     }
 
     return element;
