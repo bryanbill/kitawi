@@ -61,8 +61,8 @@ Future<void> newProject(String? projectName) async {
   }
   await projectDir.create();
 
-  var result = await Process.run('git',
-      ['clone', 'https://github.com/bryanbill/view-template', projectName]);
+  var result = await Process.run(
+      'git', ['clone', 'https://github.com/kitawee/template', projectName]);
   if (result.exitCode != 0) {
     print('Error: Failed to clone the template repository.');
     print(result.stderr);
@@ -73,6 +73,14 @@ Future<void> newProject(String? projectName) async {
   if (await gitDir.exists()) {
     await gitDir.delete(recursive: true);
   }
+
+  // update the project name in the pubspec.yaml file
+  var pubspecFile = File('$projectName/pubspec.yaml');
+  var pubspecContent = await pubspecFile.readAsString();
+
+  pubspecContent = pubspecContent.replaceAll('template', projectName);
+  await pubspecFile.writeAsString(pubspecContent);
+  
   print('Project "$projectName" created successfully.');
 }
 

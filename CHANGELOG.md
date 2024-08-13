@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.7 (2024-08-13)
+
+- Update the CLI
+
 ## 0.1.6 (2024-08-11)
 
 - Fix `Router` and `PageView` functionality
