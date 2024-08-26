@@ -19,6 +19,12 @@ class App {
 
   final Function(Document)? onRender;
 
+  /// This style will be applied to the container element [target].
+  final Map<String, dynamic>? style;
+
+  /// This class will be applied to the container element [target].
+  final String? className;
+
   /// Creates a new instance of [App].
   ///
   /// The [debug] parameter is used to determine the debug mode of the library.
@@ -31,6 +37,8 @@ class App {
     this.title = "Kitawi",
     this.children,
     this.onRender,
+    this.style,
+    this.className,
   });
 
   void run() {
@@ -42,6 +50,18 @@ class App {
       final element = document.querySelector(target!);
       if (element == null) {
         throw Exception('Element with id $target not found');
+      }
+
+      if (style != null) {
+        final styleString = style!.entries
+            .map((entry) => "${entry.key}: ${entry.value};")
+            .join(" ");
+
+        element.setAttribute('style', styleString);
+      }
+
+      if (className != null) {
+        element.className = className!;
       }
 
       if (children != null) {

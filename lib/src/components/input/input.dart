@@ -30,12 +30,18 @@ class Input extends Component {
   final String? name;
 
   final String? placeholder;
+
+  final void Function(String?)? onChangeText;
+
+  final String? value;
+
   Input({
     this.name,
     this.placeholder,
     this.type = InputType.text,
     super.id,
     this.controller,
+    this.value,
     super.attributes,
     super.style,
     super.className,
@@ -59,6 +65,7 @@ class Input extends Component {
     super.onMouseUp,
     super.onInput,
     super.onChange,
+    this.onChangeText,
     super.onMouseMove,
   }) : super(
           tag: 'input',
@@ -66,7 +73,6 @@ class Input extends Component {
 
   InputType type = InputType.text;
 
-  String get value => (element as HTMLInputElement).value;
   @override
   Element render() {
     final element = super.render() as HTMLInputElement;
@@ -82,6 +88,16 @@ class Input extends Component {
 
     if (placeholder != null) {
       element.placeholder = placeholder!;
+    }
+
+    element.onInput.listen((event) {
+      if (onChangeText != null) {
+        onChangeText!(element.value);
+      }
+    });
+
+    if (value != null) {
+      element.value = value!;
     }
 
     return element;
