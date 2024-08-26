@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.8 (2024-08-26)
+
+- Added `template`, `table`, LifeCycle events
+- Removed `Query` utility from `utils` library
+
 ## 0.1.7 (2024-08-13)
 
 - Update the CLI

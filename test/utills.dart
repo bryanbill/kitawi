@@ -35,13 +35,13 @@ void main() {
         'name': 'John Doe',
       });
 
-      expect(Query.getParam('name'), 'John Doe');
+      expect(Query.get('name'), 'John Doe');
     });
 
     test("remove query string", () {
       Query.remove('name');
 
-      expect(Query.getParam('name'), isNull);
+      expect(Query.get('name'), isNull);
     });
 
     test("clear query string", () {
@@ -51,7 +51,7 @@ void main() {
 
       Query.clear();
 
-      expect(Query.get(), {});
+      expect(Query.getAll(), {});
     });
   });
 }

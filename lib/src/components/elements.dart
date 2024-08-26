@@ -28,3 +28,5 @@ export 'layout/promise.dart';
 export 'layout/reactive.dart';
 export 'layout/builder.dart';
 export 'layout/html.dart';
+export 'template.dart';
+export 'layout/table.dart';

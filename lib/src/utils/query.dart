@@ -47,7 +47,7 @@ class Query {
   }
 
   /// Get the query string as a map.
-  static Map<String, String> get() {
+  static Map<String, String> getAll() {
     final query = window.location.search;
     final uri = Uri.parse(query);
 
@@ -55,7 +55,7 @@ class Query {
   }
 
   /// Get the value of a query parameter.
-  static String? getParam(String key) {
+  static String? get(String key) {
     final query = window.location.search;
     final uri = Uri.parse(query);
 

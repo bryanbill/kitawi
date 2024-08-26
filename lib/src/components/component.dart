@@ -1,6 +1,5 @@
+import "dart:async";
 import "dart:js_interop";
-
-import "package:kitawi/kitawi.dart";
 import "package:web/web.dart";
 
 abstract class Component {
@@ -139,7 +138,16 @@ abstract class Component {
     element.onBlur.listen(onBlur);
     element.onScroll.listen(onScroll);
     element.onWheel.listen(onWheel);
+
+    for (final listener in eventListeners) {
+      final eventProvider =
+          EventStreamProvider(listener['event']).forElement(element);
+      eventProvider.listen(listener['callback']);
+    }
   }
+
+  StreamController<(String type, Component element)> onStackChange =
+      StreamController.broadcast();
 
   /// Creates an HTML Element represention of [Component].
   Element render() {
@@ -176,6 +184,7 @@ abstract class Component {
 
     _registerEventListeners(element!);
 
+    onStackChange.add(("add", this));
     stack.add(this);
 
     return element!;
@@ -196,13 +205,15 @@ abstract class Component {
     }
   }
 
+  List<Map<String, dynamic>> eventListeners = [];
+
   void addEventListener(String event, void Function(Event) callback,
       {Map<String, String>? options}) {
-    element?.addEventListener(
-      event,
-      callback as JSFunction,
-      options as JSAny,
-    );
+    eventListeners.add({
+      'event': event,
+      'callback': callback,
+      'options': options,
+    });
   }
 
   void removeEventListener(String event, void Function(Event) callback,
@@ -221,8 +232,8 @@ abstract class Component {
 
   void remove() {
     element?.remove();
-
     stack.remove(this);
+    onStackChange.add(("remove", this));
   }
 
   void clear() {
