@@ -5,4 +5,8 @@ library ui;
 export 'src/core.dart';
 export 'src/components/elements.dart';
 
+export 'src/utils/find.dart';
+export 'src/utils/query.dart';
+export 'src/utils/storage.dart';
+
 export 'package:web/web.dart' hide Table;

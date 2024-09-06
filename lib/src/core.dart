@@ -142,4 +142,8 @@ class Router {
   void listen(void Function(String) callback) {
     _controller.stream.listen(callback);
   }
+
+  void dispose() {
+    _controller.close();
+  }
 }

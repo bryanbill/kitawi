@@ -17,6 +17,7 @@ enum InputType {
   week,
   datetimeLocal,
   color,
+  file,
 }
 
 class Input extends Component {

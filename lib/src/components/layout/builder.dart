@@ -13,6 +13,10 @@ class Context {
   void update() {
     component.update();
   }
+
+  void append(Component child) {
+    component.append(child);
+  }
 }
 
 class Builder extends Component {

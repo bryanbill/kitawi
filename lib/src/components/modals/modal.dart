@@ -79,6 +79,6 @@ Modal showModal({
     dismissible: dismissible,
   );
 
-  document.body!.appendChild(modal.render());
+  document.querySelector("#app")!.appendChild(modal.render());
   return modal;
 }
