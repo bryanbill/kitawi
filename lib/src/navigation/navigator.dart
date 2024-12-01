@@ -187,6 +187,6 @@ class Navigator {
 
   void reload() {
     final path = stacks.last.path;
-    push(path);
+    push(path, replace: true);
   }
 }
