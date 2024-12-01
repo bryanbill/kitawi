@@ -15,9 +15,12 @@ enum InputType {
   time,
   month,
   week,
-  datetimeLocal,
+  datetime,
   color,
   file,
+  checkbox,
+  radio,
+  textarea,
 }
 
 class Input extends Component {
@@ -33,6 +36,7 @@ class Input extends Component {
   final String? placeholder;
 
   final void Function(String?)? onChangeText;
+  final void Function(String?)? onSubmitted;
 
   final String? value;
 
@@ -68,6 +72,7 @@ class Input extends Component {
     super.onChange,
     this.onChangeText,
     super.onMouseMove,
+    this.onSubmitted,
   }) : super(
           tag: 'input',
         );
@@ -76,8 +81,9 @@ class Input extends Component {
 
   @override
   Element render() {
-    final element = super.render() as HTMLInputElement;
-    element.type = type.name;
+    var element = super.render() as HTMLInputElement;
+
+    element.type = type.name == "datetime" ? "datetime-local" : type.name;
 
     if (controller != null) {
       controller!.input = element;
@@ -94,6 +100,19 @@ class Input extends Component {
     element.onInput.listen((event) {
       if (onChangeText != null) {
         onChangeText!(element.value);
+      }
+    });
+
+    element.onKeyDown.listen((event) {
+      // ignore this when the form is autofilled
+      if (event != KeyboardEvent) return;
+
+      if (onKeyDown != null) {
+        onKeyDown!(event);
+      }
+
+      if (event.key == 'Enter' && onSubmitted != null) {
+        onSubmitted!(element.value);
       }
     });
 

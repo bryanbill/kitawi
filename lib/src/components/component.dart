@@ -106,7 +106,7 @@ abstract class Component {
     if (attributes == null) return;
 
     for (final entry in attributes!.entries) {
-      if (entry.value.isEmpty) continue;
+      // if (entry.value.isEmpty) continue;
       element.setAttribute(entry.key, entry.value);
     }
   }
@@ -198,6 +198,7 @@ abstract class Component {
       final newElement = render();
 
       oldElement?.replaceWith(newElement);
+      print("Updated: $element");
       stack.where((c) => c == this).first.element = element;
     } catch (err, s) {
       print(err);
@@ -237,6 +238,8 @@ abstract class Component {
   }
 
   void clear() {
+    if (element == null) return;
+
     for (var i = 0; i < element!.children.length; i++) {
       element!.children.item(i)?.remove();
     }

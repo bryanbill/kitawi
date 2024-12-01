@@ -119,4 +119,8 @@ class Query {
       callback(data);
     });
   }
+
+  static String stringify(Map<String, String> query) {
+    return Uri(queryParameters: query).query;
+  }
 }

@@ -3,8 +3,11 @@ import 'package:kitawi/kitawi.dart';
 class Option {
   final String value;
   final Component child;
+  final bool? disabled;
+  final bool? selected;
 
-  Option({required this.value, required this.child});
+  Option(
+      {required this.value, required this.child, this.disabled, this.selected});
 }
 
 class Select extends Component {
@@ -30,9 +33,10 @@ class Select extends Component {
     for (final option in options) {
       final optionElement = HTMLOptionElement()
         ..value = option.value
+        ..disabled = option.disabled ?? false
         ..appendChild(option.child.render());
 
-      if (option.value == defaultValue) {
+      if (option.value == defaultValue || option.selected == true) {
         optionElement.selected = true;
       }
 

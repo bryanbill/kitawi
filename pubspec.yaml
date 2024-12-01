@@ -10,7 +10,7 @@ executables:
   kitawi:
 
 dependencies:
-  web: ^1.0.0
+  web: ^1.1.0
 
 dev_dependencies:
   lints: ^4.0.0
