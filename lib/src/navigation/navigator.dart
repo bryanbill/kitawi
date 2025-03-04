@@ -81,6 +81,15 @@ class Navigator {
   }
 
   Route? _match(String path) {
+    // if (path.endsWith("/") || path.endsWith("#") || path.endsWith("#/")) {
+    //   path = path.substring(0, path.length - 1);
+    // }
+
+    // remove query params
+    if (path.contains("?")) {
+      path = path.split("?").first;
+    }
+
     for (final key in routes.keys) {
       if (key == path) {
         return routes[key];

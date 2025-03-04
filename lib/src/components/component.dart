@@ -198,7 +198,6 @@ abstract class Component {
       final newElement = render();
 
       oldElement?.replaceWith(newElement);
-      print("Updated: $element");
       stack.where((c) => c == this).first.element = element;
     } catch (err, s) {
       print(err);

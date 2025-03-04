@@ -28,7 +28,9 @@ class Promise<T> extends Component {
     promise.then((value) {
       clear();
       element.append(onResolve(value).render());
-    }).catchError((error) {
+    }).catchError((
+      error,
+    ) {
       if (onReject != null) {
         clear();
         element.append(onReject!(error).render());
