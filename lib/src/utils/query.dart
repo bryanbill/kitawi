@@ -34,14 +34,16 @@ class Query {
   ///
   /// This method will trigger the `onChange` event.
   static void set(Map<String, String> query) {
-    final searchParams = window.location.search;
-    final uri = Uri(
-      queryParameters: {
-        ...Uri.parse(searchParams).queryParameters,
-        ...query,
-      },
-    );
+    // append to the url
+    final uri = Uri.parse(window.location.toString());
+    // final updatedQuery = Map<String, String>.from(uri.queryParameters)
+    //   ..addAll(query);
 
+    // uri.replace(queryParameters: updatedQuery);
+
+    print(uri.toString());
+
+    // update the url
     window.history.pushState(null, '', uri.toString());
     _controller.add(uri.queryParameters);
   }
@@ -56,6 +58,22 @@ class Query {
 
   /// Get the value of a query parameter.
   static String? get(String key) {
+    if (window.location.toString().contains("/#/")) {
+      if (window.location.toString().contains("?")) {
+        final queryStrings = window.location.toString().split("?");
+        if (queryStrings.isNotEmpty) {
+          // convert the query=value&query=value to a map
+          final queryMap = queryStrings[1].split("&").map((e) {
+            final parts = e.split("=");
+            return MapEntry(parts[0], Uri.decodeComponent(parts[1]));
+          });
+
+          return queryMap.firstWhere((element) => element.key == key).value;
+        }
+        return null;
+      }
+      return null;
+    }
     final query = window.location.search;
     final uri = Uri.parse(query);
 
@@ -118,5 +136,9 @@ class Query {
 
       callback(data);
     });
+  }
+
+  static String stringify(Map<String, String> query) {
+    return Uri(queryParameters: query).query;
   }
 }

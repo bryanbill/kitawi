@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:js_interop';
 
-import 'package:web/web.dart';
-
-import 'components/component.dart';
+import 'package:kitawi/kitawi.dart';
 
 /// Determines the debug mode of the library.
 bool kDEBUG = false;
@@ -25,6 +23,9 @@ class App {
   /// This class will be applied to the container element [target].
   final String? className;
 
+  /// The navigator instance.
+  final Navigator? navigator;
+
   /// Creates a new instance of [App].
   ///
   /// The [debug] parameter is used to determine the debug mode of the library.
@@ -39,6 +40,7 @@ class App {
     this.onRender,
     this.style,
     this.className,
+    this.navigator,
   });
 
   void run() {
@@ -139,7 +141,23 @@ class Router {
     }
   }
 
+  void replace(String path) {
+    if (path.startsWith("#")) {
+      window.location.replace(path);
+    } else {
+      window.location.replace("#$path");
+    }
+  }
+
+  void refresh() {
+    window.location.reload();
+  }
+
   void listen(void Function(String) callback) {
     _controller.stream.listen(callback);
+  }
+
+  void dispose() {
+    _controller.close();
   }
 }

@@ -22,6 +22,7 @@ export 'input/select.dart';
 export 'input/checkbox.dart';
 export 'input/radio.dart';
 export 'input/label.dart';
+export 'input/form.dart';
 
 export 'layout/page.dart';
 export 'layout/promise.dart';

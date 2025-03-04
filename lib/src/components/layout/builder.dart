@@ -6,12 +6,18 @@ class Context {
 
   Context(this.index, this.component);
 
+  Navigator? navigator;
+
   void remove() {
     component.remove();
   }
 
   void update() {
     component.update();
+  }
+
+  void append(Component child) {
+    component.append(child);
   }
 }
 
@@ -30,6 +36,7 @@ class Builder extends Component {
   HTMLElement render() {
     final element = super.render() as HTMLElement;
     final index = stack.indexOf(this);
+
     element.appendChild(builder(Context(index, this)).render());
     return element;
   }

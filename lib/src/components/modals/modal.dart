@@ -2,7 +2,7 @@ import 'package:kitawi/kitawi.dart';
 
 class Modal extends Component {
   final Component? title;
-  final Component? body;
+  Component? body;
   final List<Component>? actions;
   final bool? dismissible;
 
@@ -63,8 +63,8 @@ class Modal extends Component {
 
 /// Displays a modal with the specified components.
 Modal showModal({
-  required Component title,
-  Component? body,
+  Component? title,
+  Component Function(Modal)? builder,
   List<Component>? actions,
   String? className,
   Map<String, String>? style,
@@ -72,13 +72,14 @@ Modal showModal({
 }) {
   var modal = Modal(
     title: title,
-    body: body,
     actions: actions,
     className: className,
     style: style,
     dismissible: dismissible,
   );
 
-  document.body!.appendChild(modal.render());
+  if (builder != null) modal.body = builder(modal);
+
+  document.querySelector("#app")!.appendChild(modal.render());
   return modal;
 }

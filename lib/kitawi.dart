@@ -5,4 +5,16 @@ library ui;
 export 'src/core.dart';
 export 'src/components/elements.dart';
 
-export 'package:web/web.dart' hide Table;
+export 'src/utils/find.dart';
+export 'src/utils/query.dart';
+export 'src/utils/storage.dart';
+
+/// navigation
+export 'src/navigation/navigator.dart';
+export 'src/navigation/route.dart';
+export 'src/navigation/strategy.dart';
+
+/// run
+export 'src/run.dart';
+
+export 'package:web/web.dart' hide Table, Navigator;

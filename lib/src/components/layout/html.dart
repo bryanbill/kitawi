@@ -12,10 +12,11 @@ class Html extends Component {
   /// List of external resources to be loaded with the html
   final List<Map<String, String>>? resources;
 
-  Html({
-    required this.rawHtml,
+  Html(
+    this.rawHtml, {
     this.isExternal = false,
     this.resources = const [],
+    super.className,
   });
 
   @override

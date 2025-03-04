@@ -22,10 +22,13 @@ void main(List<String?> args) async {
       break;
 
     case 'run':
-      runProject();
+      runProject(rest);
       break;
     case 'build':
       _build();
+      break;
+    case 'version':
+      print('Kitawi version 0.2.1');
       break;
     default:
       printHelp();
@@ -61,8 +64,11 @@ Future<void> newProject(String? projectName) async {
   }
   await projectDir.create();
 
-  var result = await Process.run(
-      'git', ['clone', 'https://github.com/kitawee/template', projectName]);
+  var result = await Process.run('git', [
+    'clone',
+    'https://github.com/kitawee/template',
+    projectName,
+  ]);
   if (result.exitCode != 0) {
     print('Error: Failed to clone the template repository.');
     print(result.stderr);
@@ -80,7 +86,7 @@ Future<void> newProject(String? projectName) async {
 
   pubspecContent = pubspecContent.replaceAll('template', projectName);
   await pubspecFile.writeAsString(pubspecContent);
-  
+
   print('Project "$projectName" created successfully.');
 }
 
@@ -110,28 +116,43 @@ Future<void> getPackages(List<String?> args) async {
     return;
   }
 
-  var result =
-      await Process.run('dart', ['pub', 'add', ...args as List<String>]);
+  var result = await Process.run('dart', [
+    'pub',
+    'add',
+    ...args as List<String>,
+  ]);
   print(result.stdout);
   print(result.stderr);
 }
 
-Future<void> runProject() async {
-  var result =
-      await Process.run('dart', ['pub', 'global', 'activate', 'webdev']);
+Future<void> runProject(List<String?>? rest) async {
+  var result = await Process.run('dart', [
+    'pub',
+    'global',
+    'activate',
+    'webdev',
+  ]);
   print(result.stderr);
 
+  // get port from --port flag
+  var port = '3000';
+
+  if (rest != null && rest.isNotEmpty) {
+    var portIndex = rest.indexOf('--port');
+    if (portIndex != -1 && portIndex + 1 < rest.length) {
+      port = rest[portIndex + 1]!;
+    }
+  }
+
   //run the project
-  var process = await Process.start(
-    'webdev',
-    [
-      'serve',
-      '--auto',
-      'refresh',
-      '--hostname',
-      '0.0.0.0',
-    ],
-  );
+  var process = await Process.start('webdev', [
+    'serve',
+    'web:$port',
+    '--auto',
+    'refresh',
+    '--hostname',
+    '0.0.0.0',
+  ]);
 
   process.stdout.listen((event) {
     stdout.add(event);
@@ -177,14 +198,7 @@ Future<void> _build() async {
       await directory.create();
     }
 
-    await Process.run(
-      'cp',
-      [
-        '-r',
-        ...includes,
-        directoryName,
-      ],
-    );
+    await Process.run('cp', ['-r', ...includes, directoryName]);
 
     //wasm
     var result = await Process.run('dart', [
@@ -192,7 +206,7 @@ Future<void> _build() async {
       'wasm',
       '$sourceDir/main.dart',
       '-o',
-      '${directory.path}/main.wasm'
+      '${directory.path}/main.wasm',
     ]);
 
     print(result.stdout);
@@ -204,7 +218,7 @@ Future<void> _build() async {
       'js',
       '$sourceDir/main.dart',
       '-o',
-      '${directory.path}/main.js'
+      '${directory.path}/main.js',
     ]);
 
     print(jsResult.stdout);
@@ -221,12 +235,14 @@ Future<void> _build() async {
 
 void printHelp() {
   print('''
-  Usage: view <command> [arguments]
+  Usage: kitawi <command> [arguments]
 
   Commands:
     new <project-name>    Create a new project.
     get [package-names]   Get packages.
     run                   Run the project.
     build                 Build the project.
+    version               Print the version of the tool.
+    help                  Print this help message.
   ''');
 }
